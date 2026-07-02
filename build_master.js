@@ -138,9 +138,11 @@ function main() {
     }
   }
 
-  // Conflict detection: same internal code, same price_unit, different price.
-  // Lines with add-ons (e.g. "+ Dali") are compared separately from bare
-  // lines, since the add-on legitimately changes the price.
+  // Price ranging: same internal code, same price_unit/addons, different
+  // price across quotes. Rather than picking one price or blocking on
+  // manual resolution, every row in the group gets a price_min/price_max/
+  // price_display (e.g. "25-35") so the matcher and UI can show a range.
+  // conflicts.csv still lists the underlying occurrences for audit.
   const priceGroups = new Map();
   for (const row of masterRows) {
     if (row.price === null || row.price === undefined) continue;
@@ -151,6 +153,13 @@ function main() {
   const conflictRows = [];
   for (const [key, rows] of priceGroups) {
     const prices = [...new Set(rows.map(r => r.price))];
+    const min = Math.min(...prices), max = Math.max(...prices);
+    const display = min === max ? String(min) : `${min}-${max}`;
+    for (const r of rows) {
+      r.price_min = min;
+      r.price_max = max;
+      r.price_display = display;
+    }
     if (prices.length > 1) {
       for (const r of rows) {
         conflictRows.push({
@@ -158,6 +167,7 @@ function main() {
           price_unit: r.price_unit,
           addons: r.addons,
           price: r.price,
+          price_range: display,
           source_quote: r.source_quote,
           line_id: r.line_id,
           all_prices_seen: prices.join(' / '),
@@ -169,10 +179,10 @@ function main() {
 
   const masterColumns = ['internal_code', 'type', 'watt', 'lumen', 'cct', 'cri', 'ip',
     'mounting', 'diameter_mm', 'height_mm', 'length_mm', 'width_mm',
-    'price', 'price_unit', 'addons', 'source_quote', 'line_id',
-    'resolved_from', 'uncertain', 'raw_annotation'];
+    'price', 'price_min', 'price_max', 'price_display', 'price_unit', 'addons',
+    'source_quote', 'line_id', 'resolved_from', 'uncertain', 'raw_annotation'];
   const conflictColumns = ['internal_code', 'price_unit', 'addons', 'price',
-    'source_quote', 'line_id', 'all_prices_seen', 'raw_annotation'];
+    'price_range', 'source_quote', 'line_id', 'all_prices_seen', 'raw_annotation'];
 
   fs.writeFileSync(path.join(outDir, 'master.csv'), toCsv(masterRows, masterColumns));
   fs.writeFileSync(path.join(outDir, 'master.json'), JSON.stringify(masterRows, null, 2));
@@ -184,7 +194,7 @@ function main() {
 
   const codes = new Set(masterRows.map(r => r.internal_code));
   console.log(`master.csv        ${masterRows.length} rows, ${codes.size} distinct internal codes`);
-  console.log(`conflicts.csv     ${conflictRows.length} rows (${new Set(conflictRows.map(r => r.internal_code)).size} codes with price conflicts)`);
+  console.log(`conflicts.csv     ${conflictRows.length} rows (${new Set(conflictRows.map(r => r.internal_code)).size} codes with a price range — shown as min-max, not manually resolved)`);
   console.log(`supplier_refs.csv ${supplierRows.length} rows (excluded from master)`);
   if (report.unresolved.length) {
     console.log(`\nUNRESOLVED "Same as X" references (${report.unresolved.length}) — fix the extraction or resolve manually:`);

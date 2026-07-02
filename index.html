@@ -34,7 +34,7 @@
   .b-MANUAL, .b-LOW { color: var(--low); background: var(--low-bg); }
   .cand { margin: 2px 0; }
   .cand code { font-weight: 700; }
-  .conflict { color: var(--low); font-size: 12px; }
+  .pricerange { color: var(--muted); font-size: 12px; }
   .spec { color: var(--muted); font-size: 12px; }
   pre#outjson { background: #0f172a; color: #d7e3f4; border-radius: 8px; padding: 12px; font-size: 12.5px; overflow: auto; max-height: 320px; }
   .kpis { display: flex; gap: 18px; flex-wrap: wrap; margin: 4px 0 12px; }
@@ -134,7 +134,7 @@
           <span class="badge b-${c.confidence}">${c.confidence}</span>
           <code>${esc(c.code)}</code> — score ${c.score}
           ${c.price != null ? `· ${esc(c.price)} /${esc(c.price_unit || 'PC')}` : '· no price on file'}
-          ${c.price_conflict ? `<div class="conflict">⚠ price conflict in past quotes: ${esc(c.prices_seen.join(' | '))} — see conflicts.csv</div>` : ''}
+          ${c.price_is_range ? `<div class="pricerange">range across past quotes — see conflicts.csv for the individual jobs</div>` : ''}
         </div>`).join('') : '<span class="note">No candidate passed the hard filters (IP / type / mounting / ±15% watt & lumen).</span>';
       tbody.insertAdjacentHTML('beforeend', `
         <tr>

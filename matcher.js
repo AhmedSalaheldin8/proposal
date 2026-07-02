@@ -196,21 +196,21 @@
         if (!prev || score > prev.score) byCode.set(row.internal_code, { row, score });
       }
 
-      // conflicting prices per code among surviving rows (same unit)
+      // Price shown per code = the min-max range across past quotes
+      // (computed once in build_master.js as price_min/price_max/
+      // price_display); a single historical price just displays as itself.
       const candidates = [...byCode.entries()]
         .map(([code, best]) => {
-          const prices = [...new Set(survivors
-            .filter(r => r.internal_code === code && r.price !== null && r.price !== undefined && r.price !== '')
-            .map(r => `${r.price} /${r.price_unit || 'PC'}${r.addons ? ' ' + r.addons : ''}`))];
+          const r = best.row;
+          const hasPrice = r.price_display !== undefined && r.price_display !== null && r.price_display !== '';
           return {
             code,
             score: best.score,
             confidence: confidence(best.score),
-            price: best.row.price === '' ? null : best.row.price,
-            price_unit: best.row.price_unit || null,
-            price_conflict: prices.length > 1,
-            prices_seen: prices,
-            row: best.row
+            price: hasPrice ? r.price_display : (r.price === '' ? null : r.price),
+            price_unit: r.price_unit || null,
+            price_is_range: hasPrice && r.price_min !== r.price_max,
+            row: r
           };
         })
         .sort((a, b) => b.score - a.score || a.code.localeCompare(b.code))

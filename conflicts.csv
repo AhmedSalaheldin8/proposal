@@ -1,19 +1,19 @@
-internal_code,price_unit,addons,price,source_quote,line_id,all_prices_seen,raw_annotation
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-08,55 / 65,L-NSCF-1005 55D
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-17,55 / 65,L-NSCF-1005 55D
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-19,55 / 65,Same C
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-29,55 / 65,L-NSCF-1005 55D
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-51,55 / 65,"Same J (handwriting ambiguous; spec is identical to the adjacent E line = L-NSCF-1005, and TYPE C elsewhere in this doc is L-NSCF-1005; J does not fit a downlight)"
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-52,55 / 65,L-NSCF-1005 55D
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-62,55 / 65,L-NSCF-1005 55D
-L-NSCF-1005,PC,,55,2026-06-29_alam-al-idaa_residential,A-64,55 / 65,L-NSCF-1005 55D
-L-NSCF-1005,PC,,65,adce_mz47-plot-c76_villa,C-03,55 / 65,L-NSCF-1005 65D
-LT,PC,,130,2026-06-29_alam-al-idaa_residential,A-11,130 / 230,Lt 19 watt same dimensions 130D/PC
-LT,PC,,230,2026-06-29_alam-al-idaa_residential,A-12,130 / 230,Lt 24 watt same dimensions 230D/PC
-CLMI-5W,PC,,25,2026-06-29_alam-al-idaa_residential,A-26,25 / 30,CLMI-5W 25D
-CLMI-5W,PC,,25,2026-06-29_alam-al-idaa_residential,A-35,25 / 30,CLMI-5W 25D
-CLMI-5W,PC,,25,2026-06-29_alam-al-idaa_residential,A-72,25 / 30,CLMI-5W 25D
-CLMI-5W,PC,,30,adce_mz47-plot-c76_villa,C-04,25 / 30,CLMI-5W 30D (an earlier figure struck through)
-MFL-215,PC,,120,adce_mz47-plot-c76_villa,C-01,120 / 110 / 160,MFL-215 60W 120D
-MFL-215,PC,,110,egis_jumeirah-residences-emirates-towers,E-02,120 / 110 / 160,MFL-215 45W(struck) 50W 110D/PC
-MFL-215,PC,,160,egis_jumeirah-residences-emirates-towers,E-03,120 / 110 / 160,"MFL-215 80W, 170D/PC struck in red -> 160(W?) 120 — price/watt tangle"
+internal_code,price_unit,addons,price,price_range,source_quote,line_id,all_prices_seen,raw_annotation
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-08,55 / 65,L-NSCF-1005 55D
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-17,55 / 65,L-NSCF-1005 55D
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-19,55 / 65,Same C
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-29,55 / 65,L-NSCF-1005 55D
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-51,55 / 65,"Same J (handwriting ambiguous; spec is identical to the adjacent E line = L-NSCF-1005, and TYPE C elsewhere in this doc is L-NSCF-1005; J does not fit a downlight)"
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-52,55 / 65,L-NSCF-1005 55D
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-62,55 / 65,L-NSCF-1005 55D
+L-NSCF-1005,PC,,55,55-65,2026-06-29_alam-al-idaa_residential,A-64,55 / 65,L-NSCF-1005 55D
+L-NSCF-1005,PC,,65,55-65,adce_mz47-plot-c76_villa,C-03,55 / 65,L-NSCF-1005 65D
+LT,PC,,130,130-230,2026-06-29_alam-al-idaa_residential,A-11,130 / 230,Lt 19 watt same dimensions 130D/PC
+LT,PC,,230,130-230,2026-06-29_alam-al-idaa_residential,A-12,130 / 230,Lt 24 watt same dimensions 230D/PC
+CLMI-5W,PC,,25,25-30,2026-06-29_alam-al-idaa_residential,A-26,25 / 30,CLMI-5W 25D
+CLMI-5W,PC,,25,25-30,2026-06-29_alam-al-idaa_residential,A-35,25 / 30,CLMI-5W 25D
+CLMI-5W,PC,,25,25-30,2026-06-29_alam-al-idaa_residential,A-72,25 / 30,CLMI-5W 25D
+CLMI-5W,PC,,30,25-30,adce_mz47-plot-c76_villa,C-04,25 / 30,CLMI-5W 30D (an earlier figure struck through)
+MFL-215,PC,,120,110-160,adce_mz47-plot-c76_villa,C-01,120 / 110 / 160,MFL-215 60W 120D
+MFL-215,PC,,110,110-160,egis_jumeirah-residences-emirates-towers,E-02,120 / 110 / 160,MFL-215 45W(struck) 50W 110D/PC
+MFL-215,PC,,160,110-160,egis_jumeirah-residences-emirates-towers,E-03,120 / 110 / 160,"MFL-215 80W, 170D/PC struck in red -> 160(W?) 120 — price/watt tangle"

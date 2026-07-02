@@ -19,7 +19,10 @@
     "line_id": "A-01",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL 40W 90D"
+    "raw_annotation": "MFL 40W 90D",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "YT-24",
@@ -41,7 +44,10 @@
     "line_id": "A-02",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "MPL",
@@ -63,7 +69,10 @@
     "line_id": "A-03",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MPL 60D"
+    "raw_annotation": "MPL 60D",
+    "price_min": 60,
+    "price_max": 60,
+    "price_display": "60"
   },
   {
     "internal_code": "WP203-10W",
@@ -85,7 +94,10 @@
     "line_id": "A-04",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D"
+    "raw_annotation": "WP203-10W 35D",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "WR2602",
@@ -107,7 +119,10 @@
     "line_id": "A-05",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR2602 40D"
+    "raw_annotation": "WR2602 40D",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "SP-9082C",
@@ -129,7 +144,10 @@
     "line_id": "A-06",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SP-9082C 30D"
+    "raw_annotation": "SP-9082C 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "FX-08",
@@ -151,7 +169,10 @@
     "line_id": "A-07",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D (struck through) -> FX-08 30D"
+    "raw_annotation": "WP203-10W 35D (struck through) -> FX-08 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -173,7 +194,10 @@
     "line_id": "A-08",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "L-NSCF-1005 55D"
+    "raw_annotation": "L-NSCF-1005 55D",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "WP203-10W",
@@ -195,7 +219,10 @@
     "line_id": "A-09",
     "resolved_from": "TYPE K via A-04",
     "uncertain": "",
-    "raw_annotation": "checkmark only"
+    "raw_annotation": "checkmark only",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "MFL",
@@ -217,7 +244,10 @@
     "line_id": "A-10",
     "resolved_from": "TYPE P via A-01",
     "uncertain": "",
-    "raw_annotation": "checkmark only"
+    "raw_annotation": "checkmark only",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "LT",
@@ -239,7 +269,10 @@
     "line_id": "A-11",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "Lt 19 watt same dimensions 130D/PC"
+    "raw_annotation": "Lt 19 watt same dimensions 130D/PC",
+    "price_min": 130,
+    "price_max": 230,
+    "price_display": "130-230"
   },
   {
     "internal_code": "LT",
@@ -261,7 +294,10 @@
     "line_id": "A-12",
     "resolved_from": "",
     "uncertain": "yes",
-    "raw_annotation": "Lt 24 watt same dimensions 230D/PC"
+    "raw_annotation": "Lt 24 watt same dimensions 230D/PC",
+    "price_min": 130,
+    "price_max": 230,
+    "price_display": "130-230"
   },
   {
     "internal_code": "YT-18",
@@ -283,7 +319,10 @@
     "line_id": "A-13",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-18 40D (struck) 45D"
+    "raw_annotation": "YT-18 40D (struck) 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "SF1203R-L",
@@ -305,7 +344,10 @@
     "line_id": "A-14",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SF1203R-L 70D"
+    "raw_annotation": "SF1203R-L 70D",
+    "price_min": 70,
+    "price_max": 70,
+    "price_display": "70"
   },
   {
     "internal_code": "SP-9082C",
@@ -327,7 +369,10 @@
     "line_id": "A-15",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SP-9082C 30D"
+    "raw_annotation": "SP-9082C 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "WP203-10W",
@@ -349,7 +394,10 @@
     "line_id": "A-16",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D"
+    "raw_annotation": "WP203-10W 35D",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -371,7 +419,10 @@
     "line_id": "A-17",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "L-NSCF-1005 55D"
+    "raw_annotation": "L-NSCF-1005 55D",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "TD001DR-7W",
@@ -393,7 +444,10 @@
     "line_id": "A-18",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "TD001DR-7W 25D"
+    "raw_annotation": "TD001DR-7W 25D",
+    "price_min": 25,
+    "price_max": 25,
+    "price_display": "25"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -415,7 +469,10 @@
     "line_id": "A-19",
     "resolved_from": "TYPE C via A-17",
     "uncertain": "",
-    "raw_annotation": "Same C"
+    "raw_annotation": "Same C",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "YT-18",
@@ -437,7 +494,10 @@
     "line_id": "A-20",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-18 45D"
+    "raw_annotation": "YT-18 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "YT-24",
@@ -459,7 +519,10 @@
     "line_id": "A-21",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "MPL",
@@ -481,7 +544,10 @@
     "line_id": "A-22",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MPL 60D"
+    "raw_annotation": "MPL 60D",
+    "price_min": 60,
+    "price_max": 60,
+    "price_display": "60"
   },
   {
     "internal_code": "WP203-10W",
@@ -503,7 +569,10 @@
     "line_id": "A-23",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D"
+    "raw_annotation": "WP203-10W 35D",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "MFL",
@@ -525,7 +594,10 @@
     "line_id": "A-24",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL 40W 90D"
+    "raw_annotation": "MFL 40W 90D",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "YT-24",
@@ -547,7 +619,10 @@
     "line_id": "A-25",
     "resolved_from": "TYPE I via A-02",
     "uncertain": "",
-    "raw_annotation": "Same I"
+    "raw_annotation": "Same I",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "CLMI-5W",
@@ -569,7 +644,10 @@
     "line_id": "A-26",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "CLMI-5W 25D"
+    "raw_annotation": "CLMI-5W 25D",
+    "price_min": 25,
+    "price_max": 30,
+    "price_display": "25-30"
   },
   {
     "internal_code": "WR2602",
@@ -591,7 +669,10 @@
     "line_id": "A-27",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR2602 40D"
+    "raw_annotation": "WR2602 40D",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "SP-9082C",
@@ -613,7 +694,10 @@
     "line_id": "A-28",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SP-9082C 30D"
+    "raw_annotation": "SP-9082C 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -635,7 +719,10 @@
     "line_id": "A-29",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "L-NSCF-1005 55D"
+    "raw_annotation": "L-NSCF-1005 55D",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "YT-18",
@@ -657,7 +744,10 @@
     "line_id": "A-30",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-18 45D"
+    "raw_annotation": "YT-18 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "YT-24",
@@ -679,7 +769,10 @@
     "line_id": "A-31",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "MPL",
@@ -701,7 +794,10 @@
     "line_id": "A-32",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MPL 60D"
+    "raw_annotation": "MPL 60D",
+    "price_min": 60,
+    "price_max": 60,
+    "price_display": "60"
   },
   {
     "internal_code": "WP203-10W",
@@ -723,7 +819,10 @@
     "line_id": "A-33",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D"
+    "raw_annotation": "WP203-10W 35D",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "YT-24",
@@ -745,7 +844,10 @@
     "line_id": "A-34",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "CLMI-5W",
@@ -767,7 +869,10 @@
     "line_id": "A-35",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "CLMI-5W 25D"
+    "raw_annotation": "CLMI-5W 25D",
+    "price_min": 25,
+    "price_max": 30,
+    "price_display": "25-30"
   },
   {
     "internal_code": "MFL",
@@ -789,7 +894,10 @@
     "line_id": "A-36",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL 40W 90D"
+    "raw_annotation": "MFL 40W 90D",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "FX-08",
@@ -811,7 +919,10 @@
     "line_id": "A-37",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "FX-08 30D"
+    "raw_annotation": "FX-08 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "WR2602",
@@ -833,7 +944,10 @@
     "line_id": "A-38",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR 2602 40D"
+    "raw_annotation": "WR 2602 40D",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "SP-9082C",
@@ -855,7 +969,10 @@
     "line_id": "A-39",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SP-9082C 30D"
+    "raw_annotation": "SP-9082C 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "TD001DR-7W",
@@ -877,7 +994,10 @@
     "line_id": "A-40",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "TD001DR-7W 25D"
+    "raw_annotation": "TD001DR-7W 25D",
+    "price_min": 25,
+    "price_max": 25,
+    "price_display": "25"
   },
   {
     "internal_code": "YT-18",
@@ -899,7 +1019,10 @@
     "line_id": "A-41",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-18 45D"
+    "raw_annotation": "YT-18 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "YT-24",
@@ -921,7 +1044,10 @@
     "line_id": "A-42",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-?? (struck) YT-24 65D"
+    "raw_annotation": "YT-?? (struck) YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "MPL",
@@ -943,7 +1069,10 @@
     "line_id": "A-43",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MPL 60D"
+    "raw_annotation": "MPL 60D",
+    "price_min": 60,
+    "price_max": 60,
+    "price_display": "60"
   },
   {
     "internal_code": "WP203-10W",
@@ -965,7 +1094,10 @@
     "line_id": "A-44",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D"
+    "raw_annotation": "WP203-10W 35D",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "SF1203R-L",
@@ -987,7 +1119,10 @@
     "line_id": "A-45",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SF1203R-L 70D"
+    "raw_annotation": "SF1203R-L 70D",
+    "price_min": 70,
+    "price_max": 70,
+    "price_display": "70"
   },
   {
     "internal_code": "MFL",
@@ -1009,7 +1144,10 @@
     "line_id": "A-46",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL 90D 40W"
+    "raw_annotation": "MFL 90D 40W",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "YT-24",
@@ -1031,7 +1169,10 @@
     "line_id": "A-47",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "WR2602",
@@ -1053,7 +1194,10 @@
     "line_id": "A-48",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR 2602 40D"
+    "raw_annotation": "WR 2602 40D",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "SP-9082C",
@@ -1075,7 +1219,10 @@
     "line_id": "A-49",
     "resolved_from": "",
     "uncertain": "yes",
-    "raw_annotation": "SP-9083C 30D (handwriting reads 9083; every other occurrence in this doc is SP-9082C; assumed same code, flagged)"
+    "raw_annotation": "SP-9083C 30D (handwriting reads 9083; every other occurrence in this doc is SP-9082C; assumed same code, flagged)",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "FX-08",
@@ -1097,7 +1244,10 @@
     "line_id": "A-50",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "FX-08 30D"
+    "raw_annotation": "FX-08 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -1119,7 +1269,10 @@
     "line_id": "A-51",
     "resolved_from": "TYPE C via A-17",
     "uncertain": "yes",
-    "raw_annotation": "Same J (handwriting ambiguous; spec is identical to the adjacent E line = L-NSCF-1005, and TYPE C elsewhere in this doc is L-NSCF-1005; J does not fit a downlight)"
+    "raw_annotation": "Same J (handwriting ambiguous; spec is identical to the adjacent E line = L-NSCF-1005, and TYPE C elsewhere in this doc is L-NSCF-1005; J does not fit a downlight)",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -1141,7 +1294,10 @@
     "line_id": "A-52",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "L-NSCF-1005 55D"
+    "raw_annotation": "L-NSCF-1005 55D",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "YT-18",
@@ -1163,7 +1319,10 @@
     "line_id": "A-53",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-18 45D"
+    "raw_annotation": "YT-18 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "YT-24",
@@ -1185,7 +1344,10 @@
     "line_id": "A-54",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "MPL",
@@ -1207,7 +1369,10 @@
     "line_id": "A-55",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MPL 60D"
+    "raw_annotation": "MPL 60D",
+    "price_min": 60,
+    "price_max": 60,
+    "price_display": "60"
   },
   {
     "internal_code": "WP203-10W",
@@ -1229,7 +1394,10 @@
     "line_id": "A-56",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D"
+    "raw_annotation": "WP203-10W 35D",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "MFL",
@@ -1251,7 +1419,10 @@
     "line_id": "A-57",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL 40W 90D"
+    "raw_annotation": "MFL 40W 90D",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "YT-24",
@@ -1273,7 +1444,10 @@
     "line_id": "A-58",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "WR2602",
@@ -1295,7 +1469,10 @@
     "line_id": "A-59",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR2602 40D"
+    "raw_annotation": "WR2602 40D",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "SP-9082C",
@@ -1317,7 +1494,10 @@
     "line_id": "A-60",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SP-9082C 30D"
+    "raw_annotation": "SP-9082C 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "FX-08",
@@ -1339,7 +1519,10 @@
     "line_id": "A-61",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "FX-08 30D"
+    "raw_annotation": "FX-08 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -1361,7 +1544,10 @@
     "line_id": "A-62",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "L-NSCF-1005 55D"
+    "raw_annotation": "L-NSCF-1005 55D",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "TD001DR-7W",
@@ -1383,7 +1569,10 @@
     "line_id": "A-63",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "TD001DR-7W 25D"
+    "raw_annotation": "TD001DR-7W 25D",
+    "price_min": 25,
+    "price_max": 25,
+    "price_display": "25"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -1405,7 +1594,10 @@
     "line_id": "A-64",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "L-NSCF-1005 55D"
+    "raw_annotation": "L-NSCF-1005 55D",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "YT-18",
@@ -1427,7 +1619,10 @@
     "line_id": "A-65",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-18 45D"
+    "raw_annotation": "YT-18 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "YT-24",
@@ -1449,7 +1644,10 @@
     "line_id": "A-66",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "MPL",
@@ -1471,7 +1669,10 @@
     "line_id": "A-67",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MPL 60D"
+    "raw_annotation": "MPL 60D",
+    "price_min": 60,
+    "price_max": 60,
+    "price_display": "60"
   },
   {
     "internal_code": "WP203-10W",
@@ -1493,7 +1694,10 @@
     "line_id": "A-68",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WP203-10W 35D"
+    "raw_annotation": "WP203-10W 35D",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "MFL",
@@ -1515,7 +1719,10 @@
     "line_id": "A-69",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL 90D 40W"
+    "raw_annotation": "MFL 90D 40W",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "YT-24",
@@ -1537,7 +1744,10 @@
     "line_id": "A-70",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-24 65D"
+    "raw_annotation": "YT-24 65D",
+    "price_min": 65,
+    "price_max": 65,
+    "price_display": "65"
   },
   {
     "internal_code": "Bulb with holder",
@@ -1559,7 +1769,10 @@
     "line_id": "A-71",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "Bulb with holder 30D"
+    "raw_annotation": "Bulb with holder 30D",
+    "price_min": 30,
+    "price_max": 30,
+    "price_display": "30"
   },
   {
     "internal_code": "CLMI-5W",
@@ -1581,7 +1794,10 @@
     "line_id": "A-72",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "CLMI-5W 25D"
+    "raw_annotation": "CLMI-5W 25D",
+    "price_min": 25,
+    "price_max": 30,
+    "price_display": "25-30"
   },
   {
     "internal_code": "WR2602",
@@ -1603,7 +1819,10 @@
     "line_id": "A-73",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR2602 40D"
+    "raw_annotation": "WR2602 40D",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "MFL-215",
@@ -1625,7 +1844,10 @@
     "line_id": "C-01",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL-215 60W 120D"
+    "raw_annotation": "MFL-215 60W 120D",
+    "price_min": 110,
+    "price_max": 160,
+    "price_display": "110-160"
   },
   {
     "internal_code": "MFL",
@@ -1647,7 +1869,10 @@
     "line_id": "C-02",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "MFL 48W 90D"
+    "raw_annotation": "MFL 48W 90D",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "L-NSCF-1005",
@@ -1669,7 +1894,10 @@
     "line_id": "C-03",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "L-NSCF-1005 65D"
+    "raw_annotation": "L-NSCF-1005 65D",
+    "price_min": 55,
+    "price_max": 65,
+    "price_display": "55-65"
   },
   {
     "internal_code": "CLMI-5W",
@@ -1691,7 +1919,10 @@
     "line_id": "C-04",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "CLMI-5W 30D (an earlier figure struck through)"
+    "raw_annotation": "CLMI-5W 30D (an earlier figure struck through)",
+    "price_min": 25,
+    "price_max": 30,
+    "price_display": "25-30"
   },
   {
     "internal_code": "STRIP-19.2W",
@@ -1713,7 +1944,10 @@
     "line_id": "C-05",
     "resolved_from": "",
     "uncertain": "yes",
-    "raw_annotation": "19.2 W/MTR 180D/MTR"
+    "raw_annotation": "19.2 W/MTR 180D/MTR",
+    "price_min": 180,
+    "price_max": 180,
+    "price_display": "180"
   },
   {
     "internal_code": "YT-12W",
@@ -1735,7 +1969,10 @@
     "line_id": "C-06",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "YT-12W 40D"
+    "raw_annotation": "YT-12W 40D",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "M-CL11032",
@@ -1757,7 +1994,10 @@
     "line_id": "C-07",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "M-CL11032 105D"
+    "raw_annotation": "M-CL11032 105D",
+    "price_min": 105,
+    "price_max": 105,
+    "price_display": "105"
   },
   {
     "internal_code": "M-CL11032",
@@ -1779,7 +2019,10 @@
     "line_id": "C-08",
     "resolved_from": "LINE C-07 via C-07",
     "uncertain": "",
-    "raw_annotation": "Same (arrow to sheet above)"
+    "raw_annotation": "Same (arrow to sheet above)",
+    "price_min": 105,
+    "price_max": 105,
+    "price_display": "105"
   },
   {
     "internal_code": "M-CL11032",
@@ -1801,7 +2044,10 @@
     "line_id": "C-09",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "M-CL11032 105D"
+    "raw_annotation": "M-CL11032 105D",
+    "price_min": 105,
+    "price_max": 105,
+    "price_display": "105"
   },
   {
     "internal_code": "WR2692",
@@ -1823,7 +2069,10 @@
     "line_id": "C-10",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR2692 45D"
+    "raw_annotation": "WR2692 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "OS-2010-13",
@@ -1845,7 +2094,10 @@
     "line_id": "C-11",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "OS-2010-13 90D"
+    "raw_annotation": "OS-2010-13 90D",
+    "price_min": 90,
+    "price_max": 90,
+    "price_display": "90"
   },
   {
     "internal_code": "WR2692",
@@ -1867,7 +2119,10 @@
     "line_id": "C-12",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "WR2692 45D"
+    "raw_annotation": "WR2692 45D",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "LP-SRLV9.6",
@@ -1889,7 +2144,10 @@
     "line_id": "D-01",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "LP-SRLV9.6+Al+Dri Dali 130D/MTR"
+    "raw_annotation": "LP-SRLV9.6+Al+Dri Dali 130D/MTR",
+    "price_min": 130,
+    "price_max": 130,
+    "price_display": "130"
   },
   {
     "internal_code": "GN-18W-R",
@@ -1911,7 +2169,10 @@
     "line_id": "D-02",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "GN-18W-R + Dali 80D (two red first-pass codes struck through, one reads like TD-P035-2000)"
+    "raw_annotation": "GN-18W-R + Dali 80D (two red first-pass codes struck through, one reads like TD-P035-2000)",
+    "price_min": 80,
+    "price_max": 80,
+    "price_display": "80"
   },
   {
     "internal_code": "TD-001FR-07",
@@ -1933,7 +2194,10 @@
     "line_id": "D-03",
     "resolved_from": "",
     "uncertain": "yes",
-    "raw_annotation": "TD-001FR-07 + Dali 35D (last digits partly overwritten)"
+    "raw_annotation": "TD-001FR-07 + Dali 35D (last digits partly overwritten)",
+    "price_min": 35,
+    "price_max": 35,
+    "price_display": "35"
   },
   {
     "internal_code": "SP-9082C",
@@ -1955,7 +2219,10 @@
     "line_id": "D-04",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "SP-9082C + Dali 45D (red first-pass code TD-1032-10W struck through)"
+    "raw_annotation": "SP-9082C + Dali 45D (red first-pass code TD-1032-10W struck through)",
+    "price_min": 45,
+    "price_max": 45,
+    "price_display": "45"
   },
   {
     "internal_code": "MFL-112",
@@ -1977,7 +2244,10 @@
     "line_id": "E-01",
     "resolved_from": "",
     "uncertain": "yes",
-    "raw_annotation": "MFL-112 12W 70D/PC, red 90 beside it"
+    "raw_annotation": "MFL-112 12W 70D/PC, red 90 beside it",
+    "price_min": 70,
+    "price_max": 70,
+    "price_display": "70"
   },
   {
     "internal_code": "MFL-215",
@@ -1999,7 +2269,10 @@
     "line_id": "E-02",
     "resolved_from": "",
     "uncertain": "yes",
-    "raw_annotation": "MFL-215 45W(struck) 50W 110D/PC"
+    "raw_annotation": "MFL-215 45W(struck) 50W 110D/PC",
+    "price_min": 110,
+    "price_max": 160,
+    "price_display": "110-160"
   },
   {
     "internal_code": "MFL-215",
@@ -2021,7 +2294,10 @@
     "line_id": "E-03",
     "resolved_from": "",
     "uncertain": "yes",
-    "raw_annotation": "MFL-215 80W, 170D/PC struck in red -> 160(W?) 120 — price/watt tangle"
+    "raw_annotation": "MFL-215 80W, 170D/PC struck in red -> 160(W?) 120 — price/watt tangle",
+    "price_min": 110,
+    "price_max": 160,
+    "price_display": "110-160"
   },
   {
     "internal_code": "JG-10",
@@ -2043,7 +2319,10 @@
     "line_id": "E-06",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "JG-10 40D/PC"
+    "raw_annotation": "JG-10 40D/PC",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "TD-P035-20",
@@ -2065,7 +2344,10 @@
     "line_id": "E-07",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "TD-P035-20 85D/PC"
+    "raw_annotation": "TD-P035-20 85D/PC",
+    "price_min": 85,
+    "price_max": 85,
+    "price_display": "85"
   },
   {
     "internal_code": "M-CL-11124",
@@ -2087,7 +2369,10 @@
     "line_id": "E-08",
     "resolved_from": "",
     "uncertain": "",
-    "raw_annotation": "M-CL-11124 95D/PC"
+    "raw_annotation": "M-CL-11124 95D/PC",
+    "price_min": 95,
+    "price_max": 95,
+    "price_display": "95"
   },
   {
     "internal_code": "M-CL-11124",
@@ -2109,7 +2394,10 @@
     "line_id": "E-09",
     "resolved_from": "TYPE D2 via E-08",
     "uncertain": "",
-    "raw_annotation": "Same D2"
+    "raw_annotation": "Same D2",
+    "price_min": 95,
+    "price_max": 95,
+    "price_display": "95"
   },
   {
     "internal_code": "JG-10",
@@ -2131,7 +2419,10 @@
     "line_id": "E-10",
     "resolved_from": "TYPE D1 via E-06",
     "uncertain": "",
-    "raw_annotation": "Same D1"
+    "raw_annotation": "Same D1",
+    "price_min": 40,
+    "price_max": 40,
+    "price_display": "40"
   },
   {
     "internal_code": "M-CL-11124",
@@ -2153,6 +2444,9 @@
     "line_id": "E-11",
     "resolved_from": "TYPE D2 via E-08",
     "uncertain": "yes",
-    "raw_annotation": "Same D2"
+    "raw_annotation": "Same D2",
+    "price_min": 95,
+    "price_max": 95,
+    "price_display": "95"
   }
 ]

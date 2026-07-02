@@ -1,99 +1,99 @@
-internal_code,type,watt,lumen,cct,cri,ip,mounting,diameter_mm,height_mm,length_mm,width_mm,price,price_unit,addons,source_quote,line_id,resolved_from,uncertain,raw_annotation
-MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,PC,,2026-06-29_alam-al-idaa_residential,A-01,,,MFL 40W 90D
-YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-02,,,YT-24 65D
-MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,PC,,2026-06-29_alam-al-idaa_residential,A-03,,,MPL 60D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-04,,,WP203-10W 35D
-WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,PC,,2026-06-29_alam-al-idaa_residential,A-05,,,WR2602 40D
-SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-06,,,SP-9082C 30D
-FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-07,,,WP203-10W 35D (struck through) -> FX-08 30D
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-08,,,L-NSCF-1005 55D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-09,TYPE K via A-04,,checkmark only
-MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,PC,,2026-06-29_alam-al-idaa_residential,A-10,TYPE P via A-01,,checkmark only
-LT,Indoor - Linear Light,16.1,1610,3000,80,20,surface,,42,700,64,130,PC,,2026-06-29_alam-al-idaa_residential,A-11,,,Lt 19 watt same dimensions 130D/PC
-LT,Indoor - Linear Light,27.6,2760,3000,80,20,surface,,42,1200,64,230,PC,,2026-06-29_alam-al-idaa_residential,A-12,,yes,Lt 24 watt same dimensions 230D/PC
-YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,PC,,2026-06-29_alam-al-idaa_residential,A-13,,,YT-18 40D (struck) 45D
-SF1203R-L,Outdoor - Wall mounted down Light,15,1275,3000,80,65,wall,120,200,,173,70,PC,,2026-06-29_alam-al-idaa_residential,A-14,,,SF1203R-L 70D
-SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-15,,,SP-9082C 30D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-16,,,WP203-10W 35D
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-17,,,L-NSCF-1005 55D
-TD001DR-7W,"Indoor - Downlight (adjustable, with trim)",7,490,3000,90,20,recessed,65,70,,,25,PC,,2026-06-29_alam-al-idaa_residential,A-18,,,TD001DR-7W 25D
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-19,TYPE C via A-17,,Same C
-YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,PC,,2026-06-29_alam-al-idaa_residential,A-20,,,YT-18 45D
-YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-21,,,YT-24 65D
-MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,PC,,2026-06-29_alam-al-idaa_residential,A-22,,,MPL 60D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-23,,,WP203-10W 35D
-MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,PC,,2026-06-29_alam-al-idaa_residential,A-24,,,MFL 40W 90D
-YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-25,TYPE I via A-02,,Same I
-CLMI-5W,"Indoor - Downlight (fixed, with trim)",3,270,3000,90,20,recessed,,40,,30,25,PC,,2026-06-29_alam-al-idaa_residential,A-26,,,CLMI-5W 25D
-WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,PC,,2026-06-29_alam-al-idaa_residential,A-27,,,WR2602 40D
-SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-28,,,SP-9082C 30D
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-29,,,L-NSCF-1005 55D
-YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,PC,,2026-06-29_alam-al-idaa_residential,A-30,,,YT-18 45D
-YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-31,,,YT-24 65D
-MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,PC,,2026-06-29_alam-al-idaa_residential,A-32,,,MPL 60D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-33,,,WP203-10W 35D
-YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-34,,,YT-24 65D
-CLMI-5W,"Indoor - Downlight (fixed, with trim)",3,270,3000,90,20,recessed,,40,,30,25,PC,,2026-06-29_alam-al-idaa_residential,A-35,,,CLMI-5W 25D
-MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,PC,,2026-06-29_alam-al-idaa_residential,A-36,,,MFL 40W 90D
-FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-37,,,FX-08 30D
-WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,PC,,2026-06-29_alam-al-idaa_residential,A-38,,,WR 2602 40D
-SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-39,,,SP-9082C 30D
-TD001DR-7W,"Indoor - Downlight (adjustable, with trim)",7,490,3000,90,20,recessed,65,70,,,25,PC,,2026-06-29_alam-al-idaa_residential,A-40,,,TD001DR-7W 25D
-YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,PC,,2026-06-29_alam-al-idaa_residential,A-41,,,YT-18 45D
-YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-42,,,YT-?? (struck) YT-24 65D
-MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,PC,,2026-06-29_alam-al-idaa_residential,A-43,,,MPL 60D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-44,,,WP203-10W 35D
-SF1203R-L,Outdoor - Wall mounted down Light,15,1275,3000,80,65,wall,120,200,,173,70,PC,,2026-06-29_alam-al-idaa_residential,A-45,,,SF1203R-L 70D
-MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,PC,,2026-06-29_alam-al-idaa_residential,A-46,,,MFL 90D 40W
-YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-47,,,YT-24 65D
-WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,PC,,2026-06-29_alam-al-idaa_residential,A-48,,,WR 2602 40D
-SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-49,,yes,"SP-9083C 30D (handwriting reads 9083; every other occurrence in this doc is SP-9082C; assumed same code, flagged)"
-FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-50,,,FX-08 30D
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-51,TYPE C via A-17,yes,"Same J (handwriting ambiguous; spec is identical to the adjacent E line = L-NSCF-1005, and TYPE C elsewhere in this doc is L-NSCF-1005; J does not fit a downlight)"
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-52,,,L-NSCF-1005 55D
-YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,PC,,2026-06-29_alam-al-idaa_residential,A-53,,,YT-18 45D
-YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-54,,,YT-24 65D
-MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,PC,,2026-06-29_alam-al-idaa_residential,A-55,,,MPL 60D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-56,,,WP203-10W 35D
-MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,PC,,2026-06-29_alam-al-idaa_residential,A-57,,,MFL 40W 90D
-YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-58,,,YT-24 65D
-WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,PC,,2026-06-29_alam-al-idaa_residential,A-59,,,WR2602 40D
-SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-60,,,SP-9082C 30D
-FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-61,,,FX-08 30D
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-62,,,L-NSCF-1005 55D
-TD001DR-7W,"Indoor - Downlight (adjustable, with trim)",7,490,3000,90,20,recessed,65,70,,,25,PC,,2026-06-29_alam-al-idaa_residential,A-63,,,TD001DR-7W 25D
-L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,PC,,2026-06-29_alam-al-idaa_residential,A-64,,,L-NSCF-1005 55D
-YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,PC,,2026-06-29_alam-al-idaa_residential,A-65,,,YT-18 45D
-YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-66,,,YT-24 65D
-MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,PC,,2026-06-29_alam-al-idaa_residential,A-67,,,MPL 60D
-WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,PC,,2026-06-29_alam-al-idaa_residential,A-68,,,WP203-10W 35D
-MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,PC,,2026-06-29_alam-al-idaa_residential,A-69,,,MFL 90D 40W
-YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,PC,,2026-06-29_alam-al-idaa_residential,A-70,,,YT-24 65D
-Bulb with holder,"Indoor - Ceiling Light (chandelier, 15x 10W E14 bulbs)",,800,3000,,20,surface,1000,,,,30,PC,,2026-06-29_alam-al-idaa_residential,A-71,,,Bulb with holder 30D
-CLMI-5W,"Indoor - Downlight (fixed, with trim)",3,270,3000,90,20,recessed,,40,,30,25,PC,,2026-06-29_alam-al-idaa_residential,A-72,,,CLMI-5W 25D
-WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,PC,,2026-06-29_alam-al-idaa_residential,A-73,,,WR2602 40D
-MFL-215,Surface LED industrial light (batten) with PMMA/PC shock proof diffuser,54,6210,,90,66,surface,1500,60,1500,73,120,PC,,adce_mz47-plot-c76_villa,C-01,,,MFL-215 60W 120D
-MFL,Surface LED industrial light (batten) with PMMA/PC shock proof diffuser,47,5405,,90,66,surface,1200,60,1200,73,90,PC,,adce_mz47-plot-c76_villa,C-02,,,MFL 48W 90D
-L-NSCF-1005,"Recessed LED modular downlight, tempered clear glass diffuser, tiles pattern specular anodized reflector",14,1680,,90,44,recessed,,113,135,135,65,PC,,adce_mz47-plot-c76_villa,C-03,,,L-NSCF-1005 65D
-CLMI-5W,"Recessed LED spotlight, clear tempered glass / optical PMMA lens diffuser",3,330,,90,54,recessed,36,54,,,30,PC,,adce_mz47-plot-c76_villa,C-04,,,CLMI-5W 30D (an earlier figure struck through)
-STRIP-19.2W,Recessed/Surface LED strip with PMMA opal/clear/prismatic diffuser (aluminium profile),19.2,1344,,90,65,recessed/surface,,,,,180,MTR,,adce_mz47-plot-c76_villa,C-05,,yes,19.2 W/MTR 180D/MTR
-YT-12W,"Recessed LED downlight, tempered frosted/clear glass diffuser, tiles pattern reflector",12,1440,,90,54,recessed,136,70,,,40,PC,,adce_mz47-plot-c76_villa,C-06,,,YT-12W 40D
-M-CL11032,"Surface LED ceiling light, opal PMMA anti-yellowing diffuser V2",36,3960,,90,65,surface,340,50,,,105,PC,,adce_mz47-plot-c76_villa,C-07,,,M-CL11032 105D
-M-CL11032,"Surface LED ceiling light, opal PMMA anti-yellowing diffuser V2",36,3960,,90,65,surface,340,50,,,105,PC,,adce_mz47-plot-c76_villa,C-08,LINE C-07 via C-07,,Same (arrow to sheet above)
-M-CL11032,"Surface LED ceiling light, anti-glare UV polycarbonate diffuser, polished aluminium back reflector",30,3300,,90,65,surface,400,40,,,105,PC,,adce_mz47-plot-c76_villa,C-09,,,M-CL11032 105D
-WR2692,"Recessed LED wall light, tempered clear glass diffuser, white laminated aluminium reflector",12,1440,,90,65,recessed-wall,,38,165,60,45,PC,,adce_mz47-plot-c76_villa,C-10,,,WR2692 45D
-OS-2010-13,"Surface LED wall light, opal polycarbonate/PMMA diffuser",12,1440,,90,65,wall,250,58,,,90,PC,,adce_mz47-plot-c76_villa,C-11,,,OS-2010-13 90D
-WR2692,"Recessed LED wall light, polycarbonate optical lens diffuser",10,1200,,90,65,recessed-wall,,89,248,65,45,PC,,adce_mz47-plot-c76_villa,C-12,,,WR2692 45D
-LP-SRLV9.6,"Linear LED strip light with optics (facade grazer, Onbridge/Ecosense LED flex)",9.6,,3000,90,67,surface,,,,,130,MTR,+ Aluminium profile + Dali driver,dewan_fountain-view-saadiyat,D-01,,,LP-SRLV9.6+Al+Dri Dali 130D/MTR
-GN-18W-R,"Recessed ceiling downlight with wide beam distribution (linea light, intra light)",18,2540,2700,90,20,recessed,115,104.5,,,80,PC,+ Dali,dewan_fountain-view-saadiyat,D-02,,,"GN-18W-R + Dali 80D (two red first-pass codes struck through, one reads like TD-P035-2000)"
-TD-001FR-07,"Recessed ceiling adjustable downlight with wide beam distribution (linea light, intra light)",8,462,2700,80,20,recessed,80,112,,,35,PC,+ Dali,dewan_fountain-view-saadiyat,D-03,,yes,TD-001FR-07 + Dali 35D (last digits partly overwritten)
-SP-9082C,Recessed ceiling downlight with wide beam distribution,10,1180,2700,90,20,recessed,85.5,82.5,,,45,PC,+ Dali,dewan_fountain-view-saadiyat,D-04,,,SP-9082C + Dali 45D (red first-pass code TD-1032-10W struck through)
-MFL-112,LED surface/suspended luminaire (batten),36,3600,4000,,66,surface/suspended,,,1200,,70,PC,,egis_jumeirah-residences-emirates-towers,E-01,,yes,"MFL-112 12W 70D/PC, red 90 beside it"
-MFL-215,LED surface/suspended luminaire (batten),36,5050,4000,,66,surface/suspended,,,1200,,110,PC,,egis_jumeirah-residences-emirates-towers,E-02,,yes,MFL-215 45W(struck) 50W 110D/PC
-MFL-215,LED surface/suspended luminaire (batten),55,7600,4000,,66,surface/suspended,,,1500,,160,PC,,egis_jumeirah-residences-emirates-towers,E-03,,yes,"MFL-215 80W, 170D/PC struck in red -> 160(W?) 120 — price/watt tangle"
-JG-10,"Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19",10,1300,4000,90,44,recessed,,,,,40,PC,,egis_jumeirah-residences-emirates-towers,E-06,,,JG-10 40D/PC
-TD-P035-20,"Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19",15,2000,4000,90,44,recessed,,,,,85,PC,,egis_jumeirah-residences-emirates-towers,E-07,,,TD-P035-20 85D/PC
-M-CL-11124,"Surface mounted LED downlight, circular PC housing, fixed output driver",25,3000,4000,,54,surface,,,,,95,PC,,egis_jumeirah-residences-emirates-towers,E-08,,,M-CL-11124 95D/PC
-M-CL-11124,"Surface mounted LED downlight, circular PC housing, fixed output driver",25,3000,4000,,54,surface,,,,,95,PC,,egis_jumeirah-residences-emirates-towers,E-09,TYPE D2 via E-08,,Same D2
-JG-10,"Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19",10,1300,4000,90,44,recessed,,,,,40,PC,,egis_jumeirah-residences-emirates-towers,E-10,TYPE D1 via E-06,,Same D1
-M-CL-11124,"Wall mounted LED luminaire, adjustable lumen output through internal switch, lift lighting",24,2950,4000,,66,wall,,,,,95,PC,,egis_jumeirah-residences-emirates-towers,E-11,TYPE D2 via E-08,yes,Same D2
+internal_code,type,watt,lumen,cct,cri,ip,mounting,diameter_mm,height_mm,length_mm,width_mm,price,price_min,price_max,price_display,price_unit,addons,source_quote,line_id,resolved_from,uncertain,raw_annotation
+MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,90,90,90,PC,,2026-06-29_alam-al-idaa_residential,A-01,,,MFL 40W 90D
+YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-02,,,YT-24 65D
+MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,60,60,60,PC,,2026-06-29_alam-al-idaa_residential,A-03,,,MPL 60D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-04,,,WP203-10W 35D
+WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,40,40,40,PC,,2026-06-29_alam-al-idaa_residential,A-05,,,WR2602 40D
+SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-06,,,SP-9082C 30D
+FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-07,,,WP203-10W 35D (struck through) -> FX-08 30D
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-08,,,L-NSCF-1005 55D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-09,TYPE K via A-04,,checkmark only
+MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,90,90,90,PC,,2026-06-29_alam-al-idaa_residential,A-10,TYPE P via A-01,,checkmark only
+LT,Indoor - Linear Light,16.1,1610,3000,80,20,surface,,42,700,64,130,130,230,130-230,PC,,2026-06-29_alam-al-idaa_residential,A-11,,,Lt 19 watt same dimensions 130D/PC
+LT,Indoor - Linear Light,27.6,2760,3000,80,20,surface,,42,1200,64,230,130,230,130-230,PC,,2026-06-29_alam-al-idaa_residential,A-12,,yes,Lt 24 watt same dimensions 230D/PC
+YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,45,45,45,PC,,2026-06-29_alam-al-idaa_residential,A-13,,,YT-18 40D (struck) 45D
+SF1203R-L,Outdoor - Wall mounted down Light,15,1275,3000,80,65,wall,120,200,,173,70,70,70,70,PC,,2026-06-29_alam-al-idaa_residential,A-14,,,SF1203R-L 70D
+SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-15,,,SP-9082C 30D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-16,,,WP203-10W 35D
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-17,,,L-NSCF-1005 55D
+TD001DR-7W,"Indoor - Downlight (adjustable, with trim)",7,490,3000,90,20,recessed,65,70,,,25,25,25,25,PC,,2026-06-29_alam-al-idaa_residential,A-18,,,TD001DR-7W 25D
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-19,TYPE C via A-17,,Same C
+YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,45,45,45,PC,,2026-06-29_alam-al-idaa_residential,A-20,,,YT-18 45D
+YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-21,,,YT-24 65D
+MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,60,60,60,PC,,2026-06-29_alam-al-idaa_residential,A-22,,,MPL 60D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-23,,,WP203-10W 35D
+MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,90,90,90,PC,,2026-06-29_alam-al-idaa_residential,A-24,,,MFL 40W 90D
+YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-25,TYPE I via A-02,,Same I
+CLMI-5W,"Indoor - Downlight (fixed, with trim)",3,270,3000,90,20,recessed,,40,,30,25,25,30,25-30,PC,,2026-06-29_alam-al-idaa_residential,A-26,,,CLMI-5W 25D
+WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,40,40,40,PC,,2026-06-29_alam-al-idaa_residential,A-27,,,WR2602 40D
+SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-28,,,SP-9082C 30D
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-29,,,L-NSCF-1005 55D
+YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,45,45,45,PC,,2026-06-29_alam-al-idaa_residential,A-30,,,YT-18 45D
+YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-31,,,YT-24 65D
+MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,60,60,60,PC,,2026-06-29_alam-al-idaa_residential,A-32,,,MPL 60D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-33,,,WP203-10W 35D
+YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-34,,,YT-24 65D
+CLMI-5W,"Indoor - Downlight (fixed, with trim)",3,270,3000,90,20,recessed,,40,,30,25,25,30,25-30,PC,,2026-06-29_alam-al-idaa_residential,A-35,,,CLMI-5W 25D
+MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,90,90,90,PC,,2026-06-29_alam-al-idaa_residential,A-36,,,MFL 40W 90D
+FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-37,,,FX-08 30D
+WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,40,40,40,PC,,2026-06-29_alam-al-idaa_residential,A-38,,,WR 2602 40D
+SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-39,,,SP-9082C 30D
+TD001DR-7W,"Indoor - Downlight (adjustable, with trim)",7,490,3000,90,20,recessed,65,70,,,25,25,25,25,PC,,2026-06-29_alam-al-idaa_residential,A-40,,,TD001DR-7W 25D
+YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,45,45,45,PC,,2026-06-29_alam-al-idaa_residential,A-41,,,YT-18 45D
+YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-42,,,YT-?? (struck) YT-24 65D
+MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,60,60,60,PC,,2026-06-29_alam-al-idaa_residential,A-43,,,MPL 60D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-44,,,WP203-10W 35D
+SF1203R-L,Outdoor - Wall mounted down Light,15,1275,3000,80,65,wall,120,200,,173,70,70,70,70,PC,,2026-06-29_alam-al-idaa_residential,A-45,,,SF1203R-L 70D
+MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,90,90,90,PC,,2026-06-29_alam-al-idaa_residential,A-46,,,MFL 90D 40W
+YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-47,,,YT-24 65D
+WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,40,40,40,PC,,2026-06-29_alam-al-idaa_residential,A-48,,,WR 2602 40D
+SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-49,,yes,"SP-9083C 30D (handwriting reads 9083; every other occurrence in this doc is SP-9082C; assumed same code, flagged)"
+FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-50,,,FX-08 30D
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-51,TYPE C via A-17,yes,"Same J (handwriting ambiguous; spec is identical to the adjacent E line = L-NSCF-1005, and TYPE C elsewhere in this doc is L-NSCF-1005; J does not fit a downlight)"
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-52,,,L-NSCF-1005 55D
+YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,45,45,45,PC,,2026-06-29_alam-al-idaa_residential,A-53,,,YT-18 45D
+YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-54,,,YT-24 65D
+MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,60,60,60,PC,,2026-06-29_alam-al-idaa_residential,A-55,,,MPL 60D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-56,,,WP203-10W 35D
+MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,90,90,90,PC,,2026-06-29_alam-al-idaa_residential,A-57,,,MFL 40W 90D
+YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-58,,,YT-24 65D
+WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,40,40,40,PC,,2026-06-29_alam-al-idaa_residential,A-59,,,WR2602 40D
+SP-9082C,"Indoor - Downlight (fixed, with trim)",10,900,3000,90,20,recessed,55,112,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-60,,,SP-9082C 30D
+FX-08,"Indoor - Downlight (fixed, with trim)",7,840,3000,90,65,recessed,61,47,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-61,,,FX-08 30D
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-62,,,L-NSCF-1005 55D
+TD001DR-7W,"Indoor - Downlight (adjustable, with trim)",7,490,3000,90,20,recessed,65,70,,,25,25,25,25,PC,,2026-06-29_alam-al-idaa_residential,A-63,,,TD001DR-7W 25D
+L-NSCF-1005,"Indoor - Downlight (adjustable, with trim)",20,1400,3000,90,20,recessed,105,100,,,55,55,65,55-65,PC,,2026-06-29_alam-al-idaa_residential,A-64,,,L-NSCF-1005 55D
+YT-18,Indoor - Ceiling Light,18,1800,3000,90,20,surface,300,25,,,45,45,45,45,PC,,2026-06-29_alam-al-idaa_residential,A-65,,,YT-18 45D
+YT-24,Indoor - Ceiling Light,24,2400,3000,90,20,surface,400,25,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-66,,,YT-24 65D
+MPL,Indoor - Panel Light,40,4800,4000,80,44,recessed,,30,595,595,60,60,60,60,PC,,2026-06-29_alam-al-idaa_residential,A-67,,,MPL 60D
+WP203-10W,"Indoor - Downlight (fixed, with trim)",10,1200,3000,90,65,recessed,83,52,,,35,35,35,35,PC,,2026-06-29_alam-al-idaa_residential,A-68,,,WP203-10W 35D
+MFL,Back of House - Triproof,40,4800,5000,90,65,surface,,71,1190,65,90,90,90,90,PC,,2026-06-29_alam-al-idaa_residential,A-69,,,MFL 90D 40W
+YT-24,Indoor - Ceiling Light,24,2200,3000,,20,surface,600,2000,,,65,65,65,65,PC,,2026-06-29_alam-al-idaa_residential,A-70,,,YT-24 65D
+Bulb with holder,"Indoor - Ceiling Light (chandelier, 15x 10W E14 bulbs)",,800,3000,,20,surface,1000,,,,30,30,30,30,PC,,2026-06-29_alam-al-idaa_residential,A-71,,,Bulb with holder 30D
+CLMI-5W,"Indoor - Downlight (fixed, with trim)",3,270,3000,90,20,recessed,,40,,30,25,25,30,25-30,PC,,2026-06-29_alam-al-idaa_residential,A-72,,,CLMI-5W 25D
+WR2602,Indoor - Recessed wall light,6,120,3000,80,65,recessed-wall,,106,106,72,40,40,40,40,PC,,2026-06-29_alam-al-idaa_residential,A-73,,,WR2602 40D
+MFL-215,Surface LED industrial light (batten) with PMMA/PC shock proof diffuser,54,6210,,90,66,surface,1500,60,1500,73,120,110,160,110-160,PC,,adce_mz47-plot-c76_villa,C-01,,,MFL-215 60W 120D
+MFL,Surface LED industrial light (batten) with PMMA/PC shock proof diffuser,47,5405,,90,66,surface,1200,60,1200,73,90,90,90,90,PC,,adce_mz47-plot-c76_villa,C-02,,,MFL 48W 90D
+L-NSCF-1005,"Recessed LED modular downlight, tempered clear glass diffuser, tiles pattern specular anodized reflector",14,1680,,90,44,recessed,,113,135,135,65,55,65,55-65,PC,,adce_mz47-plot-c76_villa,C-03,,,L-NSCF-1005 65D
+CLMI-5W,"Recessed LED spotlight, clear tempered glass / optical PMMA lens diffuser",3,330,,90,54,recessed,36,54,,,30,25,30,25-30,PC,,adce_mz47-plot-c76_villa,C-04,,,CLMI-5W 30D (an earlier figure struck through)
+STRIP-19.2W,Recessed/Surface LED strip with PMMA opal/clear/prismatic diffuser (aluminium profile),19.2,1344,,90,65,recessed/surface,,,,,180,180,180,180,MTR,,adce_mz47-plot-c76_villa,C-05,,yes,19.2 W/MTR 180D/MTR
+YT-12W,"Recessed LED downlight, tempered frosted/clear glass diffuser, tiles pattern reflector",12,1440,,90,54,recessed,136,70,,,40,40,40,40,PC,,adce_mz47-plot-c76_villa,C-06,,,YT-12W 40D
+M-CL11032,"Surface LED ceiling light, opal PMMA anti-yellowing diffuser V2",36,3960,,90,65,surface,340,50,,,105,105,105,105,PC,,adce_mz47-plot-c76_villa,C-07,,,M-CL11032 105D
+M-CL11032,"Surface LED ceiling light, opal PMMA anti-yellowing diffuser V2",36,3960,,90,65,surface,340,50,,,105,105,105,105,PC,,adce_mz47-plot-c76_villa,C-08,LINE C-07 via C-07,,Same (arrow to sheet above)
+M-CL11032,"Surface LED ceiling light, anti-glare UV polycarbonate diffuser, polished aluminium back reflector",30,3300,,90,65,surface,400,40,,,105,105,105,105,PC,,adce_mz47-plot-c76_villa,C-09,,,M-CL11032 105D
+WR2692,"Recessed LED wall light, tempered clear glass diffuser, white laminated aluminium reflector",12,1440,,90,65,recessed-wall,,38,165,60,45,45,45,45,PC,,adce_mz47-plot-c76_villa,C-10,,,WR2692 45D
+OS-2010-13,"Surface LED wall light, opal polycarbonate/PMMA diffuser",12,1440,,90,65,wall,250,58,,,90,90,90,90,PC,,adce_mz47-plot-c76_villa,C-11,,,OS-2010-13 90D
+WR2692,"Recessed LED wall light, polycarbonate optical lens diffuser",10,1200,,90,65,recessed-wall,,89,248,65,45,45,45,45,PC,,adce_mz47-plot-c76_villa,C-12,,,WR2692 45D
+LP-SRLV9.6,"Linear LED strip light with optics (facade grazer, Onbridge/Ecosense LED flex)",9.6,,3000,90,67,surface,,,,,130,130,130,130,MTR,+ Aluminium profile + Dali driver,dewan_fountain-view-saadiyat,D-01,,,LP-SRLV9.6+Al+Dri Dali 130D/MTR
+GN-18W-R,"Recessed ceiling downlight with wide beam distribution (linea light, intra light)",18,2540,2700,90,20,recessed,115,104.5,,,80,80,80,80,PC,+ Dali,dewan_fountain-view-saadiyat,D-02,,,"GN-18W-R + Dali 80D (two red first-pass codes struck through, one reads like TD-P035-2000)"
+TD-001FR-07,"Recessed ceiling adjustable downlight with wide beam distribution (linea light, intra light)",8,462,2700,80,20,recessed,80,112,,,35,35,35,35,PC,+ Dali,dewan_fountain-view-saadiyat,D-03,,yes,TD-001FR-07 + Dali 35D (last digits partly overwritten)
+SP-9082C,Recessed ceiling downlight with wide beam distribution,10,1180,2700,90,20,recessed,85.5,82.5,,,45,45,45,45,PC,+ Dali,dewan_fountain-view-saadiyat,D-04,,,SP-9082C + Dali 45D (red first-pass code TD-1032-10W struck through)
+MFL-112,LED surface/suspended luminaire (batten),36,3600,4000,,66,surface/suspended,,,1200,,70,70,70,70,PC,,egis_jumeirah-residences-emirates-towers,E-01,,yes,"MFL-112 12W 70D/PC, red 90 beside it"
+MFL-215,LED surface/suspended luminaire (batten),36,5050,4000,,66,surface/suspended,,,1200,,110,110,160,110-160,PC,,egis_jumeirah-residences-emirates-towers,E-02,,yes,MFL-215 45W(struck) 50W 110D/PC
+MFL-215,LED surface/suspended luminaire (batten),55,7600,4000,,66,surface/suspended,,,1500,,160,110,160,110-160,PC,,egis_jumeirah-residences-emirates-towers,E-03,,yes,"MFL-215 80W, 170D/PC struck in red -> 160(W?) 120 — price/watt tangle"
+JG-10,"Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19",10,1300,4000,90,44,recessed,,,,,40,40,40,40,PC,,egis_jumeirah-residences-emirates-towers,E-06,,,JG-10 40D/PC
+TD-P035-20,"Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19",15,2000,4000,90,44,recessed,,,,,85,85,85,85,PC,,egis_jumeirah-residences-emirates-towers,E-07,,,TD-P035-20 85D/PC
+M-CL-11124,"Surface mounted LED downlight, circular PC housing, fixed output driver",25,3000,4000,,54,surface,,,,,95,95,95,95,PC,,egis_jumeirah-residences-emirates-towers,E-08,,,M-CL-11124 95D/PC
+M-CL-11124,"Surface mounted LED downlight, circular PC housing, fixed output driver",25,3000,4000,,54,surface,,,,,95,95,95,95,PC,,egis_jumeirah-residences-emirates-towers,E-09,TYPE D2 via E-08,,Same D2
+JG-10,"Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19",10,1300,4000,90,44,recessed,,,,,40,40,40,40,PC,,egis_jumeirah-residences-emirates-towers,E-10,TYPE D1 via E-06,,Same D1
+M-CL-11124,"Wall mounted LED luminaire, adjustable lumen output through internal switch, lift lighting",24,2950,4000,,66,wall,,,,,95,95,95,95,PC,,egis_jumeirah-residences-emirates-towers,E-11,TYPE D2 via E-08,yes,Same D2

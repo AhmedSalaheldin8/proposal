@@ -1,34 +1,34 @@
-internal_code,type,watt,lumen,cct,cri,ip,mounting,diameter_mm,height_mm,length_mm,width_mm,price,price_unit,addons,source_quote,line_id,resolved_from,uncertain,raw_annotation
-1702136,"Linear LED light surface mounted 1200mm indoor, integrated LED module, HF control driver with Dali",30,4500,4000,,66,surface,,,1200,,220,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-01,,,"1702136 + Dali, 200D struck -> 220D"
-9537540,"Recessed LED panel light 600x600 indoor, integrated LED module, HF control driver with Dali",24,3840,4000,,65,recessed,,,600,600,210,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-02,,,9537540 + Dali 210D
-Vyrtech,"Explosion proof linear LED 1200mm, ATEX rated indoor, integrated LED module, HF driver with Dali",30,4500,4000,,66,surface,,,1200,,2200,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-03,,,Vyrtech 2200D + Dali
-1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,66,wall,,,,,400,PC,+ phase dimming,2026-06-26_shabeer_industrial-boq,B-04,,,"1629045 + phase dimming, 430D struck -> 400D"
-1702136,"Linear LED light surface mounted 1200mm indoor, Dali dimmable",30,4500,4000,,66,surface,,,1200,,220,PC,,2026-06-26_shabeer_industrial-boq,B-05,LINE B-01 via B-01,,checkmark only
-9537540,"Recessed LED panel light 600x600 indoor, Dali dimmable",24,4500,4000,,44,recessed,,,600,600,210,PC,,2026-06-26_shabeer_industrial-boq,B-06,LINE B-02 via B-02,,checkmark only
-6092712,"Recessed LED downlight indoor, Dali dimmable",12,1680,4000,,54,recessed,,,,,150,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-07,,,"6092712 + Dali, 140D struck -> 150D"
-6092710,"Recessed LED downlight indoor, Dali dimmable",9,1260,4000,,54,recessed,,,,,140,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-08,,,6092710 + Dali 140D
-1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,66,wall,,,,,400,PC,,2026-06-26_shabeer_industrial-boq,B-09,LINE B-04 via B-04,,checkmark only
-1702136,"Linear LED light surface mounted 1200mm indoor, Dali dimmable",30,4500,4000,,66,surface,,,1200,,220,PC,,2026-06-26_shabeer_industrial-boq,B-10,LINE B-01 via B-01,,checkmark only
-1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,66,wall,,,,,400,PC,,2026-06-26_shabeer_industrial-boq,B-11,LINE B-04 via B-04,,checkmark only
-1700120,"LED high-bay luminaire CR2 L35k-840 PC NB LDO WH, Dali dimmable",197,34650,4000,,66,suspended,,,,,650,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-12,,yes,"17001200 + Dali (digit count off — 1700120 or 1700200), 520D struck -> 650D"
-1702298,Wall/surface linear LED luminaire 1600x92x90mm,44,6610,4000,,66,surface/wall,,90,1600,92,175,PC,,2026-06-26_shabeer_industrial-boq,B-13,,yes,1702298 175D (a struck figure beside it)
-5094513,Highly efficient and sustainable LED downlight,13,1410,4000,,44,recessed,,,,,130,PC,,2026-06-26_shabeer_industrial-boq,B-14,,,9537540 150D struck -> 5094513 130D
-9537540,Square ceiling recessed LED luminaire 60x60,26,3199,4000,,44,recessed,,,600,600,150,PC,,2026-06-26_shabeer_industrial-boq,B-15,,,9537540 150D
-5093416,Highly efficient and sustainable LED downlight,17,2040,4000,,44,recessed,,,,,140,PC,,2026-06-26_shabeer_industrial-boq,B-16,,,5093416 140D
-1702298,Surface linear LED luminaire 1600x92x90mm,44,6610,4000,,66,surface,,90,1600,92,175,PC,,2026-06-26_shabeer_industrial-boq,B-17,TYPE LT-2 via B-13,,checkmark only
-1622321,Wall mounted luminaire with switchable lumen output,20,2640,4000,,65,wall,,,,,140,PC,,2026-06-26_shabeer_industrial-boq,B-18,,,1622321 140D (printed 17W struck in pen)
-1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,65,wall,,,,,400,PC,+ dimming,2026-06-26_shabeer_industrial-boq,B-19,,,1629045 + dimming 400D
-1702298,Surface linear LED luminaire,43,5880,4000,,66,surface,,,,,175,PC,,2026-06-26_shabeer_industrial-boq,B-20,TYPE LT-2 via B-13,,-> Same LT-2
-7046014,"Linear LED light surface mounted indoor, integrated LED module, HF driver, Dali dimmable",14,2100,4000,,66,surface,,,,,160,PC,+ Ali/All driver (illegible),2026-06-26_shabeer_industrial-boq,B-21,,yes,"7046014 + A?? Driver (struck), 55D/MTR struck, 160D"
-1702020,"Linear LED light surface mounted 1200mm indoor, Dali dimmable",30,4500,4000,,66,surface,,,1200,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-22,,yes,1702020 + Dali (no legible price)
-9537540,"Recessed LED panel light 600x600 indoor, Dali dimmable",24,4500,4000,,65,recessed,,,600,600,210,PC,,2026-06-26_shabeer_industrial-boq,B-23,LINE B-02 via B-02,yes,no annotation visible (page edge)
-1336509,"90W street LED light, integrated LED module, HF driver, mounting arrangement per 10M pole",90,12600,4000,,66,pole,,,,,900,PC,+ phase dimming; 10m pole: 3000D separately,2026-06-26_shabeer_industrial-boq,B-24,,yes,"1336509 0 + Phase dimming, 900D; '10m pole: 3000D' noted"
-2151550,"42W bracket mounted flood light, integrated LED module, HF driver, mounting per drawing",42,5880,4000,,66,bracket,,,,,460,PC,+ phase dimming,2026-06-26_shabeer_industrial-boq,B-25,,yes,"215155 0 + phase dimming, 300D struck -> 460D"
-13365400,"750W street LED light, integrated LED module, HF driver, per 30m high mast — 16 nos pole arrangement",750,10500,4000,,66,high-mast,,,,,23000,PC,+ phase dimming,2026-06-26_shabeer_industrial-boq,B-26,,yes,13365400 + phase dimming 23000D (1336400 struck)
-1705040,"LED ceiling/wall mounted luminaire, general area + technical",35,4600,4000,,44,surface/suspended/wall,,,1200,,130,PC,,egis_jumeirah-residences-emirates-towers,E-04,,,1705040 130D/PC
-1101201,Recessed inground uplight (Luce&Light MB1000SDI or equivalent),1.2,20,3000,90,68,inground,35,41,,,230,PC,+ Dali,nulty_jumeirah-landscape,F-01,,,1101201 + Dali 230D/PC
-1110903,Surface marker light (Platek 8409016 or equivalent),2.5,55,3000,80,68,surface,145,118,,,270,PC,+ Dali,nulty_jumeirah-landscape,F-02,,,"1110903 + Dali 270D/PC, 'Robotica' noted"
-1511303,Recessed step light (Luce&Light NK1120100350AN or equivalent),2,186,3000,,67,recessed-wall,,44,50,50,170,PC,+ Dali,nulty_jumeirah-landscape,F-03,,,1511303 + Dali 170D/PC
-1100818,Underwater fountain light (Wibre 4.0240.00.13 or equivalent),18,1500,4500,85,68,underwater,100,144,,,580,PC,+ Dali,nulty_jumeirah-landscape,F-04,,,"1100818 + Dali, 580D/PC circled, 'Puglia ii' noted"
-1100906,Recessed underwater spotlight (Arpool S or equivalent),6,440,4000,,68,underwater,80,95,,,500,PC,+ Dali,nulty_jumeirah-landscape,F-06,,,"1100906 + Dali, 550D/PC struck -> 500, 'Puglia' noted"
-1100906,Recessed underwater spotlight (ARPOOL XM or equivalent),21.5,1780,4000,,68,underwater,149,98,,,500,PC,,nulty_jumeirah-landscape,F-07,TYPE LA.A4 via F-06,,Same LA.A4
+internal_code,type,watt,lumen,cct,cri,ip,mounting,diameter_mm,height_mm,length_mm,width_mm,price,price_min,price_max,price_display,price_unit,addons,source_quote,line_id,resolved_from,uncertain,raw_annotation
+1702136,"Linear LED light surface mounted 1200mm indoor, integrated LED module, HF control driver with Dali",30,4500,4000,,66,surface,,,1200,,220,,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-01,,,"1702136 + Dali, 200D struck -> 220D"
+9537540,"Recessed LED panel light 600x600 indoor, integrated LED module, HF control driver with Dali",24,3840,4000,,65,recessed,,,600,600,210,,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-02,,,9537540 + Dali 210D
+Vyrtech,"Explosion proof linear LED 1200mm, ATEX rated indoor, integrated LED module, HF driver with Dali",30,4500,4000,,66,surface,,,1200,,2200,,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-03,,,Vyrtech 2200D + Dali
+1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,66,wall,,,,,400,,,,PC,+ phase dimming,2026-06-26_shabeer_industrial-boq,B-04,,,"1629045 + phase dimming, 430D struck -> 400D"
+1702136,"Linear LED light surface mounted 1200mm indoor, Dali dimmable",30,4500,4000,,66,surface,,,1200,,220,,,,PC,,2026-06-26_shabeer_industrial-boq,B-05,LINE B-01 via B-01,,checkmark only
+9537540,"Recessed LED panel light 600x600 indoor, Dali dimmable",24,4500,4000,,44,recessed,,,600,600,210,,,,PC,,2026-06-26_shabeer_industrial-boq,B-06,LINE B-02 via B-02,,checkmark only
+6092712,"Recessed LED downlight indoor, Dali dimmable",12,1680,4000,,54,recessed,,,,,150,,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-07,,,"6092712 + Dali, 140D struck -> 150D"
+6092710,"Recessed LED downlight indoor, Dali dimmable",9,1260,4000,,54,recessed,,,,,140,,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-08,,,6092710 + Dali 140D
+1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,66,wall,,,,,400,,,,PC,,2026-06-26_shabeer_industrial-boq,B-09,LINE B-04 via B-04,,checkmark only
+1702136,"Linear LED light surface mounted 1200mm indoor, Dali dimmable",30,4500,4000,,66,surface,,,1200,,220,,,,PC,,2026-06-26_shabeer_industrial-boq,B-10,LINE B-01 via B-01,,checkmark only
+1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,66,wall,,,,,400,,,,PC,,2026-06-26_shabeer_industrial-boq,B-11,LINE B-04 via B-04,,checkmark only
+1700120,"LED high-bay luminaire CR2 L35k-840 PC NB LDO WH, Dali dimmable",197,34650,4000,,66,suspended,,,,,650,,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-12,,yes,"17001200 + Dali (digit count off — 1700120 or 1700200), 520D struck -> 650D"
+1702298,Wall/surface linear LED luminaire 1600x92x90mm,44,6610,4000,,66,surface/wall,,90,1600,92,175,,,,PC,,2026-06-26_shabeer_industrial-boq,B-13,,yes,1702298 175D (a struck figure beside it)
+5094513,Highly efficient and sustainable LED downlight,13,1410,4000,,44,recessed,,,,,130,,,,PC,,2026-06-26_shabeer_industrial-boq,B-14,,,9537540 150D struck -> 5094513 130D
+9537540,Square ceiling recessed LED luminaire 60x60,26,3199,4000,,44,recessed,,,600,600,150,,,,PC,,2026-06-26_shabeer_industrial-boq,B-15,,,9537540 150D
+5093416,Highly efficient and sustainable LED downlight,17,2040,4000,,44,recessed,,,,,140,,,,PC,,2026-06-26_shabeer_industrial-boq,B-16,,,5093416 140D
+1702298,Surface linear LED luminaire 1600x92x90mm,44,6610,4000,,66,surface,,90,1600,92,175,,,,PC,,2026-06-26_shabeer_industrial-boq,B-17,TYPE LT-2 via B-13,,checkmark only
+1622321,Wall mounted luminaire with switchable lumen output,20,2640,4000,,65,wall,,,,,140,,,,PC,,2026-06-26_shabeer_industrial-boq,B-18,,,1622321 140D (printed 17W struck in pen)
+1629045,"LED wall mounted light external, integrated LED module + HF control driver",42,5880,4000,,65,wall,,,,,400,,,,PC,+ dimming,2026-06-26_shabeer_industrial-boq,B-19,,,1629045 + dimming 400D
+1702298,Surface linear LED luminaire,43,5880,4000,,66,surface,,,,,175,,,,PC,,2026-06-26_shabeer_industrial-boq,B-20,TYPE LT-2 via B-13,,-> Same LT-2
+7046014,"Linear LED light surface mounted indoor, integrated LED module, HF driver, Dali dimmable",14,2100,4000,,66,surface,,,,,160,,,,PC,+ Ali/All driver (illegible),2026-06-26_shabeer_industrial-boq,B-21,,yes,"7046014 + A?? Driver (struck), 55D/MTR struck, 160D"
+1702020,"Linear LED light surface mounted 1200mm indoor, Dali dimmable",30,4500,4000,,66,surface,,,1200,,,,,,PC,+ Dali,2026-06-26_shabeer_industrial-boq,B-22,,yes,1702020 + Dali (no legible price)
+9537540,"Recessed LED panel light 600x600 indoor, Dali dimmable",24,4500,4000,,65,recessed,,,600,600,210,,,,PC,,2026-06-26_shabeer_industrial-boq,B-23,LINE B-02 via B-02,yes,no annotation visible (page edge)
+1336509,"90W street LED light, integrated LED module, HF driver, mounting arrangement per 10M pole",90,12600,4000,,66,pole,,,,,900,,,,PC,+ phase dimming; 10m pole: 3000D separately,2026-06-26_shabeer_industrial-boq,B-24,,yes,"1336509 0 + Phase dimming, 900D; '10m pole: 3000D' noted"
+2151550,"42W bracket mounted flood light, integrated LED module, HF driver, mounting per drawing",42,5880,4000,,66,bracket,,,,,460,,,,PC,+ phase dimming,2026-06-26_shabeer_industrial-boq,B-25,,yes,"215155 0 + phase dimming, 300D struck -> 460D"
+13365400,"750W street LED light, integrated LED module, HF driver, per 30m high mast — 16 nos pole arrangement",750,10500,4000,,66,high-mast,,,,,23000,,,,PC,+ phase dimming,2026-06-26_shabeer_industrial-boq,B-26,,yes,13365400 + phase dimming 23000D (1336400 struck)
+1705040,"LED ceiling/wall mounted luminaire, general area + technical",35,4600,4000,,44,surface/suspended/wall,,,1200,,130,,,,PC,,egis_jumeirah-residences-emirates-towers,E-04,,,1705040 130D/PC
+1101201,Recessed inground uplight (Luce&Light MB1000SDI or equivalent),1.2,20,3000,90,68,inground,35,41,,,230,,,,PC,+ Dali,nulty_jumeirah-landscape,F-01,,,1101201 + Dali 230D/PC
+1110903,Surface marker light (Platek 8409016 or equivalent),2.5,55,3000,80,68,surface,145,118,,,270,,,,PC,+ Dali,nulty_jumeirah-landscape,F-02,,,"1110903 + Dali 270D/PC, 'Robotica' noted"
+1511303,Recessed step light (Luce&Light NK1120100350AN or equivalent),2,186,3000,,67,recessed-wall,,44,50,50,170,,,,PC,+ Dali,nulty_jumeirah-landscape,F-03,,,1511303 + Dali 170D/PC
+1100818,Underwater fountain light (Wibre 4.0240.00.13 or equivalent),18,1500,4500,85,68,underwater,100,144,,,580,,,,PC,+ Dali,nulty_jumeirah-landscape,F-04,,,"1100818 + Dali, 580D/PC circled, 'Puglia ii' noted"
+1100906,Recessed underwater spotlight (Arpool S or equivalent),6,440,4000,,68,underwater,80,95,,,500,,,,PC,+ Dali,nulty_jumeirah-landscape,F-06,,,"1100906 + Dali, 550D/PC struck -> 500, 'Puglia' noted"
+1100906,Recessed underwater spotlight (ARPOOL XM or equivalent),21.5,1780,4000,,68,underwater,149,98,,,500,,,,PC,,nulty_jumeirah-landscape,F-07,TYPE LA.A4 via F-06,,Same LA.A4
