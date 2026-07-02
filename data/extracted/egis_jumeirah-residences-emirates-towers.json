@@ -1,0 +1,61 @@
+{
+  "source_quote": "egis_jumeirah-residences-emirates-towers",
+  "source_pages": "16",
+  "document": "egis — Jumeirah Residences Emirates Towers, Dubai. 100% Detailed Design Submission, February 2026. Luminaire schedule (ref / Sylvania basis-of-design / lamp / description / location / mounting).",
+  "extraction_notes": [
+    "Two annotation passes: blue ink (codes + prices) and red ink (revised wattages/prices/quantities). Red corrections transcribed into crossed_out/notes.",
+    "Top of the L-table (row L1) is cut off in the scan; 'Same L1' on the storage row references it — unresolvable within the visible scan, left unresolved and flagged.",
+    "This page is the messiest in the corpus; uncertain flags used liberally."
+  ],
+  "lines": [
+    { "line_id": "E-01", "section": "L - LINEAR", "type_letter": "L2", "location": "Car Park/Driveways/Plant Rooms", "qty": 90, "unit": "Nos",
+      "spec": { "type": "LED surface/suspended luminaire (batten)", "watt": 36, "lumen": 3600, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface/suspended", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": "PC luminaire body and PC diffuser UV stabilized", "client_ref": "printed 26W 3600lm; red correction 36W; qty 90 in red" },
+      "hw": { "code": "MFL-112", "code_type": "internal", "watt_note": "handwritten wattage next to code reads 12W (likely 42W or the 1.2m size marker — ambiguous)", "price": 70, "price_unit": "PC", "raw": "MFL-112 12W 70D/PC, red 90 beside it", "same_ref": null, "crossed_out": [], "uncertain": true,
+        "notes": "Red '90' may be revised price 90D or the quantity; flagged for owner review." } },
+
+    { "line_id": "E-02", "section": "L - LINEAR", "type_letter": "L2A", "location": "Car Park/Plant Rooms/Transformer room/Locker rooms at basements", "qty": 90, "unit": "Nos",
+      "spec": { "type": "LED surface/suspended luminaire (batten)", "watt": 36, "lumen": 5050, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface/suspended", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": "PC luminaire body and PC diffuser UV stabilized", "client_ref": "printed 36W 5050lm 1200mm; qty 90 in red" },
+      "hw": { "code": "MFL-215", "code_type": "internal", "watt_note": "45W struck -> 50W", "price": 110, "price_unit": "PC", "raw": "MFL-215 45W(struck) 50W 110D/PC", "same_ref": null, "crossed_out": [ { "code": "MFL-215 45W", "price": null } ], "uncertain": true,
+        "notes": "MFL-215 is the 1500mm batten elsewhere in the corpus but this row is printed 1200mm — annotation may belong to row L3 (55W 7600lm 1500mm) one row down; flagged." } },
+
+    { "line_id": "E-03", "section": "L - LINEAR", "type_letter": "L3", "location": "Electrical Rooms/IDF Rooms/Plant Rooms", "qty": 120, "unit": "Nos",
+      "spec": { "type": "LED surface/suspended luminaire (batten)", "watt": 55, "lumen": 7600, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface/suspended", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1500, "width_mm": null, "material": "PC luminaire body and PC diffuser UV stabilized", "client_ref": "printed 55W 7600lm 1500mm; red 160W and 120 nearby" },
+      "hw": { "code": "MFL-215", "code_type": "internal", "watt_note": "80W", "price": 160, "price_unit": "PC", "raw": "MFL-215 80W, 170D/PC struck in red -> 160(W?) 120 — price/watt tangle", "same_ref": null, "crossed_out": [ { "code": "MFL-215 80W", "price": 170 } ], "uncertain": true,
+        "notes": "Red edits make final price ambiguous (160D vs 120D vs 160W@120D); flagged for owner review." } },
+
+    { "line_id": "E-04", "section": "L - LINEAR", "type_letter": "L4", "location": "BOH Corridor/Electrical Rooms/IDF Rooms", "qty": null, "unit": "Nos",
+      "spec": { "type": "LED ceiling/wall mounted luminaire, general area + technical", "watt": 35, "lumen": 4600, "cct": 4000, "cri": null, "ip": 44, "mounting": "surface/suspended/wall", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": "Steel housing with polycarbonate diffuser", "client_ref": null },
+      "hw": { "code": "1705040", "code_type": "supplier", "price": 130, "price_unit": "PC", "raw": "1705040 130D/PC", "same_ref": null, "crossed_out": [], "uncertain": false,
+        "notes": "Numeric supplier catalogue code (Disano-style) — excluded from internal master." } },
+
+    { "line_id": "E-05", "section": "L - LINEAR", "type_letter": "L5", "location": "Storage spaces", "qty": null, "unit": "Nos",
+      "spec": { "type": "LED surface/suspended luminaire (batten)", "watt": 26, "lumen": 3600, "cct": 4000, "cri": null, "ip": 44, "mounting": "suspended/surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": "PC luminaire body and PC diffuser UV stabilized", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same L1", "same_ref": "TYPE L1", "crossed_out": [], "uncertain": true,
+        "notes": "Row L1 is cut off at the top of the scan — reference cannot be resolved from the visible pages." } },
+
+    { "line_id": "E-06", "section": "D - DOWNLIGHTS", "type_letter": "D1", "location": "Corridors/Lift Lobby/Changing room", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19", "watt": 10, "lumen": 1300, "cct": 4000, "cri": 90, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "Die-cast aluminium", "client_ref": null },
+      "hw": { "code": "JG-10", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "JG-10 40D/PC", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "E-07", "section": "D - DOWNLIGHTS", "type_letter": "D1A", "location": "Corridors/Lift Lobby (higher ceiling)/Toilets", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19", "watt": 15, "lumen": 2000, "cct": 4000, "cri": 90, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "Die-cast aluminium", "client_ref": null },
+      "hw": { "code": "TD-P035-20", "code_type": "internal", "price": 85, "price_unit": "PC", "raw": "TD-P035-20 85D/PC", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "E-08", "section": "D - DOWNLIGHTS", "type_letter": "D2", "location": "BOH Corridor/Changing room", "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface mounted LED downlight, circular PC housing, fixed output driver", "watt": 25, "lumen": 3000, "cct": 4000, "cri": null, "ip": 54, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "Circular PC housing", "client_ref": null },
+      "hw": { "code": "M-CL-11124", "code_type": "internal", "price": 95, "price_unit": "PC", "raw": "M-CL-11124 95D/PC", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "E-09", "section": "D - DOWNLIGHTS", "type_letter": "S1", "location": "Stairs", "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface mounted LED downlight, circular PC housing, fixed output driver", "watt": 25, "lumen": 3000, "cct": 4000, "cri": null, "ip": 54, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "Circular PC housing", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same D2", "same_ref": "TYPE D2", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "E-10", "section": "D - DOWNLIGHTS", "type_letter": "D3", "location": "Garbage room & fire lift lobby", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recess mounted LED downlight, glossy + PC diffuser, controlled glare UGR19", "watt": 10, "lumen": 1300, "cct": 4000, "cri": 90, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "Die-cast aluminium", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same D1", "same_ref": "TYPE D1", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "E-11", "section": "W - WALL", "type_letter": "W1", "location": "Lift/Roof", "qty": null, "unit": "Nos",
+      "spec": { "type": "Wall mounted LED luminaire, adjustable lumen output through internal switch, lift lighting", "watt": 24, "lumen": 2950, "cct": 4000, "cri": null, "ip": 66, "mounting": "wall", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "IK10", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same D2", "same_ref": "TYPE D2", "crossed_out": [], "uncertain": true,
+        "notes": "Wall IP66 fixture marked same as a surface IP54 downlight — plausible substitution decision by owner, flagged." } }
+  ]
+}

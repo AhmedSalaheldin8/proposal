@@ -1,0 +1,63 @@
+{
+  "source_quote": "adce_mz47-plot-c76_villa",
+  "source_pages": "8-13",
+  "document": "ADCE Electrical Specification — 16521 Light Fixtures, Building For MR: Ahmed Alhaj Abdulla Mohammed Alhabroosh MZ47 Plot-C76 File(2976), stamped Apr 17 2026",
+  "extraction_notes": [
+    "Spec-sheet format: one fixture per sheet (Type / Location / Specification), two sheets per scanned page, pages rotated in the scan.",
+    "No quantities printed on these sheets — qty null.",
+    "Handwritten internal code + price in blue ink on each sheet."
+  ],
+  "lines": [
+    { "line_id": "C-01", "section": "LIGHT FIXTURES", "type_letter": "LT1", "location": null, "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface LED industrial light (batten) with PMMA/PC shock proof diffuser", "watt": 54, "lumen": 6210, "cct": null, "cri": 90, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": 1500, "height_mm": 60, "length_mm": 1500, "width_mm": 73, "material": "Extruded anodized aluminium, PC end caps, IK08", "client_ref": null },
+      "hw": { "code": "MFL-215", "code_type": "internal", "watt_note": "60W", "price": 120, "price_unit": "PC", "raw": "MFL-215 60W 120D", "same_ref": null, "crossed_out": [], "uncertain": false,
+        "notes": "Printed dims Ø1500mm x 73mm (1500mm long batten). Type label cut off in scan; sheet above LT2." } },
+
+    { "line_id": "C-02", "section": "LIGHT FIXTURES", "type_letter": "LT2", "location": "SERVICES", "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface LED industrial light (batten) with PMMA/PC shock proof diffuser", "watt": 47, "lumen": 5405, "cct": null, "cri": 90, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": 1200, "height_mm": 60, "length_mm": 1200, "width_mm": 73, "material": "Extruded anodized aluminium, PC end caps, IK08", "client_ref": null },
+      "hw": { "code": "MFL", "code_type": "internal", "watt_note": "48W", "price": 90, "price_unit": "PC", "raw": "MFL 48W 90D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "C-03", "section": "LIGHT FIXTURES", "type_letter": "LT3", "location": "ENTRANCE LOBBY", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed LED modular downlight, tempered clear glass diffuser, tiles pattern specular anodized reflector", "watt": 14, "lumen": 1680, "cct": null, "cri": 90, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": 113, "length_mm": 135, "width_mm": 135, "material": "Die cast aluminium, solvent free powder coated, RAL colors", "client_ref": null },
+      "hw": { "code": "L-NSCF-1005", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "L-NSCF-1005 65D", "same_ref": null, "crossed_out": [], "uncertain": false,
+        "notes": "Same code appears at 55D in the Alam Al Idaa quote — price conflict expected." } },
+
+    { "line_id": "C-04", "section": "LIGHT FIXTURES", "type_letter": "LT4", "location": "WASH BASIN", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed LED spotlight, clear tempered glass / optical PMMA lens diffuser", "watt": 3, "lumen": 330, "cct": null, "cri": 90, "ip": 54, "mounting": "recessed", "beam": null, "diameter_mm": 36, "height_mm": 54, "length_mm": null, "width_mm": null, "material": "Die cast aluminium, pure anodized reflector, RAL colors", "client_ref": null },
+      "hw": { "code": "CLMI-5W", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "CLMI-5W 30D (an earlier figure struck through)", "same_ref": null, "crossed_out": [ { "code": "CLMI-5W", "price": null } ], "uncertain": false,
+        "notes": "Same code appears at 25D in the Alam Al Idaa quote — price conflict expected." } },
+
+    { "line_id": "C-05", "section": "LIGHT FIXTURES", "type_letter": "LT5", "location": null, "qty": null, "unit": "MTR",
+      "spec": { "type": "Recessed/Surface LED strip with PMMA opal/clear/prismatic diffuser (aluminium profile)", "watt": 19.2, "lumen": 1344, "cct": null, "cri": 90, "ip": 65, "mounting": "recessed/surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "6063 alloy aluminium extruded profile", "client_ref": "LED 2x9.6W per metre" },
+      "hw": { "code": "STRIP-19.2W", "code_type": "descriptive", "watt_note": "19.2 W/MTR", "price": 180, "price_unit": "MTR", "raw": "19.2 W/MTR 180D/MTR", "same_ref": null, "crossed_out": [], "uncertain": true,
+        "notes": "No product code written — priced per metre by wattage. Descriptive placeholder code." } },
+
+    { "line_id": "C-06", "section": "LIGHT FIXTURES", "type_letter": "LT6", "location": "RETAIL, GYM", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed LED downlight, tempered frosted/clear glass diffuser, tiles pattern reflector", "watt": 12, "lumen": 1440, "cct": null, "cri": 90, "ip": 54, "mounting": "recessed", "beam": null, "diameter_mm": 136, "height_mm": 70, "length_mm": null, "width_mm": null, "material": "Die cast aluminium powder coated, RAL colors", "client_ref": null },
+      "hw": { "code": "YT-12W", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "YT-12W 40D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "C-07", "section": "LIGHT FIXTURES", "type_letter": "LT9/LT10 (upper sheet, label cut)", "location": null, "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface LED ceiling light, opal PMMA anti-yellowing diffuser V2", "watt": 36, "lumen": 3960, "cct": null, "cri": 90, "ip": 65, "mounting": "surface", "beam": null, "diameter_mm": 340, "height_mm": 50, "length_mm": null, "width_mm": null, "material": "Die cast aluminium powder coated, RAL colors, IK09", "client_ref": null },
+      "hw": { "code": "M-CL11032", "code_type": "internal", "price": 105, "price_unit": "PC", "raw": "M-CL11032 105D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "C-08", "section": "LIGHT FIXTURES", "type_letter": "LT10", "location": "BEDROOM", "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface LED ceiling light, opal PMMA anti-yellowing diffuser V2", "watt": 36, "lumen": 3960, "cct": null, "cri": 90, "ip": 65, "mounting": "surface", "beam": null, "diameter_mm": 340, "height_mm": 50, "length_mm": null, "width_mm": null, "material": "Die cast aluminium powder coated, RAL colors, IK09", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same (arrow to sheet above)", "same_ref": "LINE C-07", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "C-09", "section": "LIGHT FIXTURES", "type_letter": "LT17 (upper sheet, label cut)", "location": null, "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface LED ceiling light, anti-glare UV polycarbonate diffuser, polished aluminium back reflector", "watt": 30, "lumen": 3300, "cct": null, "cri": 90, "ip": 65, "mounting": "surface", "beam": null, "diameter_mm": 400, "height_mm": 40, "length_mm": null, "width_mm": null, "material": "Vandal resistant V2 self-extinguishing polycarbonate UV stabilized, IK09", "client_ref": null },
+      "hw": { "code": "M-CL11032", "code_type": "internal", "price": 105, "price_unit": "PC", "raw": "M-CL11032 105D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "C-10", "section": "LIGHT FIXTURES", "type_letter": "LT18", "location": "RAMP", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed LED wall light, tempered clear glass diffuser, white laminated aluminium reflector", "watt": 12, "lumen": 1440, "cct": null, "cri": 90, "ip": 65, "mounting": "recessed-wall", "beam": null, "diameter_mm": null, "height_mm": 38, "length_mm": 165, "width_mm": 60, "material": "Die cast aluminium powder coated, RAL colors, IK08", "client_ref": null },
+      "hw": { "code": "WR2692", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "WR2692 45D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "C-11", "section": "LIGHT FIXTURES", "type_letter": "LT19 (upper sheet, label cut)", "location": null, "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface LED wall light, opal polycarbonate/PMMA diffuser", "watt": 12, "lumen": 1440, "cct": null, "cri": 90, "ip": 65, "mounting": "wall", "beam": null, "diameter_mm": 250, "height_mm": 58, "length_mm": null, "width_mm": null, "material": "Pure die cast aluminium, anodized or powder coated, IK07", "client_ref": null },
+      "hw": { "code": "OS-2010-13", "code_type": "internal", "price": 90, "price_unit": "PC", "raw": "OS-2010-13 90D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "C-12", "section": "LIGHT FIXTURES", "type_letter": "LT20", "location": "TERRACE", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed LED wall light, polycarbonate optical lens diffuser", "watt": 10, "lumen": 1200, "cct": null, "cri": 90, "ip": 65, "mounting": "recessed-wall", "beam": null, "diameter_mm": null, "height_mm": 89, "length_mm": 248, "width_mm": 65, "material": "Die cast aluminium solvent free powder coated, RAL colors, IK08", "client_ref": null },
+      "hw": { "code": "WR2692", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "WR2692 45D", "same_ref": null, "crossed_out": [], "uncertain": false } }
+  ]
+}

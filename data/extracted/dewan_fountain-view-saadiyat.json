@@ -1,0 +1,28 @@
+{
+  "source_quote": "dewan_fountain-view-saadiyat",
+  "source_pages": "14-15",
+  "document": "Dewan Architects + Engineers — Fountain View Residences, Saadiyat Cultural District, Abu Dhabi. Section 26 50 00 Architectural Light Fixtures, Rev C00 Apr 2026, Issued For Construction (mock-up schedule)",
+  "extraction_notes": [
+    "Detailed luminaire data sheets (Fixture Reference / Luminaire Type / Total Luminaire). Red circles mark Dali dimming / wattage cells; red strikethroughs are first-pass codes replaced in blue.",
+    "All fixtures on these sheets are 2700K (GF-x) or 3000K (EX-1) per printed data."
+  ],
+  "lines": [
+    { "line_id": "D-01", "section": "MOCK-UP", "type_letter": "EX-1", "location": "External facade (ceiling grazer)", "qty": 27, "unit": "MTR",
+      "spec": { "type": "Linear LED strip light with optics (facade grazer, Onbridge/Ecosense LED flex)", "watt": 9.6, "lumen": null, "cct": 3000, "cri": 90, "ip": 67, "mounting": "surface", "beam": "15x40", "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": "16.2mm x 4mm PVC/PCB strip, aluminium channel, clear glass optics, 24V DC, IK08, UGR<19", "client_ref": "EX-1, 27 mtr total" },
+      "hw": { "code": "LP-SRLV9.6", "code_type": "internal", "addons": "+ Aluminium profile + Dali driver", "price": 130, "price_unit": "MTR", "raw": "LP-SRLV9.6+Al+Dri Dali 130D/MTR", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "D-02", "section": "MOCK-UP", "type_letter": "GF-1", "location": "Lobby", "qty": 16, "unit": "Nos",
+      "spec": { "type": "Recessed ceiling downlight with wide beam distribution (linea light, intra light)", "watt": 18, "lumen": 2540, "cct": 2700, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "62.2 wide", "diameter_mm": 115, "height_mm": 104.5, "length_mm": null, "width_mm": null, "material": "Die cast aluminium, UV resistant polycarbonate, deep recessed LED, UGR<19, Dali dimmed", "client_ref": "GF-1" },
+      "hw": { "code": "GN-18W-R", "code_type": "internal", "addons": "+ Dali", "price": 80, "price_unit": "PC", "raw": "GN-18W-R + Dali 80D (two red first-pass codes struck through, one reads like TD-P035-2000)", "same_ref": null, "crossed_out": [ { "code": "TD-P035-20 (red, struck, reading uncertain)", "price": null } ], "uncertain": false } },
+
+    { "line_id": "D-03", "section": "MOCK-UP", "type_letter": "GF-2", "location": "Ground floor", "qty": 10, "unit": "Nos",
+      "spec": { "type": "Recessed ceiling adjustable downlight with wide beam distribution (linea light, intra light)", "watt": 8, "lumen": 462, "cct": 2700, "cri": 80, "ip": 20, "mounting": "recessed", "beam": "58 wide", "diameter_mm": 80, "height_mm": 112, "length_mm": null, "width_mm": null, "material": "Die cast aluminium, aluminium reflector, deep recessed LED, Dali dimmed, 500mA constant current", "client_ref": "GF-2" },
+      "hw": { "code": "TD-001FR-07", "code_type": "internal", "addons": "+ Dali", "price": 35, "price_unit": "PC", "raw": "TD-001FR-07 + Dali 35D (last digits partly overwritten)", "same_ref": null, "crossed_out": [], "uncertain": true,
+        "notes": "Likely the same family as TD001DR-7W in the Alam Al Idaa quote; transcribed exactly as written here." } },
+
+    { "line_id": "D-04", "section": "MOCK-UP", "type_letter": "GF-4", "location": "Ground floor", "qty": 2, "unit": "Nos",
+      "spec": { "type": "Recessed ceiling downlight with wide beam distribution", "watt": 10, "lumen": 1180, "cct": 2700, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "52.2 wide", "diameter_mm": 85.5, "height_mm": 82.5, "length_mm": null, "width_mm": null, "material": "Die cast aluminium, UV resistant polycarbonate, aluminium reflector, UGR<19, Dali dimmed, 300mA", "client_ref": "GF-4" },
+      "hw": { "code": "SP-9082C", "code_type": "internal", "addons": "+ Dali", "price": 45, "price_unit": "PC", "raw": "SP-9082C + Dali 45D (red first-pass code TD-1032-10W struck through)", "same_ref": null, "crossed_out": [ { "code": "TD-1032-10W (red, struck, reading uncertain)", "price": null } ], "uncertain": false,
+        "notes": "SP-9082C priced 30D bare in Alam Al Idaa; 45D here includes Dali driver — price conflict expected, resolution: Dali adder." } }
+  ]
+}

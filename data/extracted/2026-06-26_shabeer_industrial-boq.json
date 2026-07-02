@@ -1,0 +1,117 @@
+{
+  "source_quote": "2026-06-26_shabeer_industrial-boq",
+  "source_pages": "6-7",
+  "document": "Estimation Alam Al Idaa — from Shabeer Hussain, Friday June 26 2026 8:37 AM. 'Table 5: BOQ' — industrial/utility site (Intake Distribution Station, Gate House, Hazmat Store, Maintenance Shed, Operational Staff Building, External Lighting). Columns: SL NO / FIXTURE TYPE / IP / WATTAGE / LUMEN / CCT / UNIT / QTY.",
+  "extraction_notes": [
+    "This quote was answered almost entirely with numeric supplier catalogue codes (Disano-style 7-digit) plus driver add-ons — all flagged code_type='supplier' and excluded from the internal master by build_master.js.",
+    "Page 7 is photographed at an angle with overlapping sheets; several digits are uncertain and flagged.",
+    "Checkmark-only rows repeat a fixture spec quoted earlier in the same table (same fixture description)."
+  ],
+  "lines": [
+    { "line_id": "B-01", "section": "INTAKE DISTRIBUTION STATION", "type_letter": "1", "location": null, "qty": 132, "unit": "Nos",
+      "spec": { "type": "Linear LED light surface mounted 1200mm indoor, integrated LED module, HF control driver with Dali", "watt": 30, "lumen": 4500, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "1702136", "code_type": "supplier", "addons": "+ Dali", "price": 220, "price_unit": "PC", "raw": "1702136 + Dali, 200D struck -> 220D", "same_ref": null, "crossed_out": [ { "code": "1702136", "price": 200 } ], "uncertain": false } },
+
+    { "line_id": "B-02", "section": "INTAKE DISTRIBUTION STATION", "type_letter": "2", "location": null, "qty": 46, "unit": "Nos",
+      "spec": { "type": "Recessed LED panel light 600x600 indoor, integrated LED module, HF control driver with Dali", "watt": 24, "lumen": 3840, "cct": 4000, "cri": null, "ip": 65, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 600, "width_mm": 600, "material": null, "client_ref": null },
+      "hw": { "code": "9537540", "code_type": "supplier", "addons": "+ Dali", "price": 210, "price_unit": "PC", "raw": "9537540 + Dali 210D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-03", "section": "INTAKE DISTRIBUTION STATION", "type_letter": "3", "location": null, "qty": 12, "unit": "Nos",
+      "spec": { "type": "Explosion proof linear LED 1200mm, ATEX rated indoor, integrated LED module, HF driver with Dali", "watt": 30, "lumen": 4500, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "Vyrtech", "code_type": "supplier", "addons": "+ Dali", "price": 2200, "price_unit": "PC", "raw": "Vyrtech 2200D + Dali", "same_ref": null, "crossed_out": [], "uncertain": false,
+        "notes": "Brand name written instead of a code (ATEX specialist)." } },
+
+    { "line_id": "B-04", "section": "INTAKE DISTRIBUTION STATION", "type_letter": "4", "location": null, "qty": 45, "unit": "Nos",
+      "spec": { "type": "LED wall mounted light external, integrated LED module + HF control driver", "watt": 42, "lumen": 5880, "cct": 4000, "cri": null, "ip": 66, "mounting": "wall", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "1629045", "code_type": "supplier", "addons": "+ phase dimming", "price": 400, "price_unit": "PC", "raw": "1629045 + phase dimming, 430D struck -> 400D", "same_ref": null, "crossed_out": [ { "code": "1629045", "price": 430 } ], "uncertain": false } },
+
+    { "line_id": "B-05", "section": "GATE HOUSE BUILDING", "type_letter": "1", "location": null, "qty": 8, "unit": "Nos",
+      "spec": { "type": "Linear LED light surface mounted 1200mm indoor, Dali dimmable", "watt": 30, "lumen": 4500, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "LINE B-01", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-06", "section": "GATE HOUSE BUILDING", "type_letter": "2", "location": null, "qty": 7, "unit": "Nos",
+      "spec": { "type": "Recessed LED panel light 600x600 indoor, Dali dimmable", "watt": 24, "lumen": 4500, "cct": 4000, "cri": null, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 600, "width_mm": 600, "material": null, "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "LINE B-02", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-07", "section": "GATE HOUSE BUILDING", "type_letter": "3", "location": null, "qty": 3, "unit": "Nos",
+      "spec": { "type": "Recessed LED downlight indoor, Dali dimmable", "watt": 12, "lumen": 1680, "cct": 4000, "cri": null, "ip": 54, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "6092712", "code_type": "supplier", "addons": "+ Dali", "price": 150, "price_unit": "PC", "raw": "6092712 + Dali, 140D struck -> 150D", "same_ref": null, "crossed_out": [ { "code": "6092712", "price": 140 } ], "uncertain": false } },
+
+    { "line_id": "B-08", "section": "GATE HOUSE BUILDING", "type_letter": "4", "location": null, "qty": 2, "unit": "Nos",
+      "spec": { "type": "Recessed LED downlight indoor, Dali dimmable", "watt": 9, "lumen": 1260, "cct": 4000, "cri": null, "ip": 54, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "6092710", "code_type": "supplier", "addons": "+ Dali", "price": 140, "price_unit": "PC", "raw": "6092710 + Dali 140D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-09", "section": "GATE HOUSE BUILDING", "type_letter": "5", "location": null, "qty": 11, "unit": "Nos",
+      "spec": { "type": "LED wall mounted light external, integrated LED module + HF control driver", "watt": 42, "lumen": 5880, "cct": 4000, "cri": null, "ip": 66, "mounting": "wall", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "LINE B-04", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-10", "section": "HAZMAT STORE", "type_letter": "1", "location": null, "qty": 24, "unit": "Nos",
+      "spec": { "type": "Linear LED light surface mounted 1200mm indoor, Dali dimmable", "watt": 30, "lumen": 4500, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "LINE B-01", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-11", "section": "HAZMAT STORE", "type_letter": "2", "location": null, "qty": 12, "unit": "Nos",
+      "spec": { "type": "LED wall mounted light external, integrated LED module + HF control driver", "watt": 42, "lumen": 5880, "cct": 4000, "cri": null, "ip": 66, "mounting": "wall", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "LINE B-04", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-12", "section": "MAINTENANCE SHED", "type_letter": "LT-1", "location": null, "qty": 268, "unit": "Nos",
+      "spec": { "type": "LED high-bay luminaire CR2 L35k-840 PC NB LDO WH, Dali dimmable", "watt": 197, "lumen": 34650, "cct": 4000, "cri": null, "ip": 66, "mounting": "suspended", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "LT-1" },
+      "hw": { "code": "1700120", "code_type": "supplier", "addons": "+ Dali", "price": 650, "price_unit": "PC", "raw": "17001200 + Dali (digit count off — 1700120 or 1700200), 520D struck -> 650D", "same_ref": null, "crossed_out": [ { "code": "1700120", "price": 520 } ], "uncertain": true } },
+
+    { "line_id": "B-13", "section": "MAINTENANCE SHED", "type_letter": "LT-2", "location": null, "qty": 188, "unit": "Nos",
+      "spec": { "type": "Wall/surface linear LED luminaire 1600x92x90mm", "watt": 44, "lumen": 6610, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface/wall", "beam": null, "diameter_mm": null, "height_mm": 90, "length_mm": 1600, "width_mm": 92, "material": null, "client_ref": "LT-2" },
+      "hw": { "code": "1702298", "code_type": "supplier", "price": 175, "price_unit": "PC", "raw": "1702298 175D (a struck figure beside it)", "same_ref": null, "crossed_out": [], "uncertain": true } },
+
+    { "line_id": "B-14", "section": "MAINTENANCE SHED", "type_letter": "LT-3", "location": null, "qty": 9, "unit": "Nos",
+      "spec": { "type": "Highly efficient and sustainable LED downlight", "watt": 13, "lumen": 1410, "cct": 4000, "cri": null, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "LT-3" },
+      "hw": { "code": "5094513", "code_type": "supplier", "price": 130, "price_unit": "PC", "raw": "9537540 150D struck -> 5094513 130D", "same_ref": null, "crossed_out": [ { "code": "9537540", "price": 150 } ], "uncertain": false } },
+
+    { "line_id": "B-15", "section": "MAINTENANCE SHED", "type_letter": "LT-4", "location": null, "qty": 34, "unit": "Nos",
+      "spec": { "type": "Square ceiling recessed LED luminaire 60x60", "watt": 26, "lumen": 3199, "cct": 4000, "cri": null, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 600, "width_mm": 600, "material": null, "client_ref": "LT-4" },
+      "hw": { "code": "9537540", "code_type": "supplier", "price": 150, "price_unit": "PC", "raw": "9537540 150D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-16", "section": "MAINTENANCE SHED", "type_letter": "LT-5", "location": null, "qty": 8, "unit": "Nos",
+      "spec": { "type": "Highly efficient and sustainable LED downlight", "watt": 17, "lumen": 2040, "cct": 4000, "cri": null, "ip": 44, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "LT-5" },
+      "hw": { "code": "5093416", "code_type": "supplier", "price": 140, "price_unit": "PC", "raw": "5093416 140D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-17", "section": "MAINTENANCE SHED", "type_letter": "LT-6", "location": null, "qty": 124, "unit": "Nos",
+      "spec": { "type": "Surface linear LED luminaire 1600x92x90mm", "watt": 44, "lumen": 6610, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": 90, "length_mm": 1600, "width_mm": 92, "material": null, "client_ref": "LT-6" },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "TYPE LT-2", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-18", "section": "MAINTENANCE SHED", "type_letter": "LT-7", "location": null, "qty": 12, "unit": "Nos",
+      "spec": { "type": "Wall mounted luminaire with switchable lumen output", "watt": 20, "lumen": 2640, "cct": 4000, "cri": null, "ip": 65, "mounting": "wall", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "LT-7" },
+      "hw": { "code": "1622321", "code_type": "supplier", "price": 140, "price_unit": "PC", "raw": "1622321 140D (printed 17W struck in pen)", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-19", "section": "MAINTENANCE SHED", "type_letter": "LT-9", "location": null, "qty": 58, "unit": "Nos",
+      "spec": { "type": "LED wall mounted light external, integrated LED module + HF control driver", "watt": 42, "lumen": 5880, "cct": 4000, "cri": null, "ip": 65, "mounting": "wall", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "LT-9" },
+      "hw": { "code": "1629045", "code_type": "supplier", "addons": "+ dimming", "price": 400, "price_unit": "PC", "raw": "1629045 + dimming 400D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-20", "section": "MAINTENANCE SHED", "type_letter": "LT-10", "location": null, "qty": 3, "unit": "Nos",
+      "spec": { "type": "Surface linear LED luminaire", "watt": 43, "lumen": 5880, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "LT-10" },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "-> Same LT-2", "same_ref": "TYPE LT-2", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "B-21", "section": "OPERATIONAL STAFF BUILDING", "type_letter": "3", "location": null, "qty": 31, "unit": "Nos",
+      "spec": { "type": "Linear LED light surface mounted indoor, integrated LED module, HF driver, Dali dimmable", "watt": 14, "lumen": 2100, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "7046014", "code_type": "supplier", "addons": "+ Ali/All driver (illegible)", "price": 160, "price_unit": "PC", "raw": "7046014 + A?? Driver (struck), 55D/MTR struck, 160D", "same_ref": null, "crossed_out": [ { "code": "7046014", "price": 55 } ], "uncertain": true,
+        "notes": "Page photographed at an angle; earlier per-metre price struck and replaced by 160D per piece." } },
+
+    { "line_id": "B-22", "section": "OPERATIONAL STAFF BUILDING", "type_letter": "4", "location": null, "qty": 19, "unit": "Nos",
+      "spec": { "type": "Linear LED light surface mounted 1200mm indoor, Dali dimmable", "watt": 30, "lumen": 4500, "cct": 4000, "cri": null, "ip": 66, "mounting": "surface", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 1200, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "1702020", "code_type": "supplier", "addons": "+ Dali", "price": null, "price_unit": "PC", "raw": "1702020 + Dali (no legible price)", "same_ref": null, "crossed_out": [], "uncertain": true } },
+
+    { "line_id": "B-23", "section": "OPERATIONAL STAFF BUILDING", "type_letter": "5", "location": null, "qty": 2, "unit": "Nos",
+      "spec": { "type": "Recessed LED panel light 600x600 indoor, Dali dimmable", "watt": 24, "lumen": 4500, "cct": 4000, "cri": null, "ip": 65, "mounting": "recessed", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": 600, "width_mm": 600, "material": null, "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "no annotation visible (page edge)", "same_ref": "LINE B-02", "crossed_out": [], "uncertain": true } },
+
+    { "line_id": "B-24", "section": "EXTERNAL LIGHTING", "type_letter": "1", "location": null, "qty": 90, "unit": "Nos",
+      "spec": { "type": "90W street LED light, integrated LED module, HF driver, mounting arrangement per 10M pole", "watt": 90, "lumen": 12600, "cct": 4000, "cri": null, "ip": 66, "mounting": "pole", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "90 nos arrangement" },
+      "hw": { "code": "1336509", "code_type": "supplier", "addons": "+ phase dimming; 10m pole: 3000D separately", "price": 900, "price_unit": "PC", "raw": "1336509 0 + Phase dimming, 900D; '10m pole: 3000D' noted", "same_ref": null, "crossed_out": [], "uncertain": true } },
+
+    { "line_id": "B-25", "section": "EXTERNAL LIGHTING", "type_letter": "2", "location": null, "qty": 108, "unit": "Nos",
+      "spec": { "type": "42W bracket mounted flood light, integrated LED module, HF driver, mounting per drawing", "watt": 42, "lumen": 5880, "cct": 4000, "cri": null, "ip": 66, "mounting": "bracket", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": null },
+      "hw": { "code": "2151550", "code_type": "supplier", "addons": "+ phase dimming", "price": 460, "price_unit": "PC", "raw": "215155 0 + phase dimming, 300D struck -> 460D", "same_ref": null, "crossed_out": [ { "code": "2151550", "price": 300 } ], "uncertain": true } },
+
+    { "line_id": "B-26", "section": "EXTERNAL LIGHTING", "type_letter": "3", "location": null, "qty": 84, "unit": "Nos",
+      "spec": { "type": "750W street LED light, integrated LED module, HF driver, per 30m high mast — 16 nos pole arrangement", "watt": 750, "lumen": 10500, "cct": 4000, "cri": null, "ip": 66, "mounting": "high-mast", "beam": null, "diameter_mm": null, "height_mm": null, "length_mm": null, "width_mm": null, "material": null, "client_ref": "30m mast, 16 nos" },
+      "hw": { "code": "13365400", "code_type": "supplier", "addons": "+ phase dimming", "price": 23000, "price_unit": "PC", "raw": "13365400 + phase dimming 23000D (1336400 struck)", "same_ref": null, "crossed_out": [ { "code": "1336400", "price": null } ], "uncertain": true } }
+  ]
+}

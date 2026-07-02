@@ -1,0 +1,44 @@
+{
+  "source_quote": "nulty_jumeirah-landscape",
+  "source_pages": "17",
+  "document": "NULTY+ — Jumeirah Residences Emirates Tower, Landscape Detailed Luminaire Specification Schedule REV T0, ISSUED FOR TENDER (pages 2-3 of 10 visible)",
+  "extraction_notes": [
+    "Landscape/underwater fixtures. All handwritten codes are numeric supplier catalogue codes (+Dali) — flagged code_type='supplier', excluded from internal master.",
+    "Brand names written beside some codes ('Robotica', 'Puglia', 'Puglia ii') are supplier product families."
+  ],
+  "lines": [
+    { "line_id": "F-01", "section": "LANDSCAPE", "type_letter": "LA (inground uplight)", "location": "Landscape", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed inground uplight (Luce&Light MB1000SDI or equivalent)", "watt": 1.2, "lumen": 20, "cct": 3000, "cri": 90, "ip": 68, "mounting": "inground", "beam": "diffused", "diameter_mm": 35, "height_mm": 41, "length_mm": null, "width_mm": null, "material": "Stainless / TBC by landscape architect, DALI-2 remote driver, 24Vdc", "client_ref": "MB1000SDI" },
+      "hw": { "code": "1101201", "code_type": "supplier", "addons": "+ Dali", "price": 230, "price_unit": "PC", "raw": "1101201 + Dali 230D/PC", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "F-02", "section": "LANDSCAPE", "type_letter": "LA (surface marker)", "location": "Landscape", "qty": null, "unit": "Nos",
+      "spec": { "type": "Surface marker light (Platek 8409016 or equivalent)", "watt": 2.5, "lumen": 55, "cct": 3000, "cri": 80, "ip": 68, "mounting": "surface", "beam": "radial", "diameter_mm": 145, "height_mm": 118, "length_mm": null, "width_mm": null, "material": "DALI-2 remote driver, 24V", "client_ref": "8409016" },
+      "hw": { "code": "1110903", "code_type": "supplier", "addons": "+ Dali", "price": 270, "price_unit": "PC", "raw": "1110903 + Dali 270D/PC, 'Robotica' noted", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "F-03", "section": "LANDSCAPE", "type_letter": "LA (step light)", "location": "Landscape", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed step light (Luce&Light NK1120100350AN or equivalent)", "watt": 2, "lumen": 186, "cct": 3000, "cri": null, "ip": 67, "mounting": "recessed-wall", "beam": "asymmetric", "diameter_mm": null, "height_mm": 44, "length_mm": 50, "width_mm": 50, "material": "DALI-2, 750mA", "client_ref": "NK1120100350AN" },
+      "hw": { "code": "1511303", "code_type": "supplier", "addons": "+ Dali", "price": 170, "price_unit": "PC", "raw": "1511303 + Dali 170D/PC", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "F-04", "section": "LANDSCAPE", "type_letter": "LA (fountain nozzle light)", "location": "Fountain", "qty": null, "unit": "Nos",
+      "spec": { "type": "Underwater fountain light (Wibre 4.0240.00.13 or equivalent)", "watt": 18, "lumen": 1500, "cct": 4500, "cri": 85, "ip": 68, "mounting": "underwater", "beam": "10", "diameter_mm": 100, "height_mm": 144, "length_mm": null, "width_mm": null, "material": "Stainless steel, DALI-2 remote driver, 12V", "client_ref": "4.0240.00.13" },
+      "hw": { "code": "1100818", "code_type": "supplier", "addons": "+ Dali", "price": 580, "price_unit": "PC", "raw": "1100818 + Dali, 580D/PC circled, 'Puglia ii' noted", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "F-05", "section": "POOL", "type_letter": "LA.A1-family (Arpool Micro)", "location": "Pool steplights", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed underwater spotlight (Arpool Micro / Fila or equivalent)", "watt": 1.5, "lumen": null, "cct": 4000, "cri": null, "ip": 68, "mounting": "underwater", "beam": "12", "diameter_mm": 35, "height_mm": 47, "length_mm": null, "width_mm": null, "material": "Stainless steel, DALI-2 remote driver, 24V", "client_ref": "AUTML403PCG" },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same LA.A1", "same_ref": "TYPE LA.A1", "crossed_out": [], "uncertain": true,
+        "notes": "LA.A1's own row is not visible in the scan; unresolvable within corpus." } },
+
+    { "line_id": "F-06", "section": "POOL", "type_letter": "LA.A4 (Arpool S)", "location": "Pool steplights", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed underwater spotlight (Arpool S or equivalent)", "watt": 6, "lumen": 440, "cct": 4000, "cri": null, "ip": 68, "mounting": "underwater", "beam": null, "diameter_mm": 80, "height_mm": 95, "length_mm": null, "width_mm": null, "material": "Stainless steel, DALI-2 remote driver, 24VDC", "client_ref": "ASTM4402PQ4" },
+      "hw": { "code": "1100906", "code_type": "supplier", "addons": "+ Dali", "price": 500, "price_unit": "PC", "raw": "1100906 + Dali, 550D/PC struck -> 500, 'Puglia' noted", "same_ref": null, "crossed_out": [ { "code": "1100906", "price": 550 } ], "uncertain": false } },
+
+    { "line_id": "F-07", "section": "POOL", "type_letter": "LA.A? (ARPOOL XM)", "location": "Pool general lighting", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed underwater spotlight (ARPOOL XM or equivalent)", "watt": 21.5, "lumen": 1780, "cct": 4000, "cri": null, "ip": 68, "mounting": "underwater", "beam": "20x120", "diameter_mm": 149, "height_mm": 98, "length_mm": null, "width_mm": null, "material": "Stainless steel, DALI-2, 24V", "client_ref": "AXMTML405C24" },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same LA.A4", "same_ref": "TYPE LA.A4", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "F-08", "section": "POOL", "type_letter": "LA.A? (Arpool S kids)", "location": "Kids pool general lighting", "qty": null, "unit": "Nos",
+      "spec": { "type": "Recessed underwater spotlight (Arpool S or equivalent)", "watt": 6, "lumen": 440, "cct": 4000, "cri": null, "ip": 68, "mounting": "underwater", "beam": null, "diameter_mm": 80, "height_mm": 95, "length_mm": null, "width_mm": null, "material": "Stainless steel, DALI-2, 24VDC", "client_ref": "ASTM4H3PL24" },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same LA.A6", "same_ref": "TYPE LA.A6", "crossed_out": [], "uncertain": true,
+        "notes": "LA.A6's own row is not visible in the scan; unresolvable within corpus." } }
+  ]
+}

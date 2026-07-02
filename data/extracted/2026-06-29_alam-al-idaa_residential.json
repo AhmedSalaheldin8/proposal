@@ -1,0 +1,305 @@
+{
+  "source_quote": "2026-06-29_alam-al-idaa_residential",
+  "source_pages": "1-5",
+  "document": "Estimation Alam Al Idaa — FW: RFQ for LED decorative chandelier, sent Mon June 29 2026 11:01 AM (Jehrom Santillana / M4 MEP -> Alam Alidaa)",
+  "extraction_notes": [
+    "Scanned printout of a residential development BOQ (columns: TYPE letter, LOCATION, DESCRIPTION, UNIT, QTY) with handwritten internal codes and prices in blue ink; quantities circled in red.",
+    "TYPE letters (A,B,C,D,E,F,I,J,K,N,O,P,Q,S1,S2,Z) identify a fixture type reused across sections; lines with only a red checkmark and no code inherit the code written for the same TYPE letter elsewhere in this document.",
+    "Pencil arithmetic at top of page 1 ('100 -> 180 / 70 ->') ignored — not a line annotation."
+  ],
+  "lines": [
+    { "line_id": "A-01", "section": "STORM PUMP STATION", "type_letter": "P", "location": "STORM PUMP STATION", "qty": 4, "unit": "Nos",
+      "spec": { "type": "Back of House - Triproof", "watt": 40, "lumen": 4800, "cct": 5000, "cri": 90, "ip": 65, "mounting": "surface", "beam": "120", "diameter_mm": null, "height_mm": 71, "length_mm": 1190, "width_mm": 65, "material": "Poly Carbonate, Light-Gray", "client_ref": null },
+      "hw": { "code": "MFL", "code_type": "internal", "watt_note": "40W", "price": 90, "price_unit": "PC", "raw": "MFL 40W 90D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-02", "section": "MOSQUE - ANCILLARY BLOCK", "type_letter": "I", "location": "BEDROOM", "qty": 23, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 400, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-03", "section": "MOSQUE - ANCILLARY BLOCK", "type_letter": "J", "location": "KITCHEN", "qty": 3, "unit": "Nos",
+      "spec": { "type": "Indoor - Panel Light", "watt": 40, "lumen": 4800, "cct": 4000, "cri": 80, "ip": 44, "mounting": "recessed", "beam": "120", "diameter_mm": null, "height_mm": 30, "length_mm": 595, "width_mm": 595, "material": "Aluminum, White", "client_ref": "X-EC-6140BA-K40" },
+      "hw": { "code": "MPL", "code_type": "internal", "price": 60, "price_unit": "PC", "raw": "MPL 60D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-04", "section": "MOSQUE - ANCILLARY BLOCK", "type_letter": "K", "location": "TOILET", "qty": 4, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "WP203-10W", "code_type": "internal", "price": 35, "price_unit": "PC", "raw": "WP203-10W 35D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-05", "section": "MOSQUE - ANCILLARY BLOCK", "type_letter": "O", "location": "ROOF", "qty": 4, "unit": "Nos",
+      "spec": { "type": "Indoor - Recessed wall light", "watt": 6, "lumen": 120, "cct": 3000, "cri": 80, "ip": 65, "mounting": "recessed-wall", "beam": "46x28", "diameter_mm": null, "height_mm": 106, "length_mm": 106, "width_mm": 72, "material": "Aluminum, Black", "client_ref": null },
+      "hw": { "code": "WR2602", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "WR2602 40D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-06", "section": "COMMUNITY CENTER", "type_letter": "A", "location": "SERVICE LOBBY", "qty": 19, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 900, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": 55, "height_mm": 112, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "SP-9082C", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "SP-9082C 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-07", "section": "COMMUNITY CENTER", "type_letter": "B", "location": "TOILET", "qty": 4, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 7, "lumen": 840, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 61, "height_mm": 47, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "FX-08", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "WP203-10W 35D (struck through) -> FX-08 30D", "same_ref": null, "crossed_out": [ { "code": "WP203-10W", "price": 35 } ], "uncertain": false } },
+
+    { "line_id": "A-08", "section": "COMMUNITY CENTER", "type_letter": "E", "location": "RECEPTION, KIDS AREA, MPH OFFICE", "qty": 39, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "L-NSCF-1005", "code_type": "internal", "price": 55, "price_unit": "PC", "raw": "L-NSCF-1005 55D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-09", "section": "COMMUNITY CENTER", "type_letter": "K", "location": "TOILET", "qty": 18, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "TYPE K", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-10", "section": "COMMUNITY CENTER", "type_letter": "P", "location": "STORE-ELECTRICAL ROOMS, PUMP ROOM", "qty": 11, "unit": "Nos",
+      "spec": { "type": "Back of House - Triproof", "watt": 40, "lumen": 4800, "cct": 5000, "cri": 90, "ip": 65, "mounting": "surface", "beam": "120", "diameter_mm": null, "height_mm": 71, "length_mm": 1190, "width_mm": 65, "material": "Poly Carbonate, Light-Gray", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "checkmark only", "same_ref": "TYPE P", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-11", "section": "COMMUNITY CENTER", "type_letter": "S1", "location": "RECEPTION", "qty": 3, "unit": "Nos",
+      "spec": { "type": "Indoor - Linear Light", "watt": 16.1, "lumen": 1610, "cct": 3000, "cri": 80, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": null, "height_mm": 42, "length_mm": 700, "width_mm": 64, "material": "Diecast Aluminium, White", "client_ref": null },
+      "hw": { "code": "LT", "code_type": "internal", "watt_note": "19 watt, same dimensions", "price": 130, "price_unit": "PC", "raw": "Lt 19 watt same dimensions 130D/PC", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-12", "section": "COMMUNITY CENTER", "type_letter": "S2", "location": "GYM", "qty": 10, "unit": "Nos",
+      "spec": { "type": "Indoor - Linear Light", "watt": 27.6, "lumen": 2760, "cct": 3000, "cri": 80, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": null, "height_mm": 42, "length_mm": 1200, "width_mm": 64, "material": "Diecast Aluminium, White", "client_ref": null },
+      "hw": { "code": "LT", "code_type": "internal", "watt_note": "24 watt (reading uncertain, could be 29), same dimensions", "price": 230, "price_unit": "PC", "raw": "Lt 24 watt same dimensions 230D/PC", "same_ref": null, "crossed_out": [], "uncertain": true } },
+
+    { "line_id": "A-13", "section": "COMMUNITY CENTER", "type_letter": "F", "location": "DINING AREA", "qty": 3, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 18, "lumen": 1800, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 300, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "PolyCarbonate, White", "client_ref": null },
+      "hw": { "code": "YT-18", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "YT-18 40D (struck) 45D", "same_ref": null, "crossed_out": [ { "code": "YT-18", "price": 40 } ], "uncertain": false } },
+
+    { "line_id": "A-14", "section": "COMMUNITY CENTER", "type_letter": "N", "location": "ROOF", "qty": 4, "unit": "Nos",
+      "spec": { "type": "Outdoor - Wall mounted down Light", "watt": 15, "lumen": 1275, "cct": 3000, "cri": 80, "ip": 65, "mounting": "wall", "beam": "36", "diameter_mm": 120, "height_mm": 200, "length_mm": null, "width_mm": 173, "material": "Diecast Aluminium, Black", "client_ref": null },
+      "hw": { "code": "SF1203R-L", "code_type": "internal", "price": 70, "price_unit": "PC", "raw": "SF1203R-L 70D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-15", "section": "3BR VILLA", "type_letter": "A", "location": "CORRIDOR", "qty": 480, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 900, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": 55, "height_mm": 112, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "SP-9082C", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "SP-9082C 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-16", "section": "3BR VILLA", "type_letter": "B", "location": "TERRACE", "qty": 1020, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 7, "lumen": 840, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 61, "height_mm": 47, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "WP203-10W", "code_type": "internal", "price": 35, "price_unit": "PC", "raw": "WP203-10W 35D", "same_ref": null, "crossed_out": [], "uncertain": false,
+        "notes": "NB: same TYPE B was changed to FX-08 30D on the Community Center page; here it is written as WP203-10W 35D. Extracted as written." } },
+
+    { "line_id": "A-17", "section": "3BR VILLA", "type_letter": "C", "location": "DRESSING", "qty": 180, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "L-NSCF-1005", "code_type": "internal", "price": 55, "price_unit": "PC", "raw": "L-NSCF-1005 55D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-18", "section": "3BR VILLA", "type_letter": "D", "location": "SERVICE LOBBY", "qty": 60, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 7, "lumen": 490, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 65, "height_mm": 70, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": "LX-SH-WZ-7" },
+      "hw": { "code": "TD001DR-7W", "code_type": "internal", "price": 25, "price_unit": "PC", "raw": "TD001DR-7W 25D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-19", "section": "3BR VILLA", "type_letter": "E", "location": "LAUNDRY", "qty": 60, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same C", "same_ref": "TYPE C", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-20", "section": "3BR VILLA", "type_letter": "F", "location": "DINING AREA", "qty": 780, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 18, "lumen": 1800, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 300, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-18", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "YT-18 45D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-21", "section": "3BR VILLA", "type_letter": "I", "location": "MAID ROOM", "qty": 420, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 400, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-22", "section": "3BR VILLA", "type_letter": "J", "location": "KITCHEN", "qty": 180, "unit": "Nos",
+      "spec": { "type": "Indoor - Panel Light", "watt": 40, "lumen": 4800, "cct": 4000, "cri": 80, "ip": 44, "mounting": "recessed", "beam": "120", "diameter_mm": null, "height_mm": 30, "length_mm": 595, "width_mm": 595, "material": "Aluminum, White", "client_ref": null },
+      "hw": { "code": "MPL", "code_type": "internal", "price": 60, "price_unit": "PC", "raw": "MPL 60D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-23", "section": "3BR VILLA", "type_letter": "K", "location": "TOILET", "qty": 180, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "WP203-10W", "code_type": "internal", "price": 35, "price_unit": "PC", "raw": "WP203-10W 35D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-24", "section": "3BR VILLA", "type_letter": "P", "location": "PARKING", "qty": 60, "unit": "Nos",
+      "spec": { "type": "Back of House - Triproof", "watt": 40, "lumen": 4800, "cct": 5000, "cri": 90, "ip": 65, "mounting": "surface", "beam": "120", "diameter_mm": null, "height_mm": 71, "length_mm": 1190, "width_mm": 65, "material": "Poly Carbonate, Light-Gray", "client_ref": null },
+      "hw": { "code": "MFL", "code_type": "internal", "watt_note": "40W", "price": 90, "price_unit": "PC", "raw": "MFL 40W 90D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-25", "section": "3BR VILLA", "type_letter": "Q", "location": "LIVING", "qty": 120, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2200, "cct": 3000, "cri": null, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 600, "height_mm": 2000, "length_mm": null, "width_mm": null, "material": "Wrought iron + Dupont paper, White", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same I", "same_ref": "TYPE I", "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-26", "section": "3BR VILLA", "type_letter": "Z", "location": "LIVING", "qty": 240, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 3, "lumen": 270, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": null, "height_mm": 40, "length_mm": null, "width_mm": 30, "material": "Aluminum, Matte White", "client_ref": "cutout C25mm" },
+      "hw": { "code": "CLMI-5W", "code_type": "internal", "price": 25, "price_unit": "PC", "raw": "CLMI-5W 25D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-27", "section": "3BR VILLA", "type_letter": "O", "location": "ROOF", "qty": 240, "unit": "Nos",
+      "spec": { "type": "Indoor - Recessed wall light", "watt": 6, "lumen": 120, "cct": 3000, "cri": 80, "ip": 65, "mounting": "recessed-wall", "beam": "46x28", "diameter_mm": null, "height_mm": 106, "length_mm": 106, "width_mm": 72, "material": "Aluminum, Black", "client_ref": null },
+      "hw": { "code": "WR2602", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "WR2602 40D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-28", "section": "3BR TOWN HOUSE", "type_letter": "A", "location": "ENTRANCE LOBBY", "qty": 280, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 900, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": 55, "height_mm": 112, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "SP-9082C", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "SP-9082C 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-29", "section": "3BR TOWN HOUSE", "type_letter": "C", "location": "DRESSING", "qty": 40, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "L-NSCF-1005", "code_type": "internal", "price": 55, "price_unit": "PC", "raw": "L-NSCF-1005 55D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-30", "section": "3BR TOWN HOUSE", "type_letter": "F", "location": "DINING AREA", "qty": 520, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 18, "lumen": 1800, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 300, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-18", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "YT-18 45D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-31", "section": "3BR TOWN HOUSE", "type_letter": "I", "location": "MASTER BEDROOM", "qty": 280, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 400, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-32", "section": "3BR TOWN HOUSE", "type_letter": "J", "location": "KITCHEN", "qty": 80, "unit": "Nos",
+      "spec": { "type": "Indoor - Panel Light", "watt": 40, "lumen": 4800, "cct": 4000, "cri": 80, "ip": 44, "mounting": "recessed", "beam": "120", "diameter_mm": null, "height_mm": 30, "length_mm": 595, "width_mm": 595, "material": "Aluminum, White", "client_ref": null },
+      "hw": { "code": "MPL", "code_type": "internal", "price": 60, "price_unit": "PC", "raw": "MPL 60D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-33", "section": "3BR TOWN HOUSE", "type_letter": "K", "location": "TOILET", "qty": 400, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "WP203-10W", "code_type": "internal", "price": 35, "price_unit": "PC", "raw": "WP203-10W 35D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-34", "section": "3BR TOWN HOUSE", "type_letter": "Q", "location": "LIVING", "qty": 80, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2200, "cct": 3000, "cri": null, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 600, "height_mm": 2000, "length_mm": null, "width_mm": null, "material": "Wrought iron + Dupont paper, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-35", "section": "3BR TOWN HOUSE", "type_letter": "Z", "location": "ENTRANCE LOBBY", "qty": 480, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 3, "lumen": 270, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": null, "height_mm": 40, "length_mm": null, "width_mm": 30, "material": "Aluminum, Matte White", "client_ref": "cutout C25mm" },
+      "hw": { "code": "CLMI-5W", "code_type": "internal", "price": 25, "price_unit": "PC", "raw": "CLMI-5W 25D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-36", "section": "3BR TOWN HOUSE", "type_letter": "P", "location": "PARKING", "qty": 40, "unit": "Nos",
+      "spec": { "type": "Back of House - Triproof", "watt": 40, "lumen": 4800, "cct": 5000, "cri": 90, "ip": 65, "mounting": "surface", "beam": "120", "diameter_mm": null, "height_mm": 71, "length_mm": 1190, "width_mm": 65, "material": "Poly Carbonate, Light-Gray", "client_ref": null },
+      "hw": { "code": "MFL", "code_type": "internal", "watt_note": "40W", "price": 90, "price_unit": "PC", "raw": "MFL 40W 90D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-37", "section": "3BR TOWN HOUSE", "type_letter": "B", "location": "TERRACE", "qty": 160, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 7, "lumen": 840, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 61, "height_mm": 47, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "FX-08", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "FX-08 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-38", "section": "3BR TOWN HOUSE", "type_letter": "O", "location": "ROOF", "qty": 160, "unit": "Nos",
+      "spec": { "type": "Indoor - Recessed wall light", "watt": 6, "lumen": 120, "cct": 3000, "cri": 80, "ip": 65, "mounting": "recessed-wall", "beam": "46x28", "diameter_mm": null, "height_mm": 106, "length_mm": 106, "width_mm": 72, "material": "Aluminum, Black", "client_ref": null },
+      "hw": { "code": "WR2602", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "WR 2602 40D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-39", "section": "4BR TOWN HOUSE", "type_letter": "A", "location": "ENTRANCE LOBBY/LOBBY", "qty": 208, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 900, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": 55, "height_mm": 112, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "SP-9082C", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "SP-9082C 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-40", "section": "4BR TOWN HOUSE", "type_letter": "D", "location": "SERVICE LOBBY", "qty": 64, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 7, "lumen": 490, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 65, "height_mm": 70, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "TD001DR-7W", "code_type": "internal", "price": 25, "price_unit": "PC", "raw": "TD001DR-7W 25D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-41", "section": "4BR TOWN HOUSE", "type_letter": "F", "location": "LIVING/DINING/MAJILIS/STAIRS", "qty": 176, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 18, "lumen": 1800, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 300, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-18", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "YT-18 45D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-42", "section": "4BR TOWN HOUSE", "type_letter": "I", "location": "MAID ROOM", "qty": 160, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 400, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-?? (struck) YT-24 65D", "same_ref": null, "crossed_out": [ { "code": "YT-18 or YT-13 (illegible strike-through)", "price": null } ], "uncertain": false } },
+
+    { "line_id": "A-43", "section": "4BR TOWN HOUSE", "type_letter": "J", "location": "KITCHEN", "qty": 32, "unit": "Nos",
+      "spec": { "type": "Indoor - Panel Light", "watt": 40, "lumen": 4800, "cct": 4000, "cri": 80, "ip": 44, "mounting": "recessed", "beam": "120", "diameter_mm": null, "height_mm": 30, "length_mm": 595, "width_mm": 595, "material": "Aluminum, White", "client_ref": null },
+      "hw": { "code": "MPL", "code_type": "internal", "price": 60, "price_unit": "PC", "raw": "MPL 60D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-44", "section": "4BR TOWN HOUSE", "type_letter": "K", "location": "TOILET/BATH/MAID BATH/TERRACE", "qty": 192, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "WP203-10W", "code_type": "internal", "price": 35, "price_unit": "PC", "raw": "WP203-10W 35D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-45", "section": "4BR TOWN HOUSE", "type_letter": "N", "location": "ROOF", "qty": 16, "unit": "Nos",
+      "spec": { "type": "Outdoor - Wall mounted down Light", "watt": 15, "lumen": 1275, "cct": 3000, "cri": 80, "ip": 65, "mounting": "wall", "beam": "36", "diameter_mm": 120, "height_mm": 200, "length_mm": null, "width_mm": 173, "material": "Diecast Aluminium, Black", "client_ref": null },
+      "hw": { "code": "SF1203R-L", "code_type": "internal", "price": 70, "price_unit": "PC", "raw": "SF1203R-L 70D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-46", "section": "4BR TOWN HOUSE", "type_letter": "P", "location": "PARKING", "qty": 16, "unit": "Nos",
+      "spec": { "type": "Back of House - Triproof", "watt": 40, "lumen": 4800, "cct": 5000, "cri": 90, "ip": 65, "mounting": "surface", "beam": "120", "diameter_mm": null, "height_mm": 71, "length_mm": 1190, "width_mm": 65, "material": "Poly Carbonate, Light-Gray", "client_ref": null },
+      "hw": { "code": "MFL", "code_type": "internal", "watt_note": "40W", "price": 90, "price_unit": "PC", "raw": "MFL 90D 40W", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-47", "section": "4BR TOWN HOUSE", "type_letter": "Q", "location": "LIVING/DINING/MAJILIS", "qty": 48, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2200, "cct": 3000, "cri": null, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 600, "height_mm": 2000, "length_mm": null, "width_mm": null, "material": "Wrought iron + Dupont paper, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-48", "section": "4BR TOWN HOUSE", "type_letter": "O", "location": "ROOF", "qty": 64, "unit": "Nos",
+      "spec": { "type": "Indoor - Recessed wall light", "watt": 6, "lumen": 120, "cct": 3000, "cri": 80, "ip": 65, "mounting": "recessed-wall", "beam": "46x28", "diameter_mm": null, "height_mm": 106, "length_mm": 106, "width_mm": 72, "material": "Aluminum, Black", "client_ref": null },
+      "hw": { "code": "WR2602", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "WR 2602 40D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-49", "section": "4BR VILLA", "type_letter": "A", "location": "CORRIDOR/GUEST ROOM/MAID ROOM/MASTER BEDROOM", "qty": 1105, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 900, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": 55, "height_mm": 112, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "SP-9082C", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "SP-9083C 30D (handwriting reads 9083; every other occurrence in this doc is SP-9082C; assumed same code, flagged)", "same_ref": null, "crossed_out": [], "uncertain": true } },
+
+    { "line_id": "A-50", "section": "4BR VILLA", "type_letter": "B", "location": "LIVING/DINING/MAJILIS", "qty": 390, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 7, "lumen": 840, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 61, "height_mm": 47, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "FX-08", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "FX-08 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-51", "section": "4BR VILLA", "type_letter": "C", "location": "CORRIDOR/DRESSING", "qty": 65, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": null, "code_type": null, "price": null, "price_unit": null, "raw": "Same J (handwriting ambiguous; spec is identical to the adjacent E line = L-NSCF-1005, and TYPE C elsewhere in this doc is L-NSCF-1005; J does not fit a downlight)", "same_ref": "TYPE C", "crossed_out": [], "uncertain": true } },
+
+    { "line_id": "A-52", "section": "4BR VILLA", "type_letter": "E", "location": "CORRIDOR/DRESSING", "qty": 130, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "L-NSCF-1005", "code_type": "internal", "price": 55, "price_unit": "PC", "raw": "L-NSCF-1005 55D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-53", "section": "4BR VILLA", "type_letter": "F", "location": "STORE/LIVING/DINING", "qty": 845, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 18, "lumen": 1800, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 300, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-18", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "YT-18 45D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-54", "section": "4BR VILLA", "type_letter": "I", "location": "STORE/LIVING/DINING", "qty": 715, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 400, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-55", "section": "4BR VILLA", "type_letter": "J", "location": "KITCHEN/OPEN KITCHEN", "qty": 195, "unit": "Nos",
+      "spec": { "type": "Indoor - Panel Light", "watt": 40, "lumen": 4800, "cct": 4000, "cri": 80, "ip": 44, "mounting": "recessed", "beam": "120", "diameter_mm": null, "height_mm": 30, "length_mm": 595, "width_mm": 595, "material": "Aluminum, White", "client_ref": "LX-EC-6140BA-K40" },
+      "hw": { "code": "MPL", "code_type": "internal", "price": 60, "price_unit": "PC", "raw": "MPL 60D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-56", "section": "4BR VILLA", "type_letter": "K", "location": "TOILET/MAID BATH/GUEST BATH/TERRACE", "qty": 1560, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "WP203-10W", "code_type": "internal", "price": 35, "price_unit": "PC", "raw": "WP203-10W 35D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-57", "section": "4BR VILLA", "type_letter": "P", "location": "PARKING", "qty": 65, "unit": "Nos",
+      "spec": { "type": "Back of House - Triproof", "watt": 40, "lumen": 4800, "cct": 5000, "cri": 90, "ip": 65, "mounting": "surface", "beam": "120", "diameter_mm": null, "height_mm": 71, "length_mm": 1190, "width_mm": 65, "material": "Poly Carbonate, Light-Gray", "client_ref": null },
+      "hw": { "code": "MFL", "code_type": "internal", "watt_note": "40W", "price": 90, "price_unit": "PC", "raw": "MFL 40W 90D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-58", "section": "4BR VILLA", "type_letter": "Q", "location": "LIVING", "qty": 195, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2200, "cct": 3000, "cri": null, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 600, "height_mm": 2000, "length_mm": null, "width_mm": null, "material": "Wrought iron + Dupont paper, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-59", "section": "4BR VILLA", "type_letter": "O", "location": "ROOF", "qty": 390, "unit": "Nos",
+      "spec": { "type": "Indoor - Recessed wall light", "watt": 6, "lumen": 120, "cct": 3000, "cri": 80, "ip": 65, "mounting": "recessed-wall", "beam": "46x28", "diameter_mm": null, "height_mm": 106, "length_mm": 106, "width_mm": 72, "material": "Aluminum, Black", "client_ref": null },
+      "hw": { "code": "WR2602", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "WR2602 40D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-60", "section": "5BR VILLA", "type_letter": "A", "location": "ENTRANCE LOBBY/CORRIDOR/DRIVER PANTRY/MASTER BEDROOM", "qty": 72, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 900, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": 55, "height_mm": 112, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "SP-9082C", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "SP-9082C 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-61", "section": "5BR VILLA", "type_letter": "B", "location": "MAIN ENTRANCE", "qty": 48, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 7, "lumen": 840, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 61, "height_mm": 47, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "FX-08", "code_type": "internal", "price": 30, "price_unit": "PC", "raw": "FX-08 30D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-62", "section": "5BR VILLA", "type_letter": "C", "location": "GUEST DRESSING/DRESSING", "qty": 32, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "L-NSCF-1005", "code_type": "internal", "price": 55, "price_unit": "PC", "raw": "L-NSCF-1005 55D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-63", "section": "5BR VILLA", "type_letter": "D", "location": "LOBBY", "qty": 16, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 7, "lumen": 490, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 65, "height_mm": 70, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "TD001DR-7W", "code_type": "internal", "price": 25, "price_unit": "PC", "raw": "TD001DR-7W 25D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-64", "section": "5BR VILLA", "type_letter": "E", "location": "PANTRY/STORE", "qty": 16, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (adjustable, with trim)", "watt": 20, "lumen": 1400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "36", "diameter_mm": 105, "height_mm": 100, "length_mm": null, "width_mm": null, "material": "Aluminium, Black", "client_ref": null },
+      "hw": { "code": "L-NSCF-1005", "code_type": "internal", "price": 55, "price_unit": "PC", "raw": "L-NSCF-1005 55D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-65", "section": "5BR VILLA", "type_letter": "F", "location": "DINING AREA/LIVING/STAIR", "qty": 136, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 18, "lumen": 1800, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 300, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-18", "code_type": "internal", "price": 45, "price_unit": "PC", "raw": "YT-18 45D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-66", "section": "5BR VILLA", "type_letter": "I", "location": "MAID ROOM/GUEST ROOM/DRIVER ROOM/MASTER BEDROOM", "qty": 96, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2400, "cct": 3000, "cri": 90, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 400, "height_mm": 25, "length_mm": null, "width_mm": null, "material": "Poly Carbonate, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-67", "section": "5BR VILLA", "type_letter": "J", "location": "KITCHEN/LAUNDRY", "qty": 24, "unit": "Nos",
+      "spec": { "type": "Indoor - Panel Light", "watt": 40, "lumen": 4800, "cct": 4000, "cri": 80, "ip": 44, "mounting": "recessed", "beam": "120", "diameter_mm": null, "height_mm": 30, "length_mm": 595, "width_mm": 595, "material": "Aluminum, White", "client_ref": "LX-EC-6140BA-K40" },
+      "hw": { "code": "MPL", "code_type": "internal", "price": 60, "price_unit": "PC", "raw": "MPL 60D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-68", "section": "5BR VILLA", "type_letter": "K", "location": "TOILET/TERRACE/GUEST BATH/MAID BATH/POWDER ROOM/DRIVER BATH/BATH", "qty": 224, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed", "beam": "50", "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null, "material": "Aluminum, Matte Black", "client_ref": null },
+      "hw": { "code": "WP203-10W", "code_type": "internal", "price": 35, "price_unit": "PC", "raw": "WP203-10W 35D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-69", "section": "5BR VILLA", "type_letter": "P", "location": "(page 5, parking/back of house)", "qty": 16, "unit": "Nos",
+      "spec": { "type": "Back of House - Triproof", "watt": 40, "lumen": 4800, "cct": 5000, "cri": 90, "ip": 65, "mounting": "surface", "beam": "120", "diameter_mm": null, "height_mm": 71, "length_mm": 1190, "width_mm": 65, "material": "Poly Carbonate, Light-Gray", "client_ref": null },
+      "hw": { "code": "MFL", "code_type": "internal", "watt_note": "40W", "price": 90, "price_unit": "PC", "raw": "MFL 90D 40W", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-70", "section": "5BR VILLA", "type_letter": "Q", "location": "(page 5, living)", "qty": 32, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light", "watt": 24, "lumen": 2200, "cct": 3000, "cri": null, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 600, "height_mm": 2000, "length_mm": null, "width_mm": null, "material": "Wrought iron + Dupont paper, White", "client_ref": null },
+      "hw": { "code": "YT-24", "code_type": "internal", "price": 65, "price_unit": "PC", "raw": "YT-24 65D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-71", "section": "5BR VILLA", "type_letter": null, "location": "(page 5, decorative)", "qty": 8, "unit": "Nos",
+      "spec": { "type": "Indoor - Ceiling Light (chandelier, 15x 10W E14 bulbs)", "watt": null, "lumen": 800, "cct": 3000, "cri": null, "ip": 20, "mounting": "surface", "beam": "diffused", "diameter_mm": 1000, "height_mm": null, "length_mm": null, "width_mm": null, "material": "Metal + crystal, black + crystal", "client_ref": "15x 10W E14 BULB, 15x 800lm, 80 lm/W" },
+      "hw": { "code": "Bulb with holder", "code_type": "descriptive", "price": 30, "price_unit": "PC", "raw": "Bulb with holder 30D", "same_ref": null, "crossed_out": [], "uncertain": false,
+        "notes": "Not a fixture code — priced supplying bulb+holder only for the decorative chandelier line." } },
+
+    { "line_id": "A-72", "section": "5BR VILLA", "type_letter": "Z", "location": "(page 5)", "qty": 88, "unit": "Nos",
+      "spec": { "type": "Indoor - Downlight (fixed, with trim)", "watt": 3, "lumen": 270, "cct": 3000, "cri": 90, "ip": 20, "mounting": "recessed", "beam": "45", "diameter_mm": null, "height_mm": 40, "length_mm": null, "width_mm": 30, "material": "Aluminum, Matte White", "client_ref": "cutout C25mm" },
+      "hw": { "code": "CLMI-5W", "code_type": "internal", "price": 25, "price_unit": "PC", "raw": "CLMI-5W 25D", "same_ref": null, "crossed_out": [], "uncertain": false } },
+
+    { "line_id": "A-73", "section": "5BR VILLA", "type_letter": "O", "location": "(page 5, roof)", "qty": 48, "unit": "Nos",
+      "spec": { "type": "Indoor - Recessed wall light", "watt": 6, "lumen": 120, "cct": 3000, "cri": 80, "ip": 65, "mounting": "recessed-wall", "beam": "46x28", "diameter_mm": null, "height_mm": 106, "length_mm": 106, "width_mm": 72, "material": "Aluminum, Black", "client_ref": null },
+      "hw": { "code": "WR2602", "code_type": "internal", "price": 40, "price_unit": "PC", "raw": "WR2602 40D", "same_ref": null, "crossed_out": [], "uncertain": false } }
+  ]
+}
