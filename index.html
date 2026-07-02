@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IST Light — Inquiry → Internal Code Matcher</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --ink: #1d2530; --muted: #64707f;
+    --line: #dde2e8; --accent: #1f5eeb;
+    --high: #157a3c; --high-bg: #e2f4e8;
+    --med: #8a6203; --med-bg: #fdf2d0;
+    --low: #a12c22; --low-bg: #fbe4e1;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
+  header { background: var(--card); border-bottom: 1px solid var(--line); padding: 14px 24px; }
+  header h1 { margin: 0; font-size: 18px; }
+  header p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px 24px 60px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 18px; }
+  textarea { width: 100%; min-height: 160px; font: 12.5px/1.45 ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-radius: 8px; padding: 10px; resize: vertical; }
+  button { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 9px 18px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  button.secondary { background: #eef1f5; color: var(--ink); }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+  .note { color: var(--muted); font-size: 13px; }
+  .err { color: var(--low); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .badge { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 12px; font-weight: 700; }
+  .b-AUTO, .b-HIGH { color: var(--high); background: var(--high-bg); }
+  .b-REVIEW, .b-MEDIUM { color: var(--med); background: var(--med-bg); }
+  .b-MANUAL, .b-LOW { color: var(--low); background: var(--low-bg); }
+  .cand { margin: 2px 0; }
+  .cand code { font-weight: 700; }
+  .conflict { color: var(--low); font-size: 12px; }
+  .spec { color: var(--muted); font-size: 12px; }
+  pre#outjson { background: #0f172a; color: #d7e3f4; border-radius: 8px; padding: 12px; font-size: 12.5px; overflow: auto; max-height: 320px; }
+  .kpis { display: flex; gap: 18px; flex-wrap: wrap; margin: 4px 0 12px; }
+  .kpi { font-size: 13px; color: var(--muted); }
+  .kpi b { color: var(--ink); font-size: 16px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>IST Light — Inquiry → Internal Code Matcher</h1>
+  <p>Deterministic matcher over your internal master (built from past quotes). Codes are only ever emitted with a confidence label. Prices come from your past quotes; conflicting prices are flagged, never auto-picked.</p>
+</header>
+<main>
+  <div class="card">
+    <strong>1 · Paste the parsed inquiry JSON</strong>
+    <p class="note">Produce it by running <code>parse_inquiry.md</code> on the client BOQ/RFQ (extraction only — no codes, no prices, nulls for unstated values, "Same as X" kept in <code>raw_ref</code>).</p>
+    <textarea id="inquiry" spellcheck="false" placeholder='[
+  { "description": "Indoor - Downlight (fixed, with trim) 10W ...", "type": "Indoor - Downlight (fixed, with trim)",
+    "watt": 10, "lumen": 1200, "cct": 3000, "cri": 90, "ip": 65, "mounting": "recessed",
+    "diameter_mm": 83, "height_mm": 52, "length_mm": null, "width_mm": null,
+    "qty": 4, "location": "TOILET", "raw_ref": null }
+]'></textarea>
+    <div class="row">
+      <button id="run">Match against master</button>
+      <button id="demo" class="secondary">Load demo line</button>
+      <span class="note" id="masterinfo"></span>
+      <span class="err" id="error"></span>
+    </div>
+  </div>
+
+  <div class="card" id="resultscard" hidden>
+    <strong>2 · Results</strong>
+    <div class="kpis" id="kpis"></div>
+    <table id="results"><thead><tr>
+      <th style="width:34%">Inquiry line</th><th>Status</th><th style="width:44%">Top candidates</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+
+  <div class="card" id="outcard" hidden>
+    <strong>3 · Quote rows (AutoQuote-ready shape)</strong>
+    <p class="note">One row per line with a match: <code>[{ code, qty, price, price_unit, confidence }]</code>. REVIEW/MANUAL lines still need your eyes — confidence travels with every row.</p>
+    <pre id="outjson"></pre>
+    <div class="row">
+      <button id="copy" class="secondary">Copy JSON</button>
+      <button id="csv" class="secondary">Download CSV</button>
+    </div>
+  </div>
+</main>
+
+<script src="master.data.js"></script>
+<script src="matcher.js"></script>
+<script>
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const master = window.MASTER || [];
+  $('masterinfo').textContent = master.length
+    ? `Master loaded: ${master.length} rows, ${new Set(master.map(r => r.internal_code)).size} codes.`
+    : 'master.data.js missing — run: node build_master.js';
+
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  let lastRows = [];
+
+  $('demo').onclick = () => {
+    $('inquiry').value = JSON.stringify([{
+      description: 'Indoor - Downlight (fixed, with trim) 10W, 1200lm, 120 lm/W, 3000K, CRI 90+ 50°, IP65, Aluminum Matte Black, Ø83mm x H52mm',
+      type: 'Indoor - Downlight (fixed, with trim)', watt: 10, lumen: 1200, cct: 3000, cri: 90, ip: 65,
+      mounting: 'recessed', diameter_mm: 83, height_mm: 52, length_mm: null, width_mm: null,
+      qty: 4, location: 'TOILET', raw_ref: null
+    }], null, 2);
+  };
+
+  $('run').onclick = () => {
+    $('error').textContent = '';
+    let items;
+    try {
+      items = JSON.parse($('inquiry').value);
+      if (!Array.isArray(items)) throw new Error('expected a JSON array');
+    } catch (e) { $('error').textContent = 'Invalid JSON: ' + e.message; return; }
+
+    const results = Matcher.matchInquiry(items, master);
+    const counts = { AUTO: 0, REVIEW: 0, MANUAL: 0 };
+    const tbody = $('results').querySelector('tbody');
+    tbody.innerHTML = '';
+
+    results.forEach((r, i) => {
+      counts[r.status]++;
+      const specBits = [
+        r.item.watt != null ? r.item.watt + 'W' : null,
+        r.item.lumen != null ? r.item.lumen + 'lm' : null,
+        r.item.cct != null ? r.item.cct + 'K' : null,
+        r.item.ip != null ? 'IP' + r.item.ip : null,
+        r.item.qty != null ? 'qty ' + r.item.qty : null
+      ].filter(Boolean).join(' · ');
+      const cands = r.candidates.length ? r.candidates.map(c => `
+        <div class="cand">
+          <span class="badge b-${c.confidence}">${c.confidence}</span>
+          <code>${esc(c.code)}</code> — score ${c.score}
+          ${c.price != null ? `· ${esc(c.price)} /${esc(c.price_unit || 'PC')}` : '· no price on file'}
+          ${c.price_conflict ? `<div class="conflict">⚠ price conflict in past quotes: ${esc(c.prices_seen.join(' | '))} — see conflicts.csv</div>` : ''}
+        </div>`).join('') : '<span class="note">No candidate passed the hard filters (IP / type / mounting / ±15% watt & lumen).</span>';
+      tbody.insertAdjacentHTML('beforeend', `
+        <tr>
+          <td>#${i + 1} ${esc(r.item.location || '')}<br>
+              <span class="spec">${esc(r.item.type || r.item.description || '')}</span><br>
+              <span class="spec">${esc(specBits)}</span>
+              ${r.item.raw_ref ? `<br><span class="spec">ref: ${esc(r.item.raw_ref)}</span>` : ''}</td>
+          <td><span class="badge b-${r.status}">${r.status}</span></td>
+          <td>${cands}</td>
+        </tr>`);
+    });
+
+    $('kpis').innerHTML = `
+      <span class="kpi"><b>${results.length}</b> lines</span>
+      <span class="kpi"><b>${counts.AUTO}</b> AUTO</span>
+      <span class="kpi"><b>${counts.REVIEW}</b> REVIEW</span>
+      <span class="kpi"><b>${counts.MANUAL}</b> MANUAL</span>`;
+    $('resultscard').hidden = false;
+
+    lastRows = Matcher.toQuoteRows(results);
+    $('outjson').textContent = JSON.stringify(lastRows, null, 2);
+    $('outcard').hidden = false;
+  };
+
+  $('copy').onclick = () => navigator.clipboard.writeText(JSON.stringify(lastRows, null, 2));
+  $('csv').onclick = () => {
+    const cols = ['code', 'qty', 'price', 'price_unit', 'confidence'];
+    const escCsv = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+    const csv = [cols.join(',')].concat(lastRows.map(r => cols.map(c => escCsv(r[c])).join(','))).join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+    a.download = 'quote_rows.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+})();
+</script>
+</body>
+</html>
