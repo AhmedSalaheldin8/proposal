@@ -889,12 +889,13 @@ const BUILDERS = {
  * ========================================================================== */
 
 function addPodium(scene, radius) {
+  const podiumRadius = radius * 0.62;
   const podium = new THREE.Mesh(
-    new THREE.CylinderGeometry(radius, radius * 1.02, 0.06, 64),
+    new THREE.CylinderGeometry(podiumRadius, podiumRadius * 1.02, 0.05, 64),
     new THREE.MeshStandardMaterial({
-      color: 0x1a1c22, metalness: 0.15, roughness: 0.32, envMapIntensity: 0.4,
+      color: 0x100f0d, metalness: 0.04, roughness: 0.6, envMapIntensity: 0.12,
     }));
-  podium.position.y = -0.031;
+  podium.position.y = -0.026;
   podium.receiveShadow = true;
   scene.add(podium);
 
