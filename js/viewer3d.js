@@ -82,9 +82,9 @@ function contactShadowTexture() {
   if (!_contactCanvas) {
     _contactCanvas = makeCanvas(256, (ctx, s) => {
       const g = ctx.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
-      g.addColorStop(0.0, 'rgba(0,0,0,0.5)');
-      g.addColorStop(0.45, 'rgba(0,0,0,0.28)');
-      g.addColorStop(0.8, 'rgba(0,0,0,0.07)');
+      g.addColorStop(0.0, 'rgba(0,0,0,0.38)');
+      g.addColorStop(0.45, 'rgba(0,0,0,0.2)');
+      g.addColorStop(0.8, 'rgba(0,0,0,0.05)');
       g.addColorStop(1.0, 'rgba(0,0,0,0)');
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, s, s);
@@ -144,13 +144,13 @@ function marbleTexture() {
 /* ---- material factories (fresh instances each call — safe per-viewer dispose) */
 function brassMat() {
   return new THREE.MeshPhysicalMaterial({
-    color: 0xc89b4a, metalness: 1, roughness: 0.24,
-    clearcoat: 0.35, clearcoatRoughness: 0.25, envMapIntensity: 1.4,
+    color: 0xd2a552, metalness: 1, roughness: 0.24,
+    clearcoat: 0.35, clearcoatRoughness: 0.25, envMapIntensity: 1.8,
   });
 }
 function steelMat() {
   return new THREE.MeshStandardMaterial({
-    color: 0xb7bcc4, metalness: 1, roughness: 0.38, envMapIntensity: 1.2,
+    color: 0xc9ced6, metalness: 1, roughness: 0.32, envMapIntensity: 1.7,
   });
 }
 function darkMetalMat() {
@@ -160,7 +160,7 @@ function darkMetalMat() {
 }
 function matteBlackMat() {
   return new THREE.MeshStandardMaterial({
-    color: 0x1b1c1f, metalness: 0.25, roughness: 0.55, envMapIntensity: 0.7,
+    color: 0x232529, metalness: 0.3, roughness: 0.5, envMapIntensity: 1.1,
   });
 }
 function crystalMat() {
@@ -173,8 +173,8 @@ function crystalMat() {
 }
 function opalGlassMat() {
   return new THREE.MeshPhysicalMaterial({
-    color: 0xfdf1e2, metalness: 0, roughness: 0.42,
-    transmission: 0.7, thickness: 0.5, ior: 1.45,
+    color: 0xf6e7d2, metalness: 0, roughness: 0.38,
+    transmission: 0.72, thickness: 0.5, ior: 1.45,
     clearcoat: 0.5, clearcoatRoughness: 0.3, envMapIntensity: 1.0,
     emissive: 0xffffff, emissiveIntensity: 0,
   });
@@ -286,7 +286,8 @@ function buildAuroraPendant() {
   const bulbs = [], lights = [], halos = [];
 
   const brass = brassMat();
-  const PIVOT_Y = 2.0;
+  brass.side = THREE.DoubleSide; // lathe shells
+  const PIVOT_Y = 1.62;
 
   // hang group pivots at the ceiling point for cord sway
   const hang = new THREE.Group();
@@ -294,15 +295,15 @@ function buildAuroraPendant() {
   group.add(hang);
 
   // ceiling rose
-  const rose = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.09, 0.05, 32), brass);
+  const rose = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.085, 0.045, 32), brass);
   rose.position.y = -0.02;
   hang.add(rose);
 
-  // cord: pivot down to dome top fitting (local -0.66)
-  hang.add(rodBetween(new THREE.Vector3(0, -0.03, 0), new THREE.Vector3(0, -0.68, 0), 0.011, cordMat()));
+  // cord: pivot down to dome top fitting
+  hang.add(rodBetween(new THREE.Vector3(0, -0.03, 0), new THREE.Vector3(0, -0.62, 0), 0.011, cordMat()));
 
   const shade = new THREE.Group();
-  shade.position.y = -1.1; // rim at world 0.9, dome top ~1.32
+  shade.position.y = -1.04; // rim at world ~0.58, dome top ~1.0
   hang.add(shade);
 
   // brass dome with rolled lip (outer)
@@ -310,7 +311,7 @@ function buildAuroraPendant() {
     [0.001, 0.42], [0.09, 0.415], [0.21, 0.385], [0.33, 0.325],
     [0.43, 0.235], [0.495, 0.125], [0.522, 0.03], [0.518, -0.02],
     [0.495, -0.038], [0.472, -0.02], [0.468, 0.02],
-  ], 56);
+  ], 48);
   const dome = new THREE.Mesh(new THREE.LatheGeometry(outerProfile, 48), brass);
   dome.castShadow = true;
   shade.add(dome);
@@ -319,12 +320,12 @@ function buildAuroraPendant() {
   const innerProfile = smoothProfile([
     [0.001, 0.405], [0.09, 0.4], [0.2, 0.37], [0.315, 0.312],
     [0.415, 0.228], [0.462, 0.13], [0.466, 0.035],
-  ], 40);
+  ], 36);
   const innerMat = new THREE.MeshStandardMaterial({
-    color: 0xf3ede2, roughness: 0.9, metalness: 0, side: THREE.BackSide,
+    color: 0xf3ede2, roughness: 0.9, metalness: 0, side: THREE.DoubleSide,
     emissive: 0xffffff, emissiveIntensity: 0,
   });
-  const inner = asBulb(new THREE.Mesh(new THREE.LatheGeometry(innerProfile, 48), innerMat), 0.5, 0.85);
+  const inner = asBulb(new THREE.Mesh(new THREE.LatheGeometry(innerProfile, 48), innerMat), 1.1, 0.85);
   shade.add(inner);
   bulbs.push(inner);
 
@@ -333,23 +334,23 @@ function buildAuroraPendant() {
   fitting.position.y = 0.46;
   shade.add(fitting);
 
-  // socket + globe bulb below the shade mouth
-  const socket = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.055, 0.12, 24), brass);
-  socket.position.y = 0.12;
+  // socket + globe bulb hanging below the shade mouth
+  const socket = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.055, 0.2, 24), brass);
+  socket.position.y = 0.02;
   shade.add(socket);
-  const bulb = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.145, 32, 24), bulbMat()), 2.6, 1);
-  bulb.position.y = -0.02;
+  const bulb = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.14, 32, 24), bulbMat()), 5.0, 1);
+  bulb.position.y = -0.17;
   shade.add(bulb);
   bulbs.push(bulb);
 
-  const halo = makeHalo(0.65, 0.55);
+  const halo = makeHalo(0.6, 0.5);
   halo.position.copy(bulb.position);
   shade.add(halo);
   halos.push(halo);
 
   // lamp light at the bulb
-  const pt = asLight(new THREE.PointLight(0xffffff, 0, 9, 2), 2.6);
-  pt.position.set(0, 0.86, 0);
+  const pt = asLight(new THREE.PointLight(0xffffff, 0, 9, 2), 7.0);
+  pt.position.set(0, PIVOT_Y - 1.04 - 0.17, 0);
   pt.castShadow = true;
   pt.shadow.mapSize.set(512, 512);
   pt.shadow.bias = -0.002;
@@ -358,7 +359,9 @@ function buildAuroraPendant() {
 
   return {
     group, bulbs, lights, halos,
-    podiumRadius: 0.85,
+    podiumRadius: 0.62,
+    elevation: 0.22,
+    frameFloor: true,
     sway(t) {
       hang.rotation.z = 0.022 * Math.sin(t * 0.7);
       hang.rotation.x = 0.016 * Math.sin(t * 0.53 + 1.7);
@@ -371,21 +374,22 @@ function buildCrystalChandelier() {
   const group = new THREE.Group();
   const bulbs = [], lights = [], halos = [];
   const brass = brassMat();
+  brass.side = THREE.DoubleSide;
   const crystal = crystalMat();
   const swayPivots = [];
 
   const hang = new THREE.Group();
-  hang.position.set(0, 2.1, 0);
+  hang.position.set(0, 1.98, 0);
   group.add(hang);
   const body = new THREE.Group();
-  body.position.y = -2.1; // back to world space, but under sway pivot
+  body.position.y = -1.98; // back to world space, but under sway pivot
   hang.add(body);
 
   // ceiling rod + rose
   const rose = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.085, 0.05, 28), brass);
-  rose.position.y = 2.08;
+  rose.position.y = 1.96;
   body.add(rose);
-  body.add(rodBetween(new THREE.Vector3(0, 2.06, 0), new THREE.Vector3(0, 1.66, 0), 0.014, brass));
+  body.add(rodBetween(new THREE.Vector3(0, 1.95, 0), new THREE.Vector3(0, 1.66, 0), 0.014, brass));
 
   // turned central column (lathe)
   const colProfile = smoothProfile([
@@ -393,8 +397,8 @@ function buildCrystalChandelier() {
     [0.04, 0.9], [0.105, 1.0], [0.12, 1.08], [0.1, 1.16],
     [0.045, 1.24], [0.04, 1.38], [0.07, 1.5], [0.055, 1.6],
     [0.03, 1.66], [0.001, 1.7],
-  ], 72);
-  const column = new THREE.Mesh(new THREE.LatheGeometry(colProfile, 36), brass);
+  ], 52);
+  const column = new THREE.Mesh(new THREE.LatheGeometry(colProfile, 30), brass);
   column.castShadow = true;
   body.add(column);
 
@@ -410,8 +414,7 @@ function buildCrystalChandelier() {
     armGroup.rotation.y = (i / 6) * Math.PI * 2;
     body.add(armGroup);
 
-    const arm = new THREE.Mesh(new THREE.TubeGeometry(armCurveBase, 36, 0.02, 8), brass);
-    arm.castShadow = true;
+    const arm = new THREE.Mesh(new THREE.TubeGeometry(armCurveBase, 28, 0.02, 8), brass);
     armGroup.add(arm);
 
     const tip = new THREE.Vector3(0.63, 1.08, 0);
@@ -431,13 +434,13 @@ function buildCrystalChandelier() {
     armGroup.add(candle);
 
     // flame-shaped bulb
-    const flame = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.042, 20, 16), bulbMat()), 3.2, 1);
-    flame.scale.set(1, 1.75, 1);
-    flame.position.copy(tip).y += 0.32;
+    const flame = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.034, 20, 16), bulbMat()), 4.0, 1);
+    flame.scale.set(1, 1.8, 1);
+    flame.position.copy(tip).y += 0.31;
     armGroup.add(flame);
     bulbs.push(flame);
 
-    const halo = makeHalo(0.28, 0.5);
+    const halo = makeHalo(0.22, 0.45);
     halo.position.copy(flame.position);
     armGroup.add(halo);
     halos.push(halo);
@@ -484,7 +487,7 @@ function buildCrystalChandelier() {
   swayPivots.push({ pivot: cascade, phase: 4.2, amp: 0.05 });
 
   // one central warm light (cheaper than 6 shadow casters)
-  const pt = asLight(new THREE.PointLight(0xffffff, 0, 10, 2), 3.4);
+  const pt = asLight(new THREE.PointLight(0xffffff, 0, 10, 2), 16);
   pt.position.set(0, 1.42, 0);
   pt.castShadow = true;
   pt.shadow.mapSize.set(512, 512);
@@ -494,8 +497,8 @@ function buildCrystalChandelier() {
 
   return {
     group, bulbs, lights, halos,
-    podiumRadius: 1.0,
-    fitScale: 1.02,
+    podiumRadius: 0.88,
+    frameFloor: true,
     sway(t) {
       hang.rotation.z = 0.008 * Math.sin(t * 0.5);
       for (const s of swayPivots) {
@@ -517,38 +520,40 @@ function buildArcFloor() {
     map: marbleTexture(), roughness: 0.22, metalness: 0,
     clearcoat: 0.55, clearcoatRoughness: 0.25,
   });
-  const base = new THREE.Mesh(new THREE.CylinderGeometry(0.33, 0.35, 0.15, 48), marble);
-  base.position.set(-0.62, 0.075, 0);
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.34, 0.26, 48), marble);
+  base.position.set(-0.68, 0.13, 0);
   base.castShadow = true;
   group.add(base);
   // steel collar where the arc enters the base
-  const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.07, 24), steel);
-  collar.position.set(-0.62, 0.18, 0);
+  const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.055, 0.1, 24), steel);
+  collar.position.set(-0.68, 0.3, 0);
   group.add(collar);
 
   // the arc
   const arcCurve = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-0.62, 0.14, 0),
-    new THREE.Vector3(-0.62, 0.85, 0),
-    new THREE.Vector3(-0.56, 1.45, 0),
-    new THREE.Vector3(-0.28, 1.83, 0),
-    new THREE.Vector3(0.22, 1.87, 0),
-    new THREE.Vector3(0.56, 1.62, 0),
-    new THREE.Vector3(0.63, 1.42, 0),
+    new THREE.Vector3(-0.68, 0.2, 0),
+    new THREE.Vector3(-0.68, 1.0, 0),
+    new THREE.Vector3(-0.6, 1.62, 0),
+    new THREE.Vector3(-0.26, 2.02, 0),
+    new THREE.Vector3(0.28, 2.03, 0),
+    new THREE.Vector3(0.64, 1.72, 0),
+    new THREE.Vector3(0.72, 1.5, 0),
   ]);
-  const arc = new THREE.Mesh(new THREE.TubeGeometry(arcCurve, 64, 0.027, 12), steel);
+  const arc = new THREE.Mesh(new THREE.TubeGeometry(arcCurve, 72, 0.024, 12), steel);
   arc.castShadow = true;
   group.add(arc);
 
   // dome shade at the end, opening down
   const shade = new THREE.Group();
-  shade.position.set(0.63, 1.42, 0);
+  shade.position.set(0.72, 1.5, 0);
   group.add(shade);
   const shadeProfile = smoothProfile([
     [0.001, 0.06], [0.08, 0.05], [0.16, 0.02], [0.235, -0.05],
     [0.27, -0.14], [0.278, -0.21], [0.272, -0.235],
   ], 40);
-  const shadeMesh = new THREE.Mesh(new THREE.LatheGeometry(shadeProfile, 40), steel);
+  const shadeSteel = steelMat();
+  shadeSteel.side = THREE.DoubleSide;
+  const shadeMesh = new THREE.Mesh(new THREE.LatheGeometry(shadeProfile, 40), shadeSteel);
   shadeMesh.castShadow = true;
   shade.add(shadeMesh);
   const shadeInnerProfile = smoothProfile([
@@ -558,30 +563,30 @@ function buildArcFloor() {
   const shadeInner = asBulb(new THREE.Mesh(
     new THREE.LatheGeometry(shadeInnerProfile, 40),
     new THREE.MeshStandardMaterial({
-      color: 0xf0ece2, roughness: 0.9, side: THREE.BackSide,
+      color: 0xf0ece2, roughness: 0.9, side: THREE.DoubleSide,
       emissive: 0xffffff, emissiveIntensity: 0,
-    })), 0.45, 0.85);
+    })), 1.0, 0.85);
   shade.add(shadeInner);
   bulbs.push(shadeInner);
 
-  // bulb inside
-  const bulb = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.085, 24, 18), bulbMat()), 2.6, 1);
-  bulb.position.y = -0.13;
+  // bulb inside, peeking out of the shade mouth
+  const bulb = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.09, 24, 18), bulbMat()), 4.5, 1);
+  bulb.position.y = -0.19;
   shade.add(bulb);
   bulbs.push(bulb);
-  const halo = makeHalo(0.45, 0.5);
-  halo.position.set(0, -0.17, 0);
+  const halo = makeHalo(0.5, 0.55);
+  halo.position.set(0, -0.24, 0);
   shade.add(halo);
   halos.push(halo);
 
   // spot pointing down at the podium
-  const spot = asLight(new THREE.SpotLight(0xffffff, 0, 8, 0.72, 0.55, 1.6), 4.2);
-  spot.position.set(0.63, 1.32, 0);
+  const spot = asLight(new THREE.SpotLight(0xffffff, 0, 8, 0.75, 0.55, 1.6), 130);
+  spot.position.set(0.72, 1.4, 0);
   spot.castShadow = true;
   spot.shadow.mapSize.set(1024, 1024);
   spot.shadow.bias = -0.0015;
   const spotTarget = new THREE.Object3D();
-  spotTarget.position.set(0.68, 0, 0);
+  spotTarget.position.set(0.74, 0, 0);
   group.add(spotTarget);
   spot.target = spotTarget;
   group.add(spot);
@@ -590,8 +595,10 @@ function buildArcFloor() {
   return {
     group, bulbs, lights, halos,
     podiumRadius: 1.12,
-    fitScale: 1.04,
+    fitScale: 0.96,
+    elevation: 0.26,
     azimuth: 0.42,
+    frameFloor: true,
   };
 }
 
@@ -602,51 +609,54 @@ function buildMushroomTable() {
 
   // one continuous Murano-style silhouette
   const profile = smoothProfile([
-    [0.02, 0.005], [0.2, 0.005], [0.3, 0.02], [0.335, 0.09],
-    [0.3, 0.19], [0.2, 0.3], [0.135, 0.42], [0.115, 0.52],
-    [0.13, 0.6], [0.21, 0.665], [0.33, 0.7], [0.42, 0.745],
-    [0.455, 0.82], [0.43, 0.9], [0.335, 0.97], [0.19, 1.02],
-    [0.05, 1.045], [0.001, 1.048],
-  ], 80);
+    [0.02, 0.005], [0.19, 0.005], [0.29, 0.025], [0.325, 0.1],
+    [0.285, 0.2], [0.185, 0.3], [0.12, 0.42], [0.1, 0.52],
+    [0.115, 0.6], [0.2, 0.66], [0.34, 0.695], [0.44, 0.74],
+    [0.48, 0.82], [0.45, 0.91], [0.35, 0.98], [0.19, 1.03],
+    [0.05, 1.05], [0.001, 1.053],
+  ], 64);
   const glass = opalGlassMat();
-  const body = asBulb(new THREE.Mesh(new THREE.LatheGeometry(profile, 48), glass), 0.55, 0.9);
+  const body = asBulb(new THREE.Mesh(new THREE.LatheGeometry(profile, 48), glass), 0.16, 0.9);
   body.castShadow = true;
   group.add(body);
   bulbs.push(body);
 
   // inner warm emissive core (visible through the transmissive glass)
-  const coreCap = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.2, 24, 18), bulbMat()), 2.4, 1);
-  coreCap.scale.set(1.35, 0.72, 1.35);
-  coreCap.position.y = 0.85;
+  const coreCap = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.22, 24, 18), bulbMat()), 1.1, 1);
+  coreCap.scale.set(1.1, 0.5, 1.1);
+  coreCap.position.y = 0.84;
   group.add(coreCap);
   bulbs.push(coreCap);
-  const coreBase = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.13, 20, 14), bulbMat()), 1.6, 1);
-  coreBase.scale.set(1.3, 1.5, 1.3);
-  coreBase.position.y = 0.22;
+  const coreBase = asBulb(new THREE.Mesh(new THREE.SphereGeometry(0.11, 20, 14), bulbMat()), 0.55, 1);
+  coreBase.scale.set(1.2, 1.6, 1.2);
+  coreBase.position.y = 0.24;
   group.add(coreBase);
   bulbs.push(coreBase);
 
-  const halo = makeHalo(1.0, 0.35);
-  halo.position.y = 0.85;
+  const halo = makeHalo(0.75, 0.22);
+  halo.position.y = 0.84;
   group.add(halo);
   halos.push(halo);
 
-  const pt = asLight(new THREE.PointLight(0xffffff, 0, 7, 2), 1.9);
-  pt.position.set(0, 0.86, 0);
-  pt.castShadow = true;
-  pt.shadow.mapSize.set(512, 512);
-  pt.shadow.bias = -0.002;
-  group.add(pt);
-  lights.push(pt);
-  const ptLow = asLight(new THREE.PointLight(0xffffff, 0, 4, 2), 0.7);
-  ptLow.position.set(0, 0.3, 0);
-  group.add(ptLow);
-  lights.push(ptLow);
+  // tiny near-field light inside the cap; the room light sits just above the
+  // glass so inverse-square falloff doesn't nuke the shell from inside
+  const ptGlow = asLight(new THREE.PointLight(0xffffff, 0, 3, 2), 0.22);
+  ptGlow.position.set(0, 0.86, 0);
+  group.add(ptGlow);
+  lights.push(ptGlow);
+  const ptRoom = asLight(new THREE.PointLight(0xffffff, 0, 8, 2), 6);
+  ptRoom.position.set(0, 1.35, 0);
+  ptRoom.castShadow = true;
+  ptRoom.shadow.mapSize.set(512, 512);
+  ptRoom.shadow.bias = -0.002;
+  group.add(ptRoom);
+  lights.push(ptRoom);
 
   return {
     group, bulbs, lights, halos,
     podiumRadius: 0.68,
-    fitScale: 1.08,
+    fitScale: 1.04,
+    frameFloor: true,
   };
 }
 
@@ -678,8 +688,9 @@ function buildNeonQuasar() {
   const outerMat = new THREE.MeshStandardMaterial({
     color: 0x15090f, roughness: 0.3, metalness: 0,
     emissive: 0xffffff, emissiveIntensity: 0,
+    transparent: true, opacity: 0.8,
   });
-  const outer = asBulb(new THREE.Mesh(new THREE.TubeGeometry(curve, 220, 0.042, 10, true), outerMat), 1.5, 1);
+  const outer = asBulb(new THREE.Mesh(new THREE.TubeGeometry(curve, 220, 0.042, 10, true), outerMat), 1.1, 1);
   knot.add(outer);
   bulbs.push(outer);
 
@@ -687,7 +698,7 @@ function buildNeonQuasar() {
     color: 0x111111, roughness: 0.4,
     emissive: 0xffffff, emissiveIntensity: 0,
   });
-  const innerTube = asBulb(new THREE.Mesh(new THREE.TubeGeometry(curve, 220, 0.015, 8, true), innerMat), 5.5, 0.45);
+  const innerTube = asBulb(new THREE.Mesh(new THREE.TubeGeometry(curve, 220, 0.015, 8, true), innerMat), 3.2, 0.7);
   innerTube.scale.setScalar(1.001);
   knot.add(innerTube);
   bulbs.push(innerTube);
@@ -710,12 +721,12 @@ function buildNeonQuasar() {
   }
 
   // glow
-  const haloBig = makeHalo(1.5, 0.32);
+  const haloBig = makeHalo(1.4, 0.3);
   haloBig.position.y = 0.72;
   group.add(haloBig);
   halos.push(haloBig);
 
-  const pt = asLight(new THREE.PointLight(0xffffff, 0, 8, 2), 2.8);
+  const pt = asLight(new THREE.PointLight(0xffffff, 0, 8, 2), 7.0);
   pt.position.set(0, 0.72, 0);
   pt.castShadow = true;
   pt.shadow.mapSize.set(512, 512);
@@ -726,12 +737,13 @@ function buildNeonQuasar() {
   return {
     group, bulbs, lights, halos,
     podiumRadius: 0.78,
-    fitScale: 1.06,
+    fitScale: 1.02,
+    frameFloor: true,
     // artistic magenta <-> cyan ramp instead of blackbody
     kelvinMap(kelvin) {
       const tn = THREE.MathUtils.clamp((kelvin - 2200) / (6500 - 2200), 0, 1);
       const hue = 0.87 - tn * 0.36; // magenta -> cyan
-      return new THREE.Color().setHSL(hue, 1.0, 0.58);
+      return new THREE.Color().setHSL(hue, 1.0, 0.5);
     },
     flicker(t) {
       const buzz = 0.965
@@ -785,24 +797,27 @@ function buildLumenDesk() {
   group.add(arm2);
 
   // springs alongside each arm (anglepoise flavour)
-  const addSpring = (a, b, offset) => {
+  const addSpring = (a, b, side) => {
     const dir = new THREE.Vector3().subVectors(b, a);
     const len = dir.length();
-    const helix = new HelixCurve(0.028, len * 0.55, 9);
+    const n = dir.clone().normalize();
+    // in-plane perpendicular (arms live in the XY plane)
+    const perp = new THREE.Vector3().crossVectors(n, new THREE.Vector3(0, 0, 1)).multiplyScalar(side * 0.055);
+    const helix = new HelixCurve(0.026, len * 0.5, 8);
     const spring = new THREE.Mesh(
-      new THREE.TubeGeometry(helix, 100, 0.0075, 6),
+      new THREE.TubeGeometry(helix, 96, 0.007, 6),
       steelMat());
-    spring.position.copy(a).addScaledVector(dir, 0.22).add(offset);
-    spring.quaternion.setFromUnitVectors(_UP, dir.clone().normalize());
+    spring.position.copy(a).addScaledVector(dir, 0.25).add(perp);
+    spring.quaternion.setFromUnitVectors(_UP, n);
     group.add(spring);
   };
-  addSpring(j0, j1, new THREE.Vector3(0.062, 0, 0));
-  addSpring(j1, j2, new THREE.Vector3(-0.028, 0.045, 0));
+  addSpring(j0, j1, 1);
+  addSpring(j1, j2, 1);
 
   // head: dome shade angled down-forward
   const head = new THREE.Group();
   head.position.copy(j2);
-  const dir = new THREE.Vector3(0.62, -0.78, 0).normalize();
+  const dir = new THREE.Vector3(0.42, -0.88, 0).normalize();
   head.quaternion.setFromUnitVectors(new THREE.Vector3(0, -1, 0), dir); // local -Y is beam axis
   group.add(head);
 
@@ -810,7 +825,9 @@ function buildLumenDesk() {
     [0.001, 0.16], [0.05, 0.155], [0.1, 0.125], [0.145, 0.06],
     [0.165, -0.02], [0.17, -0.055], [0.163, -0.07],
   ], 36);
-  const shadeMesh = new THREE.Mesh(new THREE.LatheGeometry(shadeProfile, 36), black);
+  const blackShade = matteBlackMat();
+  blackShade.side = THREE.DoubleSide;
+  const shadeMesh = new THREE.Mesh(new THREE.LatheGeometry(shadeProfile, 36), blackShade);
   shadeMesh.castShadow = true;
   head.add(shadeMesh);
   // neck between joint and shade
@@ -824,26 +841,26 @@ function buildLumenDesk() {
     new THREE.MeshStandardMaterial({
       color: 0xd9d4c8, roughness: 0.5,
       emissive: 0xffffff, emissiveIntensity: 0,
-    })), 3.0, 1);
+    })), 5.0, 1);
   disc.rotation.x = Math.PI / 2; // face local -Y
   disc.position.y = -0.02;
   head.add(disc);
   bulbs.push(disc);
 
-  const halo = makeHalo(0.42, 0.5);
+  const halo = makeHalo(0.45, 0.6);
   halo.position.y = -0.09;
   head.add(halo);
   halos.push(halo);
 
   // spot light out of the head
-  const spot = asLight(new THREE.SpotLight(0xffffff, 0, 7, 0.75, 0.6, 1.5), 3.6);
+  const spot = asLight(new THREE.SpotLight(0xffffff, 0, 7, 0.75, 0.6, 1.5), 110);
   spot.castShadow = true;
   spot.shadow.mapSize.set(1024, 1024);
   spot.shadow.bias = -0.0015;
   const headWorld = j2.clone().addScaledVector(dir, 0.08);
   spot.position.copy(headWorld);
   const spotTarget = new THREE.Object3D();
-  spotTarget.position.copy(j2).addScaledVector(dir, 1.6);
+  spotTarget.position.copy(j2).addScaledVector(dir, 1.25);
   group.add(spotTarget);
   spot.target = spotTarget;
   group.add(spot);
@@ -851,9 +868,10 @@ function buildLumenDesk() {
 
   return {
     group, bulbs, lights, halos,
-    podiumRadius: 0.8,
-    fitScale: 1.08,
+    podiumRadius: 0.72,
+    fitScale: 1.0,
     azimuth: 0.5,
+    frameFloor: true,
   };
 }
 
@@ -874,7 +892,7 @@ function addPodium(scene, radius) {
   const podium = new THREE.Mesh(
     new THREE.CylinderGeometry(radius, radius * 1.02, 0.06, 64),
     new THREE.MeshStandardMaterial({
-      color: 0x0e0f12, metalness: 0.45, roughness: 0.28, envMapIntensity: 0.9,
+      color: 0x1a1c22, metalness: 0.15, roughness: 0.32, envMapIntensity: 0.4,
     }));
   podium.position.y = -0.031;
   podium.receiveShadow = true;
@@ -895,17 +913,17 @@ function addPodium(scene, radius) {
 function addLightRig(scene) {
   const rig = [];
   const hemi = new THREE.HemisphereLight(0x8fa3c0, 0x201d1a, 0.32);
-  hemi.userData._rig = { base: 0.32, offBoost: 1.1 };
+  hemi.userData._rig = { base: 0.32, offBoost: 0.7 };
   scene.add(hemi); rig.push(hemi);
 
   const key = new THREE.DirectionalLight(0xbdd2ec, 0.5);
   key.position.set(2.6, 3.2, 2.2);
-  key.userData._rig = { base: 0.5, offBoost: 0.7 };
+  key.userData._rig = { base: 0.5, offBoost: 0.45 };
   scene.add(key); rig.push(key);
 
   const rim = new THREE.DirectionalLight(0x7f9dc9, 0.65);
   rim.position.set(-2.4, 2.4, -2.8);
-  rim.userData._rig = { base: 0.65, offBoost: 1.0 };
+  rim.userData._rig = { base: 0.65, offBoost: 0.8 };
   scene.add(rim); rig.push(rim);
   return rig;
 }
@@ -929,8 +947,14 @@ function getEnvMap(renderer) {
   panel(6, 4, new THREE.Color(5, 5, 5.5), new THREE.Vector3(0, 7, 0), new THREE.Vector3(0, 0, 0));      // top softbox
   panel(2, 7, new THREE.Color(1.6, 2.0, 2.6), new THREE.Vector3(8, 2, -2), new THREE.Vector3(0, 1, 0)); // cool side strip
   panel(5, 2, new THREE.Color(1.2, 1.1, 1.0), new THREE.Vector3(-6, 1.5, 6), new THREE.Vector3(0, 1, 0)); // warm fill card
+  // soft horizon band so curved metal always catches a gradient
+  const band = new THREE.Mesh(
+    new THREE.CylinderGeometry(10.5, 10.5, 3.2, 24, 1, true),
+    new THREE.MeshBasicMaterial({ color: new THREE.Color(0.32, 0.36, 0.45), side: THREE.BackSide }));
+  band.position.y = 1.2;
+  envScene.add(band);
   const pmrem = new THREE.PMREMGenerator(renderer);
-  const rt = pmrem.fromScene(envScene, 0.06);
+  const rt = pmrem.fromScene(envScene, 0.035);
   env = rt.texture;
   _envCache.set(renderer, env);
   pmrem.dispose();
@@ -945,14 +969,18 @@ function buildProductScene(productKey, renderer) {
   if (!builder) throw new Error(`viewer3d: unknown product key "${productKey}"`);
   const scene = new THREE.Scene();
   scene.environment = getEnvMap(renderer);
-  scene.environmentIntensity = 0.45;
+  scene.environmentIntensity = 0.55;
   const model = builder();
   scene.add(model.group);
   addPodium(scene, model.podiumRadius);
   const rig = addLightRig(scene);
 
-  // frame data
+  // frame data (optionally grounding the composition on the podium)
   const box = meshBounds(model.group);
+  if (model.frameFloor) {
+    const r = model.podiumRadius;
+    box.union(new THREE.Box3(new THREE.Vector3(-r, -0.06, -r), new THREE.Vector3(r, 0, r)));
+  }
   const center = box.getCenter(new THREE.Vector3());
   const sphere = box.getBoundingSphere(new THREE.Sphere());
   model.center = center;
@@ -971,8 +999,9 @@ const _tmpColor = new THREE.Color();
  * @param {number} powerLevel   0..1 (for the off-state rig boost)
  */
 function applyState(built, color, eff, powerLevel) {
-  const { model, rig } = built;
+  const { model, rig, scene } = built;
   const offAmount = 1 - Math.min(1, powerLevel);
+  scene.environmentIntensity = 0.55 - 0.22 * offAmount;
   for (const l of rig) {
     l.intensity = l.userData._rig.base * (1 + l.userData._rig.offBoost * offAmount);
   }
@@ -1163,16 +1192,17 @@ export class ProductViewer {
     const tick = (now) => {
       if (this._disposed) return;
       this._raf = requestAnimationFrame(tick);
-      const dt = Math.min(0.1, (now - this._lastT) / 1000);
+      // clamp: RAF can hand the first callback a timestamp older than _lastT
+      const dt = Math.max(0, Math.min(0.1, (now - this._lastT) / 1000));
       this._lastT = now;
       const t = now / 1000;
 
       // smooth power transition (~300ms)
       const target = this._power ? 1 : 0;
       const step = dt / POWER_ANIM_S;
-      this._powerLevel = this._powerLevel < target
-        ? Math.min(target, this._powerLevel + step)
-        : Math.max(target, this._powerLevel - step);
+      this._powerLevel = THREE.MathUtils.clamp(
+        this._powerLevel < target ? this._powerLevel + step : this._powerLevel - step,
+        Math.min(this._powerLevel, target), Math.max(this._powerLevel, target));
 
       const model = this._built.model;
       const flicker = model.flicker ? model.flicker(t) : 1;
