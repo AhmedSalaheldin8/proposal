@@ -1205,20 +1205,30 @@ function buildRoomShell({ width, depth, height, floorY = 0, wallColor = ROOM_WAL
   floor.receiveShadow = true;
   group.add(floor);
 
+  // walls don't receive real shadow-map shadows: at these distances the
+  // product's own close-range shadow-casting light (tuned for the small
+  // studio podium) throws soft, badly-aliased blobs onto anything far away —
+  // harmless in the void of studio mode, but ugly once a wall is there to
+  // catch it. The fake contact-shadow decal under the product still sells
+  // the grounding cue, so walls simply skip real shadow receipt.
   const back = fbox(width, height, 0.06, wallColor, { roughness: 0.88 });
   back.position.set(0, floorY + height / 2, backZ);
+  back.receiveShadow = false;
   group.add(back);
 
   const side = fbox(0.06, height, spanZ, wallColor, { roughness: 0.88 });
   side.position.set(sideX, floorY + height / 2, cz);
+  side.receiveShadow = false;
   group.add(side);
 
   const bbH = 0.09;
   const bbBack = fbox(width, bbH, 0.07, ROOM_BASEBOARD_COLOR);
   bbBack.position.set(0, floorY + bbH / 2, backZ + 0.03);
+  bbBack.receiveShadow = false;
   group.add(bbBack);
   const bbSide = fbox(0.07, bbH, spanZ, ROOM_BASEBOARD_COLOR);
   bbSide.position.set(sideX + 0.03, floorY + bbH / 2, cz);
+  bbSide.receiveShadow = false;
   group.add(bbSide);
 
   return { group, halfW, sideX, backZ, frontZ, floorY, height };
@@ -1254,8 +1264,8 @@ function addRestingContactShadow(group, radius) {
 
 /** Dim warm ambient + one soft cool "window daylight" accent, non-shadow-casting. */
 function addRoomAmbientLights(group, {
-  warmPos = new THREE.Vector3(0.5, 1.0, 0.85), warmColor = 0xffb27a, warmBase = 0.3,
-  coolPos = new THREE.Vector3(-1.6, 2.1, 1.3), coolColor = 0x9fc2e6, coolBase = 0.2,
+  warmPos = new THREE.Vector3(0.5, 1.0, 0.85), warmColor = 0xffb27a, warmBase = 0.5,
+  coolPos = new THREE.Vector3(-1.6, 2.1, 1.3), coolColor = 0x9fc2e6, coolBase = 0.34,
 } = {}) {
   const warm = new THREE.PointLight(warmColor, warmBase, 6, 2);
   warm.position.copy(warmPos);
@@ -1411,55 +1421,95 @@ function bookRow(n, w, h, d, colors) {
 
 /* ---- per-product room presets ---------------------------------------------- */
 
+/**
+ * Room-mode camera framing shares frameCamera()'s fit formula (dist grows
+ * ~3.66x faster than radius at the viewer's fixed 34deg vertical FOV), so a
+ * room sized to just the furniture footprint gets blown through by the
+ * camera long before the OrbitControls azimuth arc maxes out. Every room
+ * shell below is sized generously so the ~130-160deg frontal arc, at any
+ * allowed polar/distance, keeps the camera on the interior side of both
+ * walls (verified empirically via screenshots, see task notes).
+ */
+const FITSCALE_ROOM = 0.78;
+
+/**
+ * Build a frame spec ({center, radius, azimuth, ...}) that fits BOTH the
+ * product (approximated as model.center +/- model.radius, i.e. the same
+ * sphere studio mode fits tightly) and the room's furniture group — unlike
+ * model.radius alone, which only ever accounted for the product + a sliver
+ * of podium and knows nothing about a dining table or a chair down at floor
+ * level. Wall/floor shell meshes are deliberately excluded from this fit
+ * (only `furniture` is measured) so the camera doesn't zoom out to frame the
+ * whole wall — a fixed generous room size handles that instead.
+ */
+function roomCameraFrame(model, furniture, opts) {
+  const r = model.radius, c = model.center;
+  const box = new THREE.Box3(
+    new THREE.Vector3(c.x - r, c.y - r, c.z - r),
+    new THREE.Vector3(c.x + r, c.y + r, c.z + r));
+  if (furniture) {
+    furniture.updateMatrixWorld(true);
+    box.union(new THREE.Box3().setFromObject(furniture));
+  }
+  const center = box.getCenter(new THREE.Vector3());
+  const sphere = box.getBoundingSphere(new THREE.Sphere());
+  return {
+    center, radius: sphere.radius, fitScale: opts.fitScale ?? FITSCALE_ROOM,
+    azimuth: opts.azimuth ?? 0.45, elevation: opts.elevation ?? 0.28,
+    azimuthSpread: THREE.MathUtils.degToRad(opts.spreadDeg ?? 68),
+    minPolar: opts.minPolar ?? 0.85, maxPolar: opts.maxPolar ?? 1.25,
+    minDistScale: opts.minDistScale ?? 0.85, maxDistScale: opts.maxDistScale ?? 1.12,
+    autoRotateSpeed: opts.autoRotateSpeed ?? 0.3,
+  };
+}
+
 function buildAuroraPendantRoom(model) {
   const floorY = -0.74;
-  const shell = buildRoomShell({ width: 2.6, depth: 1.55, height: 2.3, floorY, frontExtra: 1.05 });
+  const shell = buildRoomShell({ width: 6.4, depth: 1.6, height: 2.3, floorY, frontExtra: 1.3 });
   const group = shell.group;
+  const furniture = new THREE.Group();
+  group.add(furniture);
 
-  group.add(roundTable({ topRadius: 0.82, legH: 0.62, footRadius: 0.28, color: 0x6b4d34 }));
+  furniture.add(roundTable({ topRadius: 0.82, legH: 0.62, footRadius: 0.28, color: 0x6b4d34 }));
   addRestingContactShadow(group, model.podiumRadius);
 
   const chairColor = 0x474038;
   const chair1 = chairSilhouette(chairColor);
   chair1.position.set(-0.62, floorY, 0.8);
   chair1.rotation.y = -0.4;
-  group.add(chair1);
+  furniture.add(chair1);
   const chair2 = chairSilhouette(chairColor);
   chair2.position.set(0.68, floorY, 0.66);
   chair2.rotation.y = 0.55;
-  group.add(chair2);
+  furniture.add(chair2);
 
   addWindow(group, { width: 0.7, height: 1.0, pos: new THREE.Vector3(0.8, floorY + 1.35, shell.backZ + 0.035), normal: 'z' });
   const roomLights = addRoomAmbientLights(group);
 
   return {
     group, roomLights,
-    camera: {
-      center: new THREE.Vector3(0, -0.05, 0.12),
-      radius: 1.5,
-      azimuth: 0.5, elevation: 0.3, fitScale: 1.0,
-      azimuthSpread: THREE.MathUtils.degToRad(68),
-      minPolar: 0.75, maxPolar: 1.42,
-      minDistScale: 0.82, maxDistScale: 1.25,
-      autoRotateSpeed: 0.35,
-    },
+    camera: roomCameraFrame(model, furniture, { azimuth: 0.44, elevation: 0.3 }),
   };
 }
 
 function buildCrystalChandelierRoom(model) {
   const floorY = -0.78;
-  const shell = buildRoomShell({ width: 3.4, depth: 2.0, height: 2.75, floorY, frontExtra: 1.15 });
+  const shell = buildRoomShell({ width: 8.0, depth: 1.8, height: 2.75, floorY, frontExtra: 1.4 });
   const group = shell.group;
+  const furniture = new THREE.Group();
+  group.add(furniture);
 
-  group.add(roundTable({ topRadius: 1.05, legH: 0.66, footRadius: 0.34, color: 0x5a4128 }));
+  furniture.add(roundTable({ topRadius: 1.05, legH: 0.66, footRadius: 0.34, color: 0x5a4128 }));
   addRestingContactShadow(group, model.podiumRadius);
 
   const moldingColor = 0x14110d;
   const molding = fbox(shell.halfW * 2 - 0.1, 0.035, 0.03, moldingColor);
   molding.position.set(0, floorY + 1.75, shell.backZ + 0.033);
+  molding.receiveShadow = false;
   group.add(molding);
   const moldingSide = fbox(0.03, 0.035, shell.frontZ - shell.backZ - 0.1, moldingColor);
   moldingSide.position.set(shell.sideX + 0.033, floorY + 1.75, (shell.backZ + shell.frontZ) / 2);
+  moldingSide.receiveShadow = false;
   group.add(moldingSide);
 
   addWindow(group, { width: 0.85, height: 1.3, pos: new THREE.Vector3(-1.05, floorY + 1.6, shell.backZ + 0.035), normal: 'z' });
@@ -1467,37 +1517,30 @@ function buildCrystalChandelierRoom(model) {
 
   return {
     group, roomLights,
-    camera: {
-      center: new THREE.Vector3(0, 0.15, 0.2),
-      radius: 1.9,
-      azimuth: 0.45, elevation: 0.28, fitScale: 1.0,
-      azimuthSpread: THREE.MathUtils.degToRad(62),
-      minPolar: 0.78, maxPolar: 1.4,
-      minDistScale: 0.85, maxDistScale: 1.2,
-      autoRotateSpeed: 0.3,
-    },
+    camera: roomCameraFrame(model, furniture, { azimuth: 0.4, elevation: 0.28, autoRotateSpeed: 0.28 }),
   };
 }
 
 function buildArcFloorRoom(model) {
   const floorY = 0;
-  const shell = buildRoomShell({ width: 3.0, depth: 1.8, height: 2.4, floorY, frontExtra: 1.25 });
+  const shell = buildRoomShell({ width: 9.2, depth: 1.9, height: 2.4, floorY, frontExtra: 1.5 });
   const group = shell.group;
+  const furniture = new THREE.Group();
+  group.add(furniture);
 
   const rug = rugMesh(0.95, 0x33291f);
   rug.position.set(-0.1, floorY + 0.004, 0.2);
-  group.add(rug);
+  rug.receiveShadow = false; // avoid shadow-map acne from the tight overhead spot on a big flat disc
+  furniture.add(rug);
 
   const chair = armchairSilhouette(0x50493f);
   chair.position.set(-1.05, floorY, 0.6);
   chair.rotation.y = 0.55;
-  group.add(chair);
+  furniture.add(chair);
 
   const side = sideTable(0x5a4432);
   side.position.set(-0.12, floorY, 1.0);
-  group.add(side);
-
-  addRestingContactShadow(group, model.podiumRadius);
+  furniture.add(side);
 
   const art = artFrame(0.55, 0.75);
   art.position.set(0.55, floorY + 1.55, shell.backZ + 0.033);
@@ -1508,98 +1551,73 @@ function buildArcFloorRoom(model) {
 
   return {
     group, roomLights,
-    camera: {
-      center: new THREE.Vector3(-0.05, 0.55, 0.25),
-      radius: 1.85,
-      azimuth: 0.42, elevation: 0.24, fitScale: 0.96,
-      azimuthSpread: THREE.MathUtils.degToRad(58),
-      minPolar: 0.8, maxPolar: 1.4,
-      minDistScale: 0.85, maxDistScale: 1.2,
-      autoRotateSpeed: 0.3,
-    },
+    camera: roomCameraFrame(model, furniture, { azimuth: 0.4, elevation: 0.24, autoRotateSpeed: 0.28 }),
   };
 }
 
 function buildMushroomTableRoom(model) {
   const floorY = -0.46;
-  const shell = buildRoomShell({ width: 2.4, depth: 1.5, height: 2.2, floorY, frontExtra: 1.05 });
+  const shell = buildRoomShell({ width: 6.0, depth: 1.3, height: 2.2, floorY, frontExtra: 1.1 });
   const group = shell.group;
+  const furniture = new THREE.Group();
+  group.add(furniture);
 
-  group.add(platform({ topW: 1.05, topD: 0.42, legH: 0.4, color: 0x5d4530 }));
+  furniture.add(platform({ topW: 1.05, topD: 0.42, legH: 0.4, color: 0x5d4530 }));
   addRestingContactShadow(group, model.podiumRadius);
 
   const sofa = sofaSilhouette(0x4c473f, 1.3);
   sofa.scale.setScalar(0.85);
   sofa.rotation.y = Math.PI / 2;
-  sofa.position.set(shell.sideX + 0.42, floorY, shell.backZ + 0.85);
-  group.add(sofa);
+  sofa.position.set(shell.sideX + 0.55, floorY, shell.backZ + 0.75);
+  furniture.add(sofa);
 
-  addWindow(group, { width: 0.55, height: 0.85, pos: new THREE.Vector3(0.7, floorY + 1.35, shell.backZ + 0.035), normal: 'z' });
+  addWindow(group, { width: 0.55, height: 0.85, pos: new THREE.Vector3(0.75, floorY + 1.35, shell.backZ + 0.035), normal: 'z' });
   const roomLights = addRoomAmbientLights(group);
 
   return {
     group, roomLights,
-    camera: {
-      center: new THREE.Vector3(0, -0.05, 0.12),
-      radius: 1.3,
-      azimuth: 0.55, elevation: 0.28, fitScale: 1.04,
-      azimuthSpread: THREE.MathUtils.degToRad(65),
-      minPolar: 0.78, maxPolar: 1.4,
-      minDistScale: 0.82, maxDistScale: 1.25,
-      autoRotateSpeed: 0.32,
-    },
+    camera: roomCameraFrame(model, furniture, { azimuth: 0.45, elevation: 0.28 }),
   };
 }
 
 function buildNeonQuasarRoom(model) {
-  const floorY = -0.62;
+  const floorY = -0.36;
   const shell = buildRoomShell({
-    width: 2.3, depth: 1.4, height: 2.2, floorY, frontExtra: 0.95, wallColor: ROOM_WALL_COLOR_ACCENT,
+    width: 6.4, depth: 1.3, height: 2.2, floorY, frontExtra: 1.1, wallColor: ROOM_WALL_COLOR_ACCENT,
   });
   const group = shell.group;
+  const furniture = new THREE.Group();
+  group.add(furniture);
 
-  group.add(floatingShelf({ w: 1.0, d: 0.36, color: 0x211d17 }));
-  const bracketColor = 0x18150f;
-  const br1 = fbox(0.04, 0.04, 0.3, bracketColor);
-  br1.position.set(-0.35, -0.085, shell.backZ + 0.2);
-  group.add(br1);
-  const br2 = br1.clone();
-  br2.position.x = 0.35;
-  group.add(br2);
+  furniture.add(platform({ topW: 0.95, topD: 0.5, topH: 0.045, legH: 0.315, color: 0x211d17 }));
   addRestingContactShadow(group, model.podiumRadius);
 
   addWindow(group, {
     width: 0.35, height: 1.1,
     pos: new THREE.Vector3(shell.sideX + 0.035, floorY + 1.4, 0.25), normal: 'x', color: 0x7fb0da,
   });
-  const roomLights = addRoomAmbientLights(group, { warmBase: 0.24, coolBase: 0.22 });
+  const roomLights = addRoomAmbientLights(group, { warmBase: 0.34, coolBase: 0.3 });
 
   return {
     group, roomLights,
-    camera: {
-      center: new THREE.Vector3(0, 0.05, 0.1),
-      radius: 1.35,
-      azimuth: 0.55, elevation: 0.3, fitScale: 1.02,
-      azimuthSpread: THREE.MathUtils.degToRad(60),
-      minPolar: 0.78, maxPolar: 1.4,
-      minDistScale: 0.85, maxDistScale: 1.25,
-      autoRotateSpeed: 0.3,
-    },
+    camera: roomCameraFrame(model, furniture, { azimuth: 0.45, elevation: 0.3 }),
   };
 }
 
 function buildLumenDeskRoom(model) {
   const floorY = -0.72;
-  const shell = buildRoomShell({ width: 2.4, depth: 1.5, height: 2.3, floorY, frontExtra: 1.05 });
+  const shell = buildRoomShell({ width: 6.2, depth: 1.3, height: 2.3, floorY, frontExtra: 1.1 });
   const group = shell.group;
+  const furniture = new THREE.Group();
+  group.add(furniture);
 
-  group.add(platform({ topW: 1.0, topD: 0.55, legH: 0.67, color: 0x4a3826 }));
+  furniture.add(platform({ topW: 1.0, topD: 0.55, legH: 0.67, color: 0x4a3826 }));
   addRestingContactShadow(group, model.podiumRadius);
 
   const chair = chairSilhouette(0x433d34);
   chair.rotation.y = Math.PI;
   chair.position.set(0.05, floorY, 0.58);
-  group.add(chair);
+  furniture.add(chair);
 
   const shelfY = floorY + 1.55;
   const shelf = floatingShelf({ w: 0.9, d: 0.22, color: 0x3c2c1d });
@@ -1614,15 +1632,7 @@ function buildLumenDeskRoom(model) {
 
   return {
     group, roomLights,
-    camera: {
-      center: new THREE.Vector3(0, -0.05, 0.15),
-      radius: 1.35,
-      azimuth: 0.5, elevation: 0.28, fitScale: 1.0,
-      azimuthSpread: THREE.MathUtils.degToRad(62),
-      minPolar: 0.78, maxPolar: 1.4,
-      minDistScale: 0.85, maxDistScale: 1.25,
-      autoRotateSpeed: 0.3,
-    },
+    camera: roomCameraFrame(model, furniture, { azimuth: 0.45, elevation: 0.28 }),
   };
 }
 
