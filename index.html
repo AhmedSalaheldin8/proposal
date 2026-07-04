@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DealInbox — Extraordinary deals on designer lighting</title>
+  <meta name="description" content="DealInbox curates one extraordinary drop of designer lighting every day — up to 60% off, previewed in interactive 3D before you buy." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffc25e'/><stop offset='1' stop-color='%23ff7847'/></linearGradient></defs><rect x='3' y='7' width='26' height='19' rx='4' fill='url(%23g)'/><path d='M4.5 9.5 16 18 27.5 9.5' stroke='%230c0a07' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/><circle cx='25' cy='7' r='4.4' fill='%23fff3d6'/></svg>" />
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.min.js" } }
+  </script>
+</head>
+<body>
+
+  <!-- Announcement bar -->
+  <div class="announce" role="status">
+    <span class="announce__pulse" aria-hidden="true"></span>
+    <span>Tonight's Drop — designer lighting up to <strong>60% off</strong> · ends in <strong class="js-countdown" data-style="inline">00:00:00</strong></span>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="top">
+    <div class="header__inner container">
+      <a class="brand" href="#top" aria-label="DealInbox home">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <defs>
+            <linearGradient id="brandg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffc25e"/><stop offset="1" stop-color="#ff7847"/>
+            </linearGradient>
+          </defs>
+          <rect x="3" y="7" width="26" height="19" rx="4" fill="url(#brandg)"/>
+          <path d="M4.5 9.5 16 18 27.5 9.5" stroke="#0c0a07" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="25" cy="7" r="4.4" fill="#fff3d6"/>
+        </svg>
+        <span class="brand__name">Deal<em>Inbox</em></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#drop">Tonight's Drop</a>
+        <a href="#how">How it works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header__actions">
+        <a class="btn btn--ghost btn--sm" href="#newsletter">Sign in</a>
+        <a class="btn btn--primary btn--sm" href="#newsletter">Get the deals</a>
+      </div>
+      <button class="header__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#drop">Tonight's Drop</a>
+      <a href="#how">How it works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--primary" href="#newsletter">Get the deals</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__grid container">
+        <div class="hero__copy">
+          <p class="eyebrow reveal"><span class="eyebrow__dot" aria-hidden="true"></span>One curated drop. Every day. 24 hours only.</p>
+          <h1 class="hero__title reveal">Extraordinary deals on <span class="grad-text">designer&nbsp;lighting</span>.</h1>
+          <p class="hero__sub reveal">We negotiate directly with ateliers and studios, then hand-pick one collection a day at up to 60% off. Every piece can be explored in full 3D — switch it on, warm it up, see it glow — before it ever ships.</p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--primary btn--lg" href="#drop">Shop tonight's drop
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4.5-5L16 10l-5.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <button class="btn btn--ghost btn--lg js-open-viewer" data-product="crystal-chandelier">
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M10 2.5 17 6v8l-7 3.5L3 14V6l7-3.5Zm0 0V10m0 0 7-4M10 10 3 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Try the 3D viewer
+            </button>
+          </div>
+          <dl class="hero__stats reveal">
+            <div><dt class="js-countup" data-target="212" data-suffix="K">0</dt><dd>members</dd></div>
+            <div><dt class="js-countup" data-target="57" data-suffix="%">0</dt><dd>avg. savings</dd></div>
+            <div><dt class="js-countup" data-target="340" data-suffix="+">0</dt><dd>partner studios</dd></div>
+          </dl>
+        </div>
+        <div class="hero__stage reveal">
+          <div class="stage">
+            <canvas id="heroCanvas" aria-label="Interactive 3D preview of the Odette crystal chandelier"></canvas>
+            <div class="stage__hint"><span class="stage__hint-icon" aria-hidden="true">✦</span> Drag to orbit · scroll to zoom</div>
+            <button class="stage__cta js-open-viewer" data-product="crystal-chandelier">Open full viewer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand marquee -->
+    <section class="marquee" aria-label="Featured studios">
+      <div class="marquee__track">
+        <ul class="marquee__list">
+          <li>Maison Lumière</li><li>✦</li><li>Nordlys Studio</li><li>✦</li><li>Castiglione &amp; Co</li><li>✦</li><li>Murano Atelier</li><li>✦</li><li>VoltHaus</li><li>✦</li><li>Archer &amp; Sloane</li><li>✦</li><li>Fenwick Forge</li><li>✦</li><li>Studio Hikari</li><li>✦</li>
+        </ul>
+        <ul class="marquee__list" aria-hidden="true">
+          <li>Maison Lumière</li><li>✦</li><li>Nordlys Studio</li><li>✦</li><li>Castiglione &amp; Co</li><li>✦</li><li>Murano Atelier</li><li>✦</li><li>VoltHaus</li><li>✦</li><li>Archer &amp; Sloane</li><li>✦</li><li>Fenwick Forge</li><li>✦</li><li>Studio Hikari</li><li>✦</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Deals grid -->
+    <section class="drop container" id="drop">
+      <header class="section-head reveal">
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Live now</p>
+        <h2 class="section-head__title">Tonight's Drop</h2>
+        <p class="section-head__sub">Six pieces. Twenty-four hours. Every one rendered in real-time 3D — press <em>View in 3D</em> to switch it on and feel the light.</p>
+        <div class="drop__timer" role="timer" aria-label="Time remaining in tonight's drop">
+          <span class="drop__timer-label">Drop ends in</span>
+          <span class="js-countdown drop__timer-clock" data-style="boxes">00:00:00</span>
+        </div>
+      </header>
+      <div class="cards" id="dealGrid">
+        <!-- product cards injected by js/main.js -->
+        <noscript><p>Enable JavaScript to browse tonight's drop.</p></noscript>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how" id="how">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>The DealInbox way</p>
+          <h2 class="section-head__title">Deals worth waiting for</h2>
+        </header>
+        <ol class="how__grid">
+          <li class="how__step reveal">
+            <span class="how__num">01</span>
+            <h3>We hunt</h3>
+            <p>Our buyers negotiate directly with 340+ design studios for overstock, end-of-line and showroom pieces — the real thing, never seconds.</p>
+          </li>
+          <li class="how__step reveal">
+            <span class="how__num">02</span>
+            <h3>You preview in 3D</h3>
+            <p>Every piece is captured as a true-to-scale 3D model. Orbit it, dim it, warm the light from candlelight to daylight — know exactly what arrives.</p>
+          </li>
+          <li class="how__step reveal">
+            <span class="how__num">03</span>
+            <h3>The drop lands</h3>
+            <p>One email at 9am. One collection at up to 60% off. Twenty-four hours on the clock — when it's gone, it's gone.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews container" id="reviews">
+      <header class="section-head reveal">
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>212,000 members</p>
+        <h2 class="section-head__title">Loved in warm light</h2>
+      </header>
+      <div class="reviews__grid">
+        <figure class="review reveal">
+          <div class="review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“The 3D viewer sold me. I warmed the pendant to 2700K over my actual kitchen photo in my head and knew instantly. It arrived and looked <span style="font-style:italic">identical</span>.”</blockquote>
+          <figcaption><span class="review__avatar" style="--a:#ffb84d" aria-hidden="true">SM</span><span><strong>Sofia M.</strong><em>Interior designer, Lisbon</em></span></figcaption>
+        </figure>
+        <figure class="review reveal">
+          <div class="review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“Got the Odette chandelier at 60% off. I'd been quoted four times that at a showroom. DealInbox is the first deals site that feels premium, not desperate.”</blockquote>
+          <figcaption><span class="review__avatar" style="--a:#7fb8ff" aria-hidden="true">DK</span><span><strong>Daniel K.</strong><em>Architect, Copenhagen</em></span></figcaption>
+        </figure>
+        <figure class="review reveal">
+          <div class="review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“The daily email is the only marketing I actually look forward to. One drop, beautifully shot, gone by midnight. It's an event.”</blockquote>
+          <figcaption><span class="review__avatar" style="--a:#ff8ba0" aria-hidden="true">AR</span><span><strong>Amara R.</strong><em>Member since 2024</em></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq container" id="faq">
+      <header class="section-head reveal">
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Good to know</p>
+        <h2 class="section-head__title">Questions, answered</h2>
+      </header>
+      <div class="faq__list reveal">
+        <details>
+          <summary>Are these authentic designer pieces?<span class="faq__chev" aria-hidden="true"></span></summary>
+          <p>Yes — every piece ships from the studio or its authorised distributor with full manufacturer warranty. We sell overstock and end-of-line, never replicas or factory seconds.</p>
+        </details>
+        <details>
+          <summary>How accurate is the 3D preview?<span class="faq__chev" aria-hidden="true"></span></summary>
+          <p>Models are built to true scale with calibrated materials. The temperature slider maps to real bulb kelvin values (2200K–6500K), so what you see is the light you'll live with.</p>
+        </details>
+        <details>
+          <summary>What if I miss a drop?<span class="faq__chev" aria-hidden="true"></span></summary>
+          <p>Drops don't return, but studios do. Follow a studio and we'll bump you to the front of the queue next time they land.</p>
+        </details>
+        <details>
+          <summary>Returns and shipping?<span class="faq__chev" aria-hidden="true"></span></summary>
+          <p>Free insured shipping over $150, 30-day no-questions returns, and every fixture is tested before it leaves the warehouse.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="cta" id="newsletter">
+      <div class="cta__card container reveal">
+        <div class="cta__glow" aria-hidden="true"></div>
+        <h2>Tomorrow's drop, in your inbox at <span class="grad-text">9:00 sharp</span>.</h2>
+        <p>Join 212,000 members. One email a day, zero spam, unsubscribe whenever.</p>
+        <form class="cta__form js-newsletter" novalidate>
+          <label class="visually-hidden" for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+          <button class="btn btn--primary" type="submit">Get the drop</button>
+        </form>
+        <p class="cta__ok" hidden>You're in. First drop lands tomorrow at 9:00. <span aria-hidden="true">✦</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="DealInbox home">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="7" width="26" height="19" rx="4" fill="url(#brandg)"/><path d="M4.5 9.5 16 18 27.5 9.5" stroke="#0c0a07" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="7" r="4.4" fill="#fff3d6"/></svg>
+          <span class="brand__name">Deal<em>Inbox</em></span>
+        </a>
+        <p>One extraordinary drop of designer lighting, every day, previewed in 3D.</p>
+      </div>
+      <nav aria-label="Shop"><h4>Shop</h4><a href="#drop">Tonight's Drop</a><a href="#drop">Pendants</a><a href="#drop">Chandeliers</a><a href="#drop">Floor &amp; Table</a></nav>
+      <nav aria-label="Company"><h4>Company</h4><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="#newsletter">Newsletter</a></nav>
+      <nav aria-label="Support"><h4>Support</h4><a href="#faq">Shipping</a><a href="#faq">Returns</a><a href="#faq">Warranty</a><a href="#newsletter">Contact</a></nav>
+    </div>
+    <div class="container footer__legal">
+      <span>© 2026 DealInbox. All lights reserved.</span>
+      <span>Made with real-time WebGL · <a class="footer__toplink" href="#top">Back to top ↑</a></span>
+    </div>
+  </footer>
+
+  <!-- 3D viewer modal -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="viewerTitle" hidden>
+    <div class="viewer__backdrop js-viewer-close" aria-hidden="true"></div>
+    <div class="viewer__panel">
+      <button class="viewer__close js-viewer-close" aria-label="Close 3D viewer">
+        <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="viewer__stage">
+        <canvas id="viewerCanvas"></canvas>
+        <div class="viewer__hint">Drag to orbit · scroll to zoom</div>
+      </div>
+      <aside class="viewer__side">
+        <header class="viewer__head">
+          <p class="viewer__brand" id="viewerBrand"></p>
+          <h3 id="viewerTitle"></h3>
+          <div class="viewer__price">
+            <strong id="viewerPrice"></strong>
+            <s id="viewerWas"></s>
+            <span class="badge" id="viewerOff"></span>
+          </div>
+        </header>
+
+        <div class="viewer__controls">
+          <div class="ctrl ctrl--row">
+            <div>
+              <span class="ctrl__label">View</span>
+              <span class="ctrl__value" id="roomState">In a room</span>
+            </div>
+            <button class="switch switch--on" id="roomSwitch" role="switch" aria-checked="true" aria-label="Show product in a room">
+              <span class="switch__thumb"></span>
+            </button>
+          </div>
+
+          <div class="ctrl ctrl--row">
+            <div>
+              <span class="ctrl__label">Power</span>
+              <span class="ctrl__value" id="powerState">On</span>
+            </div>
+            <button class="switch" id="powerSwitch" role="switch" aria-checked="true" aria-label="Lamp power">
+              <span class="switch__thumb"></span>
+            </button>
+          </div>
+
+          <div class="ctrl">
+            <div class="ctrl__top">
+              <span class="ctrl__label">Light temperature</span>
+              <span class="ctrl__value" id="tempValue">3000K</span>
+            </div>
+            <input class="range range--kelvin" id="tempRange" type="range" min="2200" max="6500" step="50" value="3000" aria-label="Light temperature in kelvin" />
+            <div class="range__ends"><span>Candle 2200K</span><span>Daylight 6500K</span></div>
+          </div>
+
+          <div class="ctrl">
+            <div class="ctrl__top">
+              <span class="ctrl__label">Brightness</span>
+              <span class="ctrl__value" id="brightValue">80%</span>
+            </div>
+            <input class="range range--bright" id="brightRange" type="range" min="5" max="100" step="1" value="80" aria-label="Brightness percentage" />
+          </div>
+
+          <div class="ctrl ctrl--row">
+            <div>
+              <span class="ctrl__label">Auto-rotate</span>
+              <span class="ctrl__value">Showroom spin</span>
+            </div>
+            <button class="switch switch--on" id="rotateSwitch" role="switch" aria-checked="true" aria-label="Auto rotate">
+              <span class="switch__thumb"></span>
+            </button>
+          </div>
+        </div>
+
+        <p class="viewer__blurb" id="viewerBlurb"></p>
+
+        <div class="viewer__actions">
+          <button class="btn btn--primary btn--lg viewer__claim">Claim this deal</button>
+          <span class="viewer__timer">Ends in <strong class="js-countdown" data-style="inline">00:00:00</strong></span>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
