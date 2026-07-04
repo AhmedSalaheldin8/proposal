@@ -2,7 +2,7 @@ name: Deploy DealInbox preview to GitHub Pages
 
 on:
   push:
-    branches: [claude/dealinbox-website-enhancement-l5lnib]
+    branches: [main, claude/dealinbox-website-enhancement-l5lnib]
   workflow_dispatch:
 
 permissions:
