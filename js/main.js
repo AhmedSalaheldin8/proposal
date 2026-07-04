@@ -272,6 +272,7 @@ const tempRange = document.getElementById('tempRange');
 const brightRange = document.getElementById('brightRange');
 const powerSwitch = document.getElementById('powerSwitch');
 const rotateSwitch = document.getElementById('rotateSwitch');
+const roomSwitch = document.getElementById('roomSwitch');
 
 function setSwitch(btn, on) {
   btn.setAttribute('aria-checked', String(on));
@@ -300,9 +301,11 @@ async function openViewer(key) {
   brightRange.value = 80;
   setSwitch(powerSwitch, true);
   setSwitch(rotateSwitch, !prefersReducedMotion);
+  setSwitch(roomSwitch, true);
   document.getElementById('powerState').textContent = 'On';
   document.getElementById('tempValue').textContent = '3000K';
   document.getElementById('brightValue').textContent = '80%';
+  document.getElementById('roomState').textContent = 'In a room';
 
   try {
     const { ProductViewer } = await load3D();
@@ -311,6 +314,7 @@ async function openViewer(key) {
     modalViewer = new ProductViewer(canvas, key, {
       interactive: true,
       autoRotate: !prefersReducedMotion,
+      room: true,
     });
     modalViewer.setTemperature(3000);
     modalViewer.setIntensity(0.8);
@@ -354,6 +358,13 @@ function initViewerControls() {
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
+  });
+
+  roomSwitch.addEventListener('click', () => {
+    const next = !isOn(roomSwitch);
+    setSwitch(roomSwitch, next);
+    document.getElementById('roomState').textContent = next ? 'In a room' : 'Studio';
+    if (modalViewer && typeof modalViewer.setRoom === 'function') modalViewer.setRoom(next);
   });
 
   powerSwitch.addEventListener('click', () => {
