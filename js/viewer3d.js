@@ -141,6 +141,53 @@ function marbleTexture() {
   return tex;
 }
 
+/** Cheap warm plank-wood canvas texture, used by room-mode floors. */
+let _woodCanvas = null;
+function woodFloorTexture() {
+  if (!_woodCanvas) {
+    _woodCanvas = makeCanvas(512, (ctx, s) => {
+      ctx.fillStyle = '#5f4630';
+      ctx.fillRect(0, 0, s, s);
+      const planks = 6;
+      const plankW = s / planks;
+      // per-plank tonal variation
+      for (let i = 0; i < planks; i++) {
+        const shade = 0.86 + ((i * 53) % 17) / 60;
+        ctx.fillStyle = `rgba(0,0,0,${(1 - shade) * 0.55})`;
+        ctx.fillRect(i * plankW, 0, plankW, s);
+      }
+      // seams
+      ctx.strokeStyle = 'rgba(24,16,10,0.4)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i <= planks; i++) {
+        ctx.beginPath();
+        ctx.moveTo(i * plankW, 0);
+        ctx.lineTo(i * plankW, s);
+        ctx.stroke();
+      }
+      // grain streaks (deterministic pseudo-random via index math, not Math.random,
+      // so the texture is stable across renders)
+      for (let i = 0; i < planks; i++) {
+        for (let j = 0; j < 6; j++) {
+          const seed = i * 13 + j * 7;
+          const x = i * plankW + (seed % 11) / 11 * plankW * 0.7;
+          const y = j * (s / 6) + (seed % 5) * 4;
+          ctx.strokeStyle = `rgba(40,26,15,${0.12 + (seed % 9) / 90})`;
+          ctx.lineWidth = 1 + (seed % 3) * 0.4;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.bezierCurveTo(x + plankW * 0.18, y + 10, x - plankW * 0.12, y + 24, x + plankW * 0.08, y + 38);
+          ctx.stroke();
+        }
+      }
+    });
+  }
+  const tex = new THREE.CanvasTexture(_woodCanvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  return tex;
+}
+
 /* ---- material factories (fresh instances each call — safe per-viewer dispose) */
 function brassMat() {
   return new THREE.MeshPhysicalMaterial({
@@ -909,6 +956,8 @@ function addPodium(scene, radius) {
   contact.position.y = 0.003;
   contact.renderOrder = 1;
   scene.add(contact);
+
+  return { podium, contact };
 }
 
 function addLightRig(scene) {
@@ -973,7 +1022,9 @@ function buildProductScene(productKey, renderer) {
   scene.environmentIntensity = 0.55;
   const model = builder();
   scene.add(model.group);
-  addPodium(scene, model.podiumRadius);
+  const { podium, contact } = addPodium(scene, model.podiumRadius);
+  model.podiumMesh = podium;
+  model.contactMesh = contact;
   const rig = addLightRig(scene);
 
   // frame data (optionally grounding the composition on the podium)
@@ -991,6 +1042,7 @@ function buildProductScene(productKey, renderer) {
 
 const _white = new THREE.Color(1, 1, 1);
 const _tmpColor = new THREE.Color();
+const _tweenTarget = new THREE.Vector3();
 
 /**
  * Push power/kelvin/intensity state into a built scene.
@@ -1026,19 +1078,38 @@ function applyState(built, color, eff, powerLevel) {
     const s = d.baseScale * (0.55 + 0.5 * Math.min(1.4, eff));
     h.scale.set(s, s, 1);
   }
+  // room-only ambiance lights (present only when a room bundle is attached;
+  // brighten slightly as the lamp powers down so the room never goes pitch black)
+  for (const l of model.roomLights || []) {
+    const d = l.userData._room;
+    l.intensity = d.base * (1 + d.offBoost * offAmount);
+  }
 }
 
-function frameCamera(camera, model) {
+/**
+ * Position/aim the camera to fit a "frame" spec: { center, radius, azimuth?,
+ * elevation?, fitScale? }. Used for both the studio product frame (model
+ * itself satisfies this shape) and the room-mode frame (see ROOM_BUILDERS).
+ */
+function computeFitDistance(camera, frame) {
   const fovV = THREE.MathUtils.degToRad(camera.fov);
   const fovH = 2 * Math.atan(Math.tan(fovV / 2) * camera.aspect);
-  const dist = (model.radius / Math.tan(Math.min(fovV, fovH) / 2)) * 1.12 * (model.fitScale ?? 1);
-  const azim = model.azimuth ?? 0.6;
-  const elev = model.elevation ?? 0.3;
-  camera.position.set(
-    model.center.x + dist * Math.cos(elev) * Math.sin(azim),
-    model.center.y + dist * Math.sin(elev),
-    model.center.z + dist * Math.cos(elev) * Math.cos(azim));
-  camera.lookAt(model.center);
+  return (frame.radius / Math.tan(Math.min(fovV, fovH) / 2)) * 1.12 * (frame.fitScale ?? 1);
+}
+
+function sphericalPos(center, dist, azim, elev, out = new THREE.Vector3()) {
+  return out.set(
+    center.x + dist * Math.cos(elev) * Math.sin(azim),
+    center.y + dist * Math.sin(elev),
+    center.z + dist * Math.cos(elev) * Math.cos(azim));
+}
+
+function frameCamera(camera, frame) {
+  const dist = computeFitDistance(camera, frame);
+  const azim = frame.azimuth ?? 0.6;
+  const elev = frame.elevation ?? 0.3;
+  sphericalPos(frame.center, dist, azim, elev, camera.position);
+  camera.lookAt(frame.center);
   camera.updateProjectionMatrix();
   return dist;
 }
@@ -1071,6 +1142,513 @@ function disposeSceneResources(scene) {
 }
 
 /* ============================================================================
+ * Room mode — per-product furnished interior "stage sets"
+ *
+ * A room bundle is { group, roomLights, camera }:
+ *   group      — THREE.Group holding all room geometry + ambiance lights,
+ *                added directly into the product's own scene (so the
+ *                existing dispose path cleans it up for free) and toggled
+ *                via .visible when switching modes.
+ *   roomLights — the room's own non-shadow ambiance lights (see
+ *                addRoomAmbientLights); read by applyState().
+ *   camera     — a frame spec ({ center, radius, azimuth, elevation,
+ *                fitScale }, same shape frameCamera() already expects) plus
+ *                OrbitControls constraints (azimuthSpread, minPolar,
+ *                maxPolar, minDistScale, maxDistScale, autoRotateSpeed).
+ *
+ * Convention: the product model is never moved. World y=0 is always the
+ * surface the product already rests on (the studio podium's plane). Floor
+ * lamps keep the real floor at y=0; pendants/chandeliers/table lamps get a
+ * console/table/desk/shelf built with its top surface at y=0, descending to
+ * the true room floor at a negative `floorY`.
+ * ========================================================================== */
+
+const ROOM_WALL_COLOR = 0x2a2520;
+const ROOM_WALL_COLOR_ACCENT = 0x201c19;
+const ROOM_BASEBOARD_COLOR = 0x18140f;
+
+function furnMat(color, opts = {}) {
+  return new THREE.MeshStandardMaterial({
+    color, roughness: opts.roughness ?? 0.85, metalness: opts.metalness ?? 0.04,
+    flatShading: true, envMapIntensity: 0.22,
+  });
+}
+function fbox(w, h, d, color, opts) {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), furnMat(color, opts));
+  m.receiveShadow = true;
+  return m;
+}
+function fcyl(rt, rb, h, color, segs = 20, opts) {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, segs), furnMat(color, opts));
+  m.receiveShadow = true;
+  return m;
+}
+
+/** Two walls (back + left side) meeting at a corner, plus a wood floor. Open
+ * toward the camera on the other two sides — a stage set, not a box. */
+function buildRoomShell({ width, depth, height, floorY = 0, wallColor = ROOM_WALL_COLOR, frontExtra = 1.0 }) {
+  const group = new THREE.Group();
+  const halfW = width / 2;
+  const backZ = -depth;
+  const frontZ = frontExtra;
+  const sideX = -halfW;
+  const cz = (backZ + frontZ) / 2;
+  const spanZ = frontZ - backZ;
+
+  const floorTex = woodFloorTexture();
+  floorTex.repeat.set(Math.max(1, width / 1.4), Math.max(1, spanZ / 1.4));
+  const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(width, spanZ),
+    new THREE.MeshStandardMaterial({ map: floorTex, roughness: 0.82, metalness: 0.05, envMapIntensity: 0.16 }));
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.set(0, floorY, cz);
+  floor.receiveShadow = true;
+  group.add(floor);
+
+  const back = fbox(width, height, 0.06, wallColor, { roughness: 0.88 });
+  back.position.set(0, floorY + height / 2, backZ);
+  group.add(back);
+
+  const side = fbox(0.06, height, spanZ, wallColor, { roughness: 0.88 });
+  side.position.set(sideX, floorY + height / 2, cz);
+  group.add(side);
+
+  const bbH = 0.09;
+  const bbBack = fbox(width, bbH, 0.07, ROOM_BASEBOARD_COLOR);
+  bbBack.position.set(0, floorY + bbH / 2, backZ + 0.03);
+  group.add(bbBack);
+  const bbSide = fbox(0.07, bbH, spanZ, ROOM_BASEBOARD_COLOR);
+  bbSide.position.set(sideX + 0.03, floorY + bbH / 2, cz);
+  group.add(bbSide);
+
+  return { group, halfW, sideX, backZ, frontZ, floorY, height };
+}
+
+/** Faux "window" — a glowing inset panel, no real geometry depth needed. */
+function addWindow(group, { width, height, pos, normal = 'z', color = 0x8fb8dc }) {
+  const g = new THREE.Group();
+  const frame = new THREE.Mesh(new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({ color: 0x100d0a }));
+  g.add(frame);
+  const glass = new THREE.Mesh(
+    new THREE.PlaneGeometry(width - 0.08, height - 0.08),
+    new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.55 }));
+  glass.position.z = 0.004;
+  g.add(glass);
+  if (normal === 'x') g.rotation.y = Math.PI / 2;
+  g.position.copy(pos);
+  group.add(g);
+  return g;
+}
+
+/** Soft contact-shadow decal on the surface the product rests on (y=0 local). */
+function addRestingContactShadow(group, radius) {
+  const m = new THREE.Mesh(
+    new THREE.PlaneGeometry(radius * 1.7, radius * 1.7),
+    new THREE.MeshBasicMaterial({ map: contactShadowTexture(), transparent: true, depthWrite: false }));
+  m.rotation.x = -Math.PI / 2;
+  m.position.y = 0.004;
+  m.renderOrder = 1;
+  group.add(m);
+  return m;
+}
+
+/** Dim warm ambient + one soft cool "window daylight" accent, non-shadow-casting. */
+function addRoomAmbientLights(group, {
+  warmPos = new THREE.Vector3(0.5, 1.0, 0.85), warmColor = 0xffb27a, warmBase = 0.3,
+  coolPos = new THREE.Vector3(-1.6, 2.1, 1.3), coolColor = 0x9fc2e6, coolBase = 0.2,
+} = {}) {
+  const warm = new THREE.PointLight(warmColor, warmBase, 6, 2);
+  warm.position.copy(warmPos);
+  warm.userData._room = { base: warmBase, offBoost: 0.55 };
+  group.add(warm);
+
+  const cool = new THREE.DirectionalLight(coolColor, coolBase);
+  cool.position.copy(coolPos);
+  cool.userData._room = { base: coolBase, offBoost: 0.4 };
+  group.add(cool);
+
+  return [warm, cool];
+}
+
+/* ---- simple context-furniture silhouettes (flat-shaded, muted, low-poly) --- */
+
+function chairSilhouette(color = 0x474038) {
+  const g = new THREE.Group();
+  const seat = fbox(0.36, 0.045, 0.36, color);
+  seat.position.y = 0.24;
+  g.add(seat);
+  const back = fbox(0.34, 0.4, 0.045, color);
+  back.position.set(0, 0.24 + 0.2, -0.155);
+  g.add(back);
+  for (const [dx, dz] of [[0.15, 0.15], [-0.15, 0.15], [0.15, -0.15], [-0.15, -0.15]]) {
+    const leg = fcyl(0.018, 0.018, 0.24, color, 8);
+    leg.position.set(dx, 0.12, dz);
+    g.add(leg);
+  }
+  return g;
+}
+
+function roundTable({ topRadius, topH = 0.045, legH, footRadius, color }) {
+  const g = new THREE.Group();
+  const top = fcyl(topRadius, topRadius, topH, color, 40);
+  top.position.y = -topH / 2;
+  g.add(top);
+  const col = fcyl(0.05, 0.08, legH, color, 24);
+  col.position.y = -topH - legH / 2;
+  g.add(col);
+  const foot = fcyl(footRadius, footRadius, 0.04, color, 40);
+  foot.position.y = -topH - legH - 0.02;
+  g.add(foot);
+  return g;
+}
+
+/** A platform whose top surface sits at local y=0 (where the product rests)
+ * and which descends legH+topH to the real floor — used for consoles/desks. */
+function platform({ topW, topD, topH = 0.05, legH, color, legInset = 0.07 }) {
+  const g = new THREE.Group();
+  const top = fbox(topW, topH, topD, color);
+  top.position.y = -topH / 2;
+  g.add(top);
+  const dx = topW / 2 - legInset, dz = topD / 2 - legInset;
+  for (const [sx, sz] of [[1, 1], [-1, 1], [1, -1], [-1, -1]]) {
+    const leg = fcyl(0.024, 0.024, legH, color, 12);
+    leg.position.set(sx * dx, -topH - legH / 2, sz * dz);
+    g.add(leg);
+  }
+  return g;
+}
+
+/** Wall-mounted floating shelf; top surface at local y=0, no legs to the floor. */
+function floatingShelf({ w, d, h = 0.055, color }) {
+  const g = new THREE.Group();
+  const top = fbox(w, h, d, color);
+  top.position.y = -h / 2;
+  g.add(top);
+  return g;
+}
+
+function armchairSilhouette(color = 0x54504a) {
+  const g = new THREE.Group();
+  const seat = fbox(0.62, 0.3, 0.6, color);
+  seat.position.y = 0.15;
+  g.add(seat);
+  const back = fbox(0.62, 0.46, 0.14, color);
+  back.position.set(0, 0.3 + 0.23, -0.23);
+  g.add(back);
+  const armL = fbox(0.13, 0.32, 0.56, color);
+  armL.position.set(-0.245, 0.15 + 0.16, 0);
+  g.add(armL);
+  const armR = armL.clone();
+  armR.position.x = 0.245;
+  g.add(armR);
+  return g;
+}
+
+function sofaSilhouette(color = 0x54504a, width = 1.6) {
+  const g = new THREE.Group();
+  const seat = fbox(width, 0.32, 0.68, color);
+  seat.position.y = 0.16;
+  g.add(seat);
+  const back = fbox(width, 0.5, 0.16, color);
+  back.position.set(0, 0.32 + 0.25, -0.26);
+  g.add(back);
+  const armL = fbox(0.16, 0.4, 0.68, color);
+  armL.position.set(-width / 2 + 0.08, 0.2, 0);
+  g.add(armL);
+  const armR = armL.clone();
+  armR.position.x = width / 2 - 0.08;
+  g.add(armR);
+  return g;
+}
+
+function sideTable(color = 0x5a4432) {
+  const g = new THREE.Group();
+  const top = fcyl(0.2, 0.2, 0.03, color, 24);
+  top.position.y = 0.44;
+  g.add(top);
+  const leg = fcyl(0.018, 0.026, 0.41, color, 16);
+  leg.position.y = 0.22;
+  g.add(leg);
+  const foot = fcyl(0.13, 0.13, 0.02, color, 24);
+  foot.position.y = 0.01;
+  g.add(foot);
+  return g;
+}
+
+function rugMesh(radius, color = 0x342c24) {
+  const m = new THREE.Mesh(new THREE.CircleGeometry(radius, 40), new THREE.MeshStandardMaterial({ color, roughness: 0.95, metalness: 0 }));
+  m.rotation.x = -Math.PI / 2;
+  m.receiveShadow = true;
+  return m;
+}
+
+function artFrame(w, h, frameColor = 0x18140f, insetColor = 0x6d5c46) {
+  const g = new THREE.Group();
+  const f = fbox(w, h, 0.03, frameColor);
+  g.add(f);
+  const inset = fbox(w - 0.07, h - 0.07, 0.012, insetColor);
+  inset.position.z = 0.021;
+  g.add(inset);
+  return g;
+}
+
+/** A row of book-block silhouettes, deterministic (no Math.random) so the
+ * shelf reads the same on every load. */
+function bookRow(n, w, h, d, colors) {
+  const g = new THREE.Group();
+  let x = -(n - 1) * w / 2;
+  for (let i = 0; i < n; i++) {
+    const seed = i * 17;
+    const bw = w * (0.78 + (seed % 5) / 12);
+    const bh = h * (0.65 + (seed % 7) / 9);
+    const b = fbox(bw, bh, d, colors[i % colors.length]);
+    b.position.set(x, bh / 2, 0);
+    g.add(b);
+    x += w;
+  }
+  return g;
+}
+
+/* ---- per-product room presets ---------------------------------------------- */
+
+function buildAuroraPendantRoom(model) {
+  const floorY = -0.74;
+  const shell = buildRoomShell({ width: 2.6, depth: 1.55, height: 2.3, floorY, frontExtra: 1.05 });
+  const group = shell.group;
+
+  group.add(roundTable({ topRadius: 0.82, legH: 0.62, footRadius: 0.28, color: 0x6b4d34 }));
+  addRestingContactShadow(group, model.podiumRadius);
+
+  const chairColor = 0x474038;
+  const chair1 = chairSilhouette(chairColor);
+  chair1.position.set(-0.62, floorY, 0.8);
+  chair1.rotation.y = -0.4;
+  group.add(chair1);
+  const chair2 = chairSilhouette(chairColor);
+  chair2.position.set(0.68, floorY, 0.66);
+  chair2.rotation.y = 0.55;
+  group.add(chair2);
+
+  addWindow(group, { width: 0.7, height: 1.0, pos: new THREE.Vector3(0.8, floorY + 1.35, shell.backZ + 0.035), normal: 'z' });
+  const roomLights = addRoomAmbientLights(group);
+
+  return {
+    group, roomLights,
+    camera: {
+      center: new THREE.Vector3(0, -0.05, 0.12),
+      radius: 1.5,
+      azimuth: 0.5, elevation: 0.3, fitScale: 1.0,
+      azimuthSpread: THREE.MathUtils.degToRad(68),
+      minPolar: 0.75, maxPolar: 1.42,
+      minDistScale: 0.82, maxDistScale: 1.25,
+      autoRotateSpeed: 0.35,
+    },
+  };
+}
+
+function buildCrystalChandelierRoom(model) {
+  const floorY = -0.78;
+  const shell = buildRoomShell({ width: 3.4, depth: 2.0, height: 2.75, floorY, frontExtra: 1.15 });
+  const group = shell.group;
+
+  group.add(roundTable({ topRadius: 1.05, legH: 0.66, footRadius: 0.34, color: 0x5a4128 }));
+  addRestingContactShadow(group, model.podiumRadius);
+
+  const moldingColor = 0x14110d;
+  const molding = fbox(shell.halfW * 2 - 0.1, 0.035, 0.03, moldingColor);
+  molding.position.set(0, floorY + 1.75, shell.backZ + 0.033);
+  group.add(molding);
+  const moldingSide = fbox(0.03, 0.035, shell.frontZ - shell.backZ - 0.1, moldingColor);
+  moldingSide.position.set(shell.sideX + 0.033, floorY + 1.75, (shell.backZ + shell.frontZ) / 2);
+  group.add(moldingSide);
+
+  addWindow(group, { width: 0.85, height: 1.3, pos: new THREE.Vector3(-1.05, floorY + 1.6, shell.backZ + 0.035), normal: 'z' });
+  const roomLights = addRoomAmbientLights(group);
+
+  return {
+    group, roomLights,
+    camera: {
+      center: new THREE.Vector3(0, 0.15, 0.2),
+      radius: 1.9,
+      azimuth: 0.45, elevation: 0.28, fitScale: 1.0,
+      azimuthSpread: THREE.MathUtils.degToRad(62),
+      minPolar: 0.78, maxPolar: 1.4,
+      minDistScale: 0.85, maxDistScale: 1.2,
+      autoRotateSpeed: 0.3,
+    },
+  };
+}
+
+function buildArcFloorRoom(model) {
+  const floorY = 0;
+  const shell = buildRoomShell({ width: 3.0, depth: 1.8, height: 2.4, floorY, frontExtra: 1.25 });
+  const group = shell.group;
+
+  const rug = rugMesh(0.95, 0x33291f);
+  rug.position.set(-0.1, floorY + 0.004, 0.2);
+  group.add(rug);
+
+  const chair = armchairSilhouette(0x50493f);
+  chair.position.set(-1.05, floorY, 0.6);
+  chair.rotation.y = 0.55;
+  group.add(chair);
+
+  const side = sideTable(0x5a4432);
+  side.position.set(-0.12, floorY, 1.0);
+  group.add(side);
+
+  addRestingContactShadow(group, model.podiumRadius);
+
+  const art = artFrame(0.55, 0.75);
+  art.position.set(0.55, floorY + 1.55, shell.backZ + 0.033);
+  group.add(art);
+
+  addWindow(group, { width: 0.6, height: 0.95, pos: new THREE.Vector3(shell.sideX + 0.035, floorY + 1.5, 0.35), normal: 'x' });
+  const roomLights = addRoomAmbientLights(group);
+
+  return {
+    group, roomLights,
+    camera: {
+      center: new THREE.Vector3(-0.05, 0.55, 0.25),
+      radius: 1.85,
+      azimuth: 0.42, elevation: 0.24, fitScale: 0.96,
+      azimuthSpread: THREE.MathUtils.degToRad(58),
+      minPolar: 0.8, maxPolar: 1.4,
+      minDistScale: 0.85, maxDistScale: 1.2,
+      autoRotateSpeed: 0.3,
+    },
+  };
+}
+
+function buildMushroomTableRoom(model) {
+  const floorY = -0.46;
+  const shell = buildRoomShell({ width: 2.4, depth: 1.5, height: 2.2, floorY, frontExtra: 1.05 });
+  const group = shell.group;
+
+  group.add(platform({ topW: 1.05, topD: 0.42, legH: 0.4, color: 0x5d4530 }));
+  addRestingContactShadow(group, model.podiumRadius);
+
+  const sofa = sofaSilhouette(0x4c473f, 1.3);
+  sofa.scale.setScalar(0.85);
+  sofa.rotation.y = Math.PI / 2;
+  sofa.position.set(shell.sideX + 0.42, floorY, shell.backZ + 0.85);
+  group.add(sofa);
+
+  addWindow(group, { width: 0.55, height: 0.85, pos: new THREE.Vector3(0.7, floorY + 1.35, shell.backZ + 0.035), normal: 'z' });
+  const roomLights = addRoomAmbientLights(group);
+
+  return {
+    group, roomLights,
+    camera: {
+      center: new THREE.Vector3(0, -0.05, 0.12),
+      radius: 1.3,
+      azimuth: 0.55, elevation: 0.28, fitScale: 1.04,
+      azimuthSpread: THREE.MathUtils.degToRad(65),
+      minPolar: 0.78, maxPolar: 1.4,
+      minDistScale: 0.82, maxDistScale: 1.25,
+      autoRotateSpeed: 0.32,
+    },
+  };
+}
+
+function buildNeonQuasarRoom(model) {
+  const floorY = -0.62;
+  const shell = buildRoomShell({
+    width: 2.3, depth: 1.4, height: 2.2, floorY, frontExtra: 0.95, wallColor: ROOM_WALL_COLOR_ACCENT,
+  });
+  const group = shell.group;
+
+  group.add(floatingShelf({ w: 1.0, d: 0.36, color: 0x211d17 }));
+  const bracketColor = 0x18150f;
+  const br1 = fbox(0.04, 0.04, 0.3, bracketColor);
+  br1.position.set(-0.35, -0.085, shell.backZ + 0.2);
+  group.add(br1);
+  const br2 = br1.clone();
+  br2.position.x = 0.35;
+  group.add(br2);
+  addRestingContactShadow(group, model.podiumRadius);
+
+  addWindow(group, {
+    width: 0.35, height: 1.1,
+    pos: new THREE.Vector3(shell.sideX + 0.035, floorY + 1.4, 0.25), normal: 'x', color: 0x7fb0da,
+  });
+  const roomLights = addRoomAmbientLights(group, { warmBase: 0.24, coolBase: 0.22 });
+
+  return {
+    group, roomLights,
+    camera: {
+      center: new THREE.Vector3(0, 0.05, 0.1),
+      radius: 1.35,
+      azimuth: 0.55, elevation: 0.3, fitScale: 1.02,
+      azimuthSpread: THREE.MathUtils.degToRad(60),
+      minPolar: 0.78, maxPolar: 1.4,
+      minDistScale: 0.85, maxDistScale: 1.25,
+      autoRotateSpeed: 0.3,
+    },
+  };
+}
+
+function buildLumenDeskRoom(model) {
+  const floorY = -0.72;
+  const shell = buildRoomShell({ width: 2.4, depth: 1.5, height: 2.3, floorY, frontExtra: 1.05 });
+  const group = shell.group;
+
+  group.add(platform({ topW: 1.0, topD: 0.55, legH: 0.67, color: 0x4a3826 }));
+  addRestingContactShadow(group, model.podiumRadius);
+
+  const chair = chairSilhouette(0x433d34);
+  chair.rotation.y = Math.PI;
+  chair.position.set(0.05, floorY, 0.58);
+  group.add(chair);
+
+  const shelfY = floorY + 1.55;
+  const shelf = floatingShelf({ w: 0.9, d: 0.22, color: 0x3c2c1d });
+  shelf.position.set(0, shelfY, shell.backZ + 0.14);
+  group.add(shelf);
+  const books = bookRow(7, 0.06, 0.22, 0.18, [0x6a4638, 0x35424a, 0x55502f, 0x2d3838, 0x5c3c33]);
+  books.position.set(0, shelfY + 0.001, shell.backZ + 0.14);
+  group.add(books);
+
+  addWindow(group, { width: 0.6, height: 0.9, pos: new THREE.Vector3(shell.sideX + 0.035, floorY + 1.3, 0.4), normal: 'x' });
+  const roomLights = addRoomAmbientLights(group);
+
+  return {
+    group, roomLights,
+    camera: {
+      center: new THREE.Vector3(0, -0.05, 0.15),
+      radius: 1.35,
+      azimuth: 0.5, elevation: 0.28, fitScale: 1.0,
+      azimuthSpread: THREE.MathUtils.degToRad(62),
+      minPolar: 0.78, maxPolar: 1.4,
+      minDistScale: 0.85, maxDistScale: 1.25,
+      autoRotateSpeed: 0.3,
+    },
+  };
+}
+
+const ROOM_BUILDERS = {
+  'aurora-pendant': buildAuroraPendantRoom,
+  'crystal-chandelier': buildCrystalChandelierRoom,
+  'arc-floor': buildArcFloorRoom,
+  'mushroom-table': buildMushroomTableRoom,
+  'neon-quasar': buildNeonQuasarRoom,
+  'lumen-desk': buildLumenDeskRoom,
+};
+
+/** Build a product's room bundle and attach it into the (already-built)
+ * product scene. Only called by ProductViewer — renderThumbnail never
+ * touches room mode, keeping thumbnails on the fast studio/podium path. */
+function buildRoomBundle(productKey, model, scene) {
+  const builder = ROOM_BUILDERS[productKey];
+  if (!builder) throw new Error(`viewer3d: no room preset for "${productKey}"`);
+  const room = builder(model);
+  room.group.visible = false;
+  scene.add(room.group);
+  model.roomLights = room.roomLights;
+  return room;
+}
+
+/* ============================================================================
  * ProductViewer
  * ========================================================================== */
 
@@ -1083,10 +1661,10 @@ export class ProductViewer {
   /**
    * @param {HTMLCanvasElement} canvas
    * @param {string} productKey one of PRODUCT_KEYS
-   * @param {{interactive?: boolean, autoRotate?: boolean, transparent?: boolean}} [opts]
+   * @param {{interactive?: boolean, autoRotate?: boolean, transparent?: boolean, room?: boolean}} [opts]
    */
   constructor(canvas, productKey, opts = {}) {
-    const { interactive = true, autoRotate = true, transparent = true } = opts;
+    const { interactive = true, autoRotate = true, transparent = true, room = false } = opts;
     this._canvas = canvas;
     this._disposed = false;
 
@@ -1099,6 +1677,7 @@ export class ProductViewer {
     if (transparent) this._renderer.setClearColor(0x000000, 0);
 
     this._built = buildProductScene(productKey, this._renderer);
+    this._roomBundle = buildRoomBundle(productKey, this._built.model, this._built.scene);
 
     // state
     this._power = true;
@@ -1106,13 +1685,16 @@ export class ProductViewer {
     this._intensity = 1;
     this._kelvin = 3000;
     this._color = this._lampColor(3000);
+    this._roomMode = false;
+    this._camTween = null;
 
-    // camera + controls
+    // camera + controls (studio framing first — matches pre-room-mode behavior exactly)
     this._camera = new THREE.PerspectiveCamera(34, 1, 0.05, 60);
     this._camera.aspect = Math.max(0.1, (canvas.clientWidth || 640) / (canvas.clientHeight || 480));
     const dist = frameCamera(this._camera, this._built.model);
     this._controls = null;
     this._fallbackSpin = autoRotate;
+    this._autoRotateWanted = autoRotate;
     if (interactive) {
       this._controls = new OrbitControls(this._camera, canvas);
       this._controls.enableDamping = true;
@@ -1143,6 +1725,7 @@ export class ProductViewer {
     this._lastT = performance.now();
     this.resize();
     applyState(this._built, this._color, this._effective(1), this._powerLevel);
+    if (room) this.setRoom(true, { instant: true });
     this._startLoop();
   }
 
@@ -1173,8 +1756,85 @@ export class ProductViewer {
 
   /** Toggle idle auto-rotation. @param {boolean} on */
   setAutoRotate(on) {
+    this._autoRotateWanted = !!on;
+    if (this._camTween) return; // re-applied when the tween finishes
     if (this._controls) this._controls.autoRotate = !!on;
     else this._fallbackSpin = !!on;
+  }
+
+  /**
+   * Switch between "studio" (podium in a void — unchanged look) and "room"
+   * (furnished stylized interior) modes. Smoothly animates the camera to the
+   * new framing (~600ms ease) and constrains OrbitControls to a frontal arc
+   * in room mode so orbiting can never show the outside of a wall.
+   * @param {boolean} on
+   */
+  setRoom(on, { instant = false } = {}) {
+    on = !!on;
+    if (this._disposed) return;
+    if (on === this._roomMode && !instant) return;
+    this._roomMode = on;
+
+    // swap scene contents: the generic studio podium/contact vs. the room
+    const model = this._built.model;
+    model.podiumMesh.visible = !on;
+    model.contactMesh.visible = !on;
+    this._roomBundle.group.visible = on;
+
+    const frame = on ? this._roomBundle.camera : model;
+    const dist = computeFitDistance(this._camera, frame);
+    const azim = frame.azimuth ?? 0.6;
+    const elev = frame.elevation ?? 0.3;
+    const toPos = sphericalPos(frame.center, dist, azim, elev);
+
+    const finalize = () => {
+      if (this._controls) {
+        if (on) {
+          const rc = this._roomBundle.camera;
+          this._controls.minAzimuthAngle = rc.azimuth - rc.azimuthSpread;
+          this._controls.maxAzimuthAngle = rc.azimuth + rc.azimuthSpread;
+          this._controls.minPolarAngle = rc.minPolar;
+          this._controls.maxPolarAngle = rc.maxPolar;
+          this._controls.minDistance = dist * rc.minDistScale;
+          this._controls.maxDistance = dist * rc.maxDistScale;
+          this._controls.autoRotateSpeed = rc.autoRotateSpeed;
+        } else {
+          this._controls.minAzimuthAngle = -Infinity;
+          this._controls.maxAzimuthAngle = Infinity;
+          this._controls.minPolarAngle = 0.15;
+          this._controls.maxPolarAngle = 1.52;
+          this._controls.minDistance = dist * 0.55;
+          this._controls.maxDistance = dist * 2.2;
+          this._controls.autoRotateSpeed = 1.0;
+        }
+        this._controls.target.copy(frame.center);
+        this._controls.enabled = true;
+        this._controls.autoRotate = this._autoRotateWanted;
+        this._controls.update();
+      }
+      this._camTween = null;
+    };
+
+    if (instant) {
+      this._camera.position.copy(toPos);
+      this._camera.lookAt(frame.center);
+      this._camera.updateProjectionMatrix();
+      this._camTween = null;
+      finalize();
+      return;
+    }
+
+    if (this._controls) {
+      this._controls.autoRotate = false;
+      this._controls.enabled = false;
+    }
+    this._camTween = {
+      fromPos: this._camera.position.clone(),
+      fromTarget: this._controls ? this._controls.target.clone() : frame.center.clone(),
+      toPos, toTarget: frame.center.clone(),
+      t0: performance.now(), dur: 620,
+      onDone: finalize,
+    };
   }
 
   /** Re-read the canvas client size and update renderer + camera. */
@@ -1210,8 +1870,23 @@ export class ProductViewer {
       applyState(this._built, this._color, this._effective(flicker), this._powerLevel);
       if (model.sway) model.sway(t);
 
-      if (this._controls) this._controls.update();
-      else if (this._fallbackSpin) model.group.rotation.y += dt * 0.35;
+      if (this._camTween) {
+        const tw = this._camTween;
+        const k = Math.min(1, (now - tw.t0) / tw.dur);
+        const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; // easeInOutCubic
+        this._camera.position.lerpVectors(tw.fromPos, tw.toPos, e);
+        _tweenTarget.lerpVectors(tw.fromTarget, tw.toTarget, e);
+        this._camera.lookAt(_tweenTarget);
+        if (k >= 1) {
+          const done = tw.onDone;
+          tw.onDone = null;
+          if (done) done();
+        }
+      } else if (this._controls) {
+        this._controls.update();
+      } else if (this._fallbackSpin) {
+        model.group.rotation.y += dt * 0.35;
+      }
 
       this._renderer.render(this._built.scene, this._camera);
     };
