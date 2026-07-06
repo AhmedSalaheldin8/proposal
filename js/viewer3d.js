@@ -1935,9 +1935,13 @@ function addWindowAssembly(group, shell, {
   const g = new THREE.Group();
   const bronze = bronzeMaterial();
 
-  // recessed dusk sky, oversized so oblique angles never see past its edge
+  // recessed dusk sky. Slightly oversized so oblique angles never see past its
+  // edge through the jamb tunnel (only ~0.03 of parallax is possible through
+  // the 0.01 jamb-to-sky gap), but small enough that it can never poke above
+  // the wall top: several rooms have as little as 0.11 clearance there, and a
+  // larger margin makes the sky visible as a floating strip over the wall.
   const sky = new THREE.Mesh(
-    new THREE.PlaneGeometry(w + 0.6, h + 0.6),
+    new THREE.PlaneGeometry(w + 0.16, h + 0.16),
     new THREE.MeshBasicMaterial({ map: texOf(skyCanvasEl(), { srgb: true }) }));
   sky.position.z = -0.1;
   g.add(sky);
