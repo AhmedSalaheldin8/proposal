@@ -307,10 +307,14 @@ async function openViewer(key) {
   document.getElementById('brightValue').textContent = '80%';
   document.getElementById('roomState').textContent = 'In a room';
 
+  const stage = document.querySelector('.viewer__stage');
+  stage.classList.add('is-loading');
   try {
     const { ProductViewer } = await load3D();
     if (modalViewer) { modalViewer.dispose(); modalViewer = null; }
     const canvas = document.getElementById('viewerCanvas');
+    // let the spinner paint before the (synchronous) scene build blocks the thread
+    await new Promise((r) => requestAnimationFrame(() => setTimeout(r, 30)));
     modalViewer = new ProductViewer(canvas, key, {
       interactive: true,
       autoRotate: !prefersReducedMotion,
@@ -322,6 +326,8 @@ async function openViewer(key) {
     if (heroViewer) heroViewer.setAutoRotate(false);
   } catch (err) {
     console.error('viewer failed:', err);
+  } finally {
+    stage.classList.remove('is-loading');
   }
 
   document.querySelector('.viewer__close').focus();
