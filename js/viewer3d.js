@@ -2832,7 +2832,7 @@ function buildArcFloorRoom(model) {
   // floor lamps really are ~2m, but read better slightly under (2.03 -> 1.79m).
   // Base tucked in the back corner behind the armchair, arc sweeping out
   // over the reading spot — the classic Arco composition.
-  const adj = { scale: 0.88, y: 0, x: -2.9, z: -0.55, ry: -0.75, lightScale: 1.0 };
+  const adj = { scale: 0.88, y: 0, x: -3.55, z: -0.78, ry: -0.7, lightScale: 1.7 };
   const shell = buildRoomShell({
     width: 10.2, depth: 2.5, height: 2.5, floorY, frontExtra: 2.0,
     wallTint: 0x8b7a65,
@@ -2912,7 +2912,7 @@ function buildArcFloorRoom(model) {
     coolPos: new THREE.Vector3(-2.6, 2.0, 0.4),
   });
   const lampLights = [
-    lampBounceLight(-2.05, 0.5, 0.2, 1.4, 4, 0.8), // bounce under the arc's pool
+    lampBounceLight(-2.7, 0.5, 0.0, 1.9, 4, 0.8), // bounce under the arc's pool
   ];
   for (const l of lampLights) group.add(l);
 
