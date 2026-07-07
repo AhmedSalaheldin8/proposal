@@ -229,19 +229,30 @@ async function load3D() {
 async function initThumbnails() {
   try {
     const { renderThumbnail } = await load3D();
-    document.querySelectorAll('img[data-thumb]').forEach((img) => {
-      // Stagger so the main thread stays responsive during load
-      requestAnimationFrame(() => {
-        try {
-          img.src = renderThumbnail(img.dataset.thumb, 640, 544);
-          img.hidden = false;
+    // Render each card's 3D thumbnail only as it approaches the viewport —
+    // generating all six at page load blocks the main thread for seconds
+    // on phones. Renders queue one-at-a-time to keep scrolling responsive.
+    let queue = Promise.resolve();
+    const renderOne = (img) => {
+      queue = queue.then(() => new Promise((done) => {
+        requestAnimationFrame(() => {
+          try {
+            img.src = renderThumbnail(img.dataset.thumb, 640, 544);
+            img.hidden = false;
+          } catch (err) {
+            console.error('thumbnail failed:', img.dataset.thumb, err);
+          }
           img.closest('.card__media').classList.remove('card__media--loading');
-        } catch (err) {
-          console.error('thumbnail failed:', img.dataset.thumb, err);
-          img.closest('.card__media').classList.remove('card__media--loading');
-        }
+          setTimeout(done, 40); // breathe between renders
+        });
+      }));
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { io.unobserve(e.target); renderOne(e.target); }
       });
-    });
+    }, { rootMargin: '400px 0px' });
+    document.querySelectorAll('img[data-thumb]').forEach((img) => io.observe(img));
   } catch (err) {
     console.error('3D module failed to load — falling back to 2D:', err);
     document.body.classList.add('no-3d');
