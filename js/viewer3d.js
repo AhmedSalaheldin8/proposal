@@ -1936,7 +1936,7 @@ function buildRoomShell({
  */
 function addWindowAssembly(group, shell, {
   wall = 'back', cx = 0, cy = 0.6, w = 1.0, h = 1.4,
-  curtainSide = 0, lightBase = 3.2, lightOffBoost = 0.6,
+  curtainSide = 0, lightBase = 3.2, lightOffBoost = 0.6, skyBoost = 1,
 }) {
   ensureRectAreaLib();
   const g = new THREE.Group();
@@ -1949,7 +1949,10 @@ function addWindowAssembly(group, shell, {
   // larger margin makes the sky visible as a floating strip over the wall.
   const sky = new THREE.Mesh(
     new THREE.PlaneGeometry(w + 0.16, h + 0.16),
-    new THREE.MeshBasicMaterial({ map: texOf(skyCanvasEl(), { srgb: true }) }));
+    new THREE.MeshBasicMaterial({
+      map: texOf(skyCanvasEl(), { srgb: true }),
+      color: new THREE.Color(skyBoost, skyBoost, skyBoost),
+    }));
   sky.position.z = -0.1;
   g.add(sky);
 
@@ -2644,7 +2647,7 @@ function roomCameraFrame(model, furniture, opts) {
 function buildAuroraPendantRoom(model) {
   const floorY = -0.74;
   // dome dia 1.04 -> 0.48m; rim lands ~0.80 above the table top (y=0)
-  const adj = { scale: 0.46, y: 0.53, lightScale: 2.0 };
+  const adj = { scale: 0.46, y: 0.53, lightScale: 2.6 };
   const shell = buildRoomShell({
     width: 8.6, depth: 2.3, height: 2.38, floorY, frontExtra: 1.7,
     wallTint: 0x8f7d66,
@@ -2679,15 +2682,16 @@ function buildAuroraPendantRoom(model) {
     group.add(cs);
   }
 
-  // table styling
+  // table styling — clustered toward the window side so the tall carafe
+  // never overlaps the glowing bulb from the default/orbit angles
   const bowl = buildCeramic('bowl', 0xd6c9b4);
-  bowl.position.set(-0.3, 0.0, 0.12);
+  bowl.position.set(0.3, 0.0, -0.18);
   furniture.add(bowl);
   const carafe = buildCeramic('carafe', 0xb8a186);
-  carafe.position.set(-0.14, 0, -0.14);
+  carafe.position.set(0.52, 0, 0.08);
   furniture.add(carafe);
   const cup = buildCeramic('cup', 0xd6c9b4);
-  cup.position.set(0.34, 0, 0.3);
+  cup.position.set(0.34, 0, 0.34);
   furniture.add(cup);
 
   // window right of the table, curtain to its left
@@ -2734,7 +2738,7 @@ function buildAuroraPendantRoom(model) {
 function buildCrystalChandelierRoom(model) {
   const floorY = -0.78;
   // ~1.47m across -> 0.69m; lowest crystal lands ~0.93 above the table top
-  const adj = { scale: 0.47, y: 0.85, lightScale: 1.45 };
+  const adj = { scale: 0.47, y: 0.85, lightScale: 2.2 };
   const shell = buildRoomShell({
     width: 9.6, depth: 2.6, height: 2.78, floorY, frontExtra: 1.9,
     wallTint: 0x877462,
@@ -2781,16 +2785,16 @@ function buildCrystalChandelierRoom(model) {
   // picture rail (dark, elegant) on both walls
   const railMat = furnWoodMaterial(0x2c2118, { roughness: 0.5 });
   const railBack = new THREE.Mesh(new THREE.BoxGeometry(shell.halfW * 2, 0.04, 0.025), railMat);
-  railBack.position.set(0, floorY + 2.08, shell.backZ + 0.017);
+  railBack.position.set(0, floorY + 2.46, shell.backZ + 0.017);
   group.add(railBack);
   const railSide = new THREE.Mesh(new THREE.BoxGeometry(0.025, 0.04, shell.spanZ), railMat);
-  railSide.position.set(shell.sideX + 0.017, floorY + 2.08, shell.cz);
+  railSide.position.set(shell.sideX + 0.017, floorY + 2.46, shell.cz);
   group.add(railSide);
 
   // tall window pair on the back wall, sheer curtain
   addWindowAssembly(group, shell, {
     wall: 'back', cx: -1.7, cy: floorY + 1.52, w: 1.05, h: 1.75,
-    curtainSide: 1, lightBase: 8.5,
+    curtainSide: -1, lightBase: 10, skyBoost: 1.7,
   });
 
   const art = buildArtFrame(0.9, 1.15, 2);
@@ -2929,7 +2933,7 @@ function buildArcFloorRoom(model) {
 function buildMushroomTableRoom(model) {
   const floorY = -0.46;
   // 1.05m glass mushroom -> 0.34m table lamp on the console
-  const adj = { scale: 0.32, y: 0, lightScale: 0.22 };
+  const adj = { scale: 0.32, y: 0, lightScale: 0.36 };
   const shell = buildRoomShell({
     width: 9.0, depth: 2.1, height: 2.36, floorY, frontExtra: 1.5,
     wallTint: 0x8a7666,
@@ -3010,7 +3014,7 @@ function buildMushroomTableRoom(model) {
 function buildNeonQuasarRoom(model) {
   const floorY = -0.36;
   // ~1.2m sculpture -> 0.43m objet on the media console
-  const adj = { scale: 0.36, y: 0, lightScale: 0.2 };
+  const adj = { scale: 0.36, y: 0, lightScale: 0.33 };
   const shell = buildRoomShell({
     width: 9.0, depth: 1.9, height: 2.36, floorY, frontExtra: 1.5,
     wallTint: 0x5e565c, ceilTint: 0x46414a, floorDim: 0.82,
@@ -3099,7 +3103,7 @@ function buildNeonQuasarRoom(model) {
 function buildLumenDeskRoom(model) {
   const floorY = -0.72;
   // ~1.08m anglepoise -> 0.45m task lamp on the desk
-  const adj = { scale: 0.42, y: 0, lightScale: 0.2 };
+  const adj = { scale: 0.42, y: 0, lightScale: 0.33 };
   const shell = buildRoomShell({
     width: 9.0, depth: 1.9, height: 2.36, floorY, frontExtra: 1.5,
     wallTint: 0x87796a,
