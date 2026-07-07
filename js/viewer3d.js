@@ -2594,7 +2594,7 @@ function adjustedProductFrame(model, adj) {
   return {
     radius: model.radius * adj.scale,
     center: model.center.clone().multiplyScalar(adj.scale)
-      .add(new THREE.Vector3(0, adj.y || 0, 0)),
+      .add(new THREE.Vector3(adj.x || 0, adj.y || 0, adj.z || 0)),
   };
 }
 
@@ -2829,8 +2829,10 @@ function buildCrystalChandelierRoom(model) {
 /* -- arc-floor: living-room reading corner ----------------------------------- */
 function buildArcFloorRoom(model) {
   const floorY = 0;
-  // floor lamps really are ~2m — only a whisper smaller (2.03 -> 1.93m)
-  const adj = { scale: 0.95, y: 0, lightScale: 1.0 };
+  // floor lamps really are ~2m, but read better slightly under (2.03 -> 1.79m).
+  // Base tucked in the back corner behind the armchair, arc sweeping out
+  // over the reading spot — the classic Arco composition.
+  const adj = { scale: 0.88, y: 0, x: -2.9, z: -0.55, ry: -0.75, lightScale: 1.0 };
   const shell = buildRoomShell({
     width: 10.2, depth: 2.5, height: 2.5, floorY, frontExtra: 2.0,
     wallTint: 0x8b7a65,
@@ -2901,11 +2903,16 @@ function buildArcFloorRoom(model) {
   ps.position.set(1.75, floorY + 0.024, shell.backZ + 0.5);
   group.add(ps);
 
+  // contact shadow under the lamp's marble base in its corner
+  const baseShadow = contactOval(0.7, 0.7, 0.42);
+  baseShadow.position.set(adj.x, floorY + 0.021, adj.z);
+  group.add(baseShadow);
+
   const roomLights = addRoomAmbientLights(group, {
     coolPos: new THREE.Vector3(-2.6, 2.0, 0.4),
   });
   const lampLights = [
-    lampBounceLight(0.74, 0.5, 0.15, 1.4, 4, 0.8), // bounce under the arc's pool
+    lampBounceLight(-2.05, 0.5, 0.2, 1.4, 4, 0.8), // bounce under the arc's pool
   ];
   for (const l of lampLights) group.add(l);
 
@@ -3351,10 +3358,12 @@ export class ProductViewer {
     const adj = this._roomBundle.productAdjust || { scale: 1, y: 0, lightScale: 1 };
     if (on) {
       model.group.scale.setScalar(adj.scale);
-      model.group.position.set(0, adj.y || 0, 0);
+      model.group.position.set(adj.x || 0, adj.y || 0, adj.z || 0);
+      model.group.rotation.y = adj.ry || 0;
     } else {
       model.group.scale.setScalar(1);
       model.group.position.set(0, 0, 0);
+      model.group.rotation.y = 0;
     }
     this._built.lampScale = on ? (adj.lightScale ?? adj.scale * adj.scale) : 1;
     // in-room the studio rig + env map step back so window/lamp light reads
