@@ -1016,11 +1016,16 @@ function applyState(built, color, eff, powerLevel) {
   for (const l of rig) {
     l.intensity = l.userData._rig.base * (1 + l.userData._rig.offBoost * offAmount) * rigScale;
   }
+  // room mode shrinks the product group to real-world size; light POSITIONS
+  // scale with the group but intensities don't, so lampScale (set by setRoom,
+  // default 1 = studio/thumbnail untouched) retrims the product's own lights.
+  // Room-owned bounce fills (noRoomScale) are tuned in room space and exempt.
+  const lampScale = built.lampScale ?? 1;
   for (const l of model.lights) {
     const d = l.userData._lamp;
     _tmpColor.copy(color).lerp(_white, 1 - d.colorMix);
     l.color.copy(_tmpColor);
-    l.intensity = d.base * eff;
+    l.intensity = d.base * eff * (d.noRoomScale ? 1 : lampScale);
   }
   for (const b of model.bulbs) {
     const d = b.userData._bulb;
@@ -1197,9 +1202,11 @@ function texOf(canvas, { srgb = false, repeat = null } = {}) {
 /* ---- procedural texture canvases (all cached, generated once) -------------- */
 
 /** Plank floor: albedo (1024) + bump (512) + roughness (512). 8 planks per
- * tile, one tile = ~1.12m square in world space (planks ~14cm wide). */
+ * tile, one tile = 0.84m square in world space (planks ~10.5cm wide — adjacent
+ * same-stain planks fuse a little at grazing angles/mip levels, so they READ
+ * ~12–15cm, matching real boards; the old 1.12m tile read 30cm+). */
 let _plankSet = null;
-const FLOOR_TILE_M = 1.12;
+const FLOOR_TILE_M = 0.84;
 function plankSet() {
   if (_plankSet) return _plankSet;
   const S = 1024;
@@ -2556,6 +2563,7 @@ function addRoomAmbientLights(group, {
  * fakes the first light bounce off the floor/table under the lamp's pool. */
 function lampBounceLight(x, y, z, base = 1.0, range = 4.5, colorMix = 0.75) {
   const l = asLight(new THREE.PointLight(0xffffff, 0, range, 2), base, colorMix);
+  l.userData._lamp.noRoomScale = true; // room-space fill: exempt from lampScale
   l.position.set(x, y, z);
   return l;
 }
@@ -2569,6 +2577,40 @@ function lampBounceLight(x, y, z, base = 1.0, range = 4.5, colorMix = 0.75) {
  * ---------------------------------------------------------------------------- */
 
 const FITSCALE_ROOM = 0.66;
+
+/* Per-room product adjustment. The six products are modeled at hero/studio
+ * scale, so each room shrinks the model group to true real-world size and,
+ * for the hanging fixtures, lifts it so it hangs correctly above the table
+ * (the group scales about its origin = the surface the product rests on).
+ * Applied/removed by ProductViewer.setRoom in both directions (snap):
+ *   scale      — uniform group scale in room mode
+ *   y          — group lift in meters (hanging fixtures only)
+ *   lightScale — room-mode multiplier on the product's own light intensities;
+ *                positions scale with the group but intensity doesn't, and
+ *                ~scale² keeps self-illumination and surface pools physical */
+
+/** Frame proxy for the product AFTER its room adjustment, for camera fitting. */
+function adjustedProductFrame(model, adj) {
+  return {
+    radius: model.radius * adj.scale,
+    center: model.center.clone().multiplyScalar(adj.scale)
+      .add(new THREE.Vector3(0, adj.y || 0, 0)),
+  };
+}
+
+/** Cord/stem extension from a scaled hanging fixture's top up to the room
+ * ceiling, with a small ceiling cap — the product's own rose no longer
+ * reaches, so this keeps the "hung from the ceiling" read convincing. */
+function addCeilingDrop(group, { x = 0, z = 0, yBottom, yTop, radius = 0.006, material = null }) {
+  const mat = material || cordMat();
+  const rod = new THREE.Mesh(
+    new THREE.CylinderGeometry(radius, radius, Math.max(0.01, yTop - yBottom), 12), mat);
+  rod.position.set(x, (yBottom + yTop) / 2, z);
+  group.add(rod);
+  const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.034, 0.042, 0.024, 20), mat);
+  cap.position.set(x, yTop - 0.012, z);
+  group.add(cap);
+}
 
 /** Frame spec fitting product + furniture (walls excluded so the camera
  * doesn't zoom out to swallow the whole wall). */
@@ -2601,6 +2643,8 @@ function roomCameraFrame(model, furniture, opts) {
 /* -- aurora-pendant: dining nook ---------------------------------------------- */
 function buildAuroraPendantRoom(model) {
   const floorY = -0.74;
+  // dome dia 1.04 -> 0.48m; rim lands ~0.80 above the table top (y=0)
+  const adj = { scale: 0.46, y: 0.53, lightScale: 2.0 };
   const shell = buildRoomShell({
     width: 8.6, depth: 2.3, height: 2.38, floorY, frontExtra: 1.7,
     wallTint: 0x8f7d66,
@@ -2665,6 +2709,11 @@ function buildAuroraPendantRoom(model) {
   ps.position.set(shell.sideX + 0.55, floorY + 0.024, shell.backZ + 0.55);
   group.add(ps);
 
+  // scaled pendant's rose tops out ~1.28 — extend the cord to the ceiling
+  addCeilingDrop(group, {
+    yBottom: 1.6 * adj.scale + adj.y, yTop: floorY + 2.38, radius: 0.0055,
+  });
+
   const roomLights = addRoomAmbientLights(group);
   const lampLights = [
     lampBounceLight(0, 0.55, 0, 1.3, 3.6, 0.8), // bounce off the tabletop
@@ -2673,9 +2722,9 @@ function buildAuroraPendantRoom(model) {
   for (const l of lampLights) group.add(l);
 
   return {
-    group, roomLights, lampLights,
-    camera: roomCameraFrame(model, furniture, {
-      azimuth: 0.42, elevation: 0.26, spreadDeg: 62,
+    group, roomLights, lampLights, productAdjust: adj,
+    camera: roomCameraFrame(adjustedProductFrame(model, adj), furniture, {
+      azimuth: 0.42, elevation: 0.26, spreadDeg: 62, maxDistScale: 1.22,
       centerBias: new THREE.Vector3(0.12, 0.1, 0),
     }),
   };
@@ -2684,6 +2733,8 @@ function buildAuroraPendantRoom(model) {
 /* -- crystal-chandelier: formal dining -------------------------------------- */
 function buildCrystalChandelierRoom(model) {
   const floorY = -0.78;
+  // ~1.47m across -> 0.69m; lowest crystal lands ~0.93 above the table top
+  const adj = { scale: 0.47, y: 0.85, lightScale: 1.45 };
   const shell = buildRoomShell({
     width: 9.6, depth: 2.6, height: 2.78, floorY, frontExtra: 1.9,
     wallTint: 0x877462,
@@ -2753,6 +2804,12 @@ function buildCrystalChandelierRoom(model) {
   ps.position.set(shell.sideX + 0.6, floorY + 0.024, shell.backZ + 0.7);
   group.add(ps);
 
+  // brass stem extension from the scaled rose (~1.78) up to the ceiling (2.0)
+  addCeilingDrop(group, {
+    yBottom: 1.96 * adj.scale + adj.y, yTop: floorY + 2.78, radius: 0.0075,
+    material: brassMat(),
+  });
+
   const roomLights = addRoomAmbientLights(group, { warmBase: 0.3 });
   const lampLights = [
     lampBounceLight(0, 0.6, 0, 1.5, 4.2, 0.8),
@@ -2761,9 +2818,9 @@ function buildCrystalChandelierRoom(model) {
   for (const l of lampLights) group.add(l);
 
   return {
-    group, roomLights, lampLights,
-    camera: roomCameraFrame(model, furniture, {
-      azimuth: 0.4, elevation: 0.24, spreadDeg: 60, autoRotateSpeed: 0.28,
+    group, roomLights, lampLights, productAdjust: adj,
+    camera: roomCameraFrame(adjustedProductFrame(model, adj), furniture, {
+      azimuth: 0.4, elevation: 0.24, spreadDeg: 60, autoRotateSpeed: 0.28, maxDistScale: 1.22,
       centerBias: new THREE.Vector3(0.1, 0.12, 0),
     }),
   };
@@ -2772,6 +2829,8 @@ function buildCrystalChandelierRoom(model) {
 /* -- arc-floor: living-room reading corner ----------------------------------- */
 function buildArcFloorRoom(model) {
   const floorY = 0;
+  // floor lamps really are ~2m — only a whisper smaller (2.03 -> 1.93m)
+  const adj = { scale: 0.95, y: 0, lightScale: 1.0 };
   const shell = buildRoomShell({
     width: 10.2, depth: 2.5, height: 2.5, floorY, frontExtra: 2.0,
     wallTint: 0x8b7a65,
@@ -2851,8 +2910,8 @@ function buildArcFloorRoom(model) {
   for (const l of lampLights) group.add(l);
 
   return {
-    group, roomLights, lampLights,
-    camera: roomCameraFrame(model, furniture, {
+    group, roomLights, lampLights, productAdjust: adj,
+    camera: roomCameraFrame(adjustedProductFrame(model, adj), furniture, {
       azimuth: 0.38, elevation: 0.23, spreadDeg: 58, autoRotateSpeed: 0.28,
       centerBias: new THREE.Vector3(0, 0.1, 0),
     }),
@@ -2862,6 +2921,8 @@ function buildArcFloorRoom(model) {
 /* -- mushroom-table: console lounge ------------------------------------------ */
 function buildMushroomTableRoom(model) {
   const floorY = -0.46;
+  // 1.05m glass mushroom -> 0.34m table lamp on the console
+  const adj = { scale: 0.32, y: 0, lightScale: 0.22 };
   const shell = buildRoomShell({
     width: 9.0, depth: 2.1, height: 2.36, floorY, frontExtra: 1.5,
     wallTint: 0x8a7666,
@@ -2930,10 +2991,10 @@ function buildMushroomTableRoom(model) {
   for (const l of lampLights) group.add(l);
 
   return {
-    group, roomLights, lampLights,
-    camera: roomCameraFrame(model, furniture, {
-      azimuth: 0.4, elevation: 0.26, spreadDeg: 56,
-      centerBias: new THREE.Vector3(0.15, 0.08, 0),
+    group, roomLights, lampLights, productAdjust: adj,
+    camera: roomCameraFrame(adjustedProductFrame(model, adj), furniture, {
+      azimuth: 0.4, elevation: 0.26, spreadDeg: 56, fitScale: 0.58, maxDistScale: 1.22,
+      centerBias: new THREE.Vector3(-0.35, 0.12, 0),
     }),
   };
 }
@@ -2941,6 +3002,8 @@ function buildMushroomTableRoom(model) {
 /* -- neon-quasar: moody media wall -------------------------------------------- */
 function buildNeonQuasarRoom(model) {
   const floorY = -0.36;
+  // ~1.2m sculpture -> 0.43m objet on the media console
+  const adj = { scale: 0.36, y: 0, lightScale: 0.2 };
   const shell = buildRoomShell({
     width: 9.0, depth: 1.9, height: 2.36, floorY, frontExtra: 1.5,
     wallTint: 0x5e565c, ceilTint: 0x46414a, floorDim: 0.82,
@@ -3017,9 +3080,9 @@ function buildNeonQuasarRoom(model) {
   for (const l of lampLights) group.add(l);
 
   return {
-    group, roomLights, lampLights,
-    camera: roomCameraFrame(model, furniture, {
-      azimuth: 0.42, elevation: 0.27, spreadDeg: 58,
+    group, roomLights, lampLights, productAdjust: adj,
+    camera: roomCameraFrame(adjustedProductFrame(model, adj), furniture, {
+      azimuth: 0.42, elevation: 0.27, spreadDeg: 58, maxDistScale: 1.22,
       centerBias: new THREE.Vector3(0.1, 0.1, 0),
     }),
   };
@@ -3028,6 +3091,8 @@ function buildNeonQuasarRoom(model) {
 /* -- lumen-desk: home office --------------------------------------------------- */
 function buildLumenDeskRoom(model) {
   const floorY = -0.72;
+  // ~1.08m anglepoise -> 0.45m task lamp on the desk
+  const adj = { scale: 0.42, y: 0, lightScale: 0.2 };
   const shell = buildRoomShell({
     width: 9.0, depth: 1.9, height: 2.36, floorY, frontExtra: 1.5,
     wallTint: 0x87796a,
@@ -3117,9 +3182,9 @@ function buildLumenDeskRoom(model) {
   for (const l of lampLights) group.add(l);
 
   return {
-    group, roomLights, lampLights,
-    camera: roomCameraFrame(model, furniture, {
-      azimuth: 0.42, elevation: 0.26, spreadDeg: 58,
+    group, roomLights, lampLights, productAdjust: adj,
+    camera: roomCameraFrame(adjustedProductFrame(model, adj), furniture, {
+      azimuth: 0.42, elevation: 0.26, spreadDeg: 58, maxDistScale: 1.22,
       centerBias: new THREE.Vector3(0.08, 0.1, 0),
     }),
   };
@@ -3281,6 +3346,17 @@ export class ProductViewer {
     model.podiumMesh.visible = !on;
     model.contactMesh.visible = !on;
     this._roomBundle.group.visible = on;
+    // real-world product size in room mode; studio always snaps back to
+    // exactly scale 1 at the origin (absolute values — repeat-toggle safe)
+    const adj = this._roomBundle.productAdjust || { scale: 1, y: 0, lightScale: 1 };
+    if (on) {
+      model.group.scale.setScalar(adj.scale);
+      model.group.position.set(0, adj.y || 0, 0);
+    } else {
+      model.group.scale.setScalar(1);
+      model.group.position.set(0, 0, 0);
+    }
+    this._built.lampScale = on ? (adj.lightScale ?? adj.scale * adj.scale) : 1;
     // in-room the studio rig + env map step back so window/lamp light reads
     this._built.rigScale = on ? 0.34 : 1;
     this._built.envScale = on ? 0.7 : 1;
