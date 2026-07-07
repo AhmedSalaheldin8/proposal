@@ -247,12 +247,17 @@ async function initThumbnails() {
         });
       }));
     };
+    // Observe the media container, not the img: the img starts [hidden]
+    // (display:none), which never intersects.
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
-        if (e.isIntersecting) { io.unobserve(e.target); renderOne(e.target); }
+        if (e.isIntersecting) {
+          io.unobserve(e.target);
+          renderOne(e.target.querySelector('img[data-thumb]'));
+        }
       });
     }, { rootMargin: '400px 0px' });
-    document.querySelectorAll('img[data-thumb]').forEach((img) => io.observe(img));
+    document.querySelectorAll('.card__media').forEach((el) => io.observe(el));
   } catch (err) {
     console.error('3D module failed to load — falling back to 2D:', err);
     document.body.classList.add('no-3d');
